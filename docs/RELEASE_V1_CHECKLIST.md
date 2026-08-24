@@ -94,7 +94,7 @@ Required production files must be committed, including `public/datasets/nasa`. B
 - [ ] No HD media request before explicit selection.
 - [ ] Renderer sleeps when interaction settles.
 - [ ] No WebGL shader/resource errors in console.
-- [ ] Lighthouse mobile run recorded without fabricating unavailable results.
+- [x] Lighthouse mobile and desktop baseline recorded on 2026-08-24; see `docs/PERFORMANCE.md`.
 - [ ] Slow 4G and 4× CPU pass.
 
 ## Release commands

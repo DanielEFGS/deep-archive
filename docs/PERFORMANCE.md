@@ -85,3 +85,14 @@ FPS and Lighthouse scores were not fabricated: browser automation was unavailabl
 ## Development diagnostics
 
 In the Vite development server, press `D` to toggle a dependency-free renderer readout. It reports FPS/frame time while rendering, bounded DPR, drawing-buffer resolution, quality profile, atlas weight/dimensions, draw calls, triangles and active/sleeping state. Sampling is disabled while the panel is closed.
+
+## Lighthouse baseline — 2026-08-24
+
+The deployed Netlify production build was measured once with Lighthouse 13.4.1 in headless Chrome. Reports are stored in `reports/lighthouse-mobile.report.html` and `reports/lighthouse-desktop.report.html`. Scores are a lab baseline and should be compared using repeated runs on equivalent hardware rather than treated as field data.
+
+| Profile | Performance | Accessibility | Best practices | SEO | FCP | LCP | Speed Index | TBT | CLS |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Mobile | 71 | 100 | 100 | 100 | 2.0 s | 2.0 s | 5.6 s | 960 ms | 0 |
+| Desktop | 95 | 100 | 100 | 100 | 0.4 s | 0.4 s | 1.2 s | 170 ms | 0.001 |
+
+The main mobile constraint is JavaScript startup: the single application bundle spent approximately 1.31 s in script evaluation under Lighthouse throttling and contained an estimated 84 KiB of unused transferred JavaScript. The initial transfer remained bounded to six requests and approximately 1.6 MiB, of which the 1.37 MiB atlas is dominant. The next performance iteration should code-split optional dialogs/editorial UI and delay nonessential initialization, then compare the median of at least three mobile runs.
