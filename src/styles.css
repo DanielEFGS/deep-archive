@@ -471,3 +471,120 @@ button:focus-visible, a:focus-visible, input:focus-visible, canvas:focus-visible
 @media (hover: none), (pointer: coarse) {
   .hover-card:not(.hover-card--visible) { display: none; }
 }
+
+/* Editorial Trails: observation first, explanation on demand. */
+.hud__trail-link { color: rgba(255,255,255,.94) !important; }
+.hud__trail-link::before { content: ""; display: inline-block; width: 5px; height: 5px; margin-right: 6px; border: 1px solid currentColor; border-radius: 50%; vertical-align: 1px; }
+
+.trail-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: clamp(14px, 3vw, 42px) clamp(14px, 3vw, 42px) 88px; background: rgba(3,5,9,.84); backdrop-filter: blur(16px); animation: backdrop-in 180ms ease-out both; }
+.trail-panel { position: relative; min-width: 0; max-width: 100%; width: min(1320px, 94vw); height: min(780px, calc(100dvh - 130px)); overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 35px 120px rgba(0,0,0,.62); animation: panel-in 340ms cubic-bezier(.2,.85,.2,1) both; }
+.trail-panel.is-started { display: grid; grid-template-columns: minmax(0, 1.42fr) minmax(340px, .72fr); grid-template-rows: 1fr 44px; }
+
+.trail-state { height: 100%; display: grid; place-content: center; justify-items: center; gap: 18px; padding: 48px; text-align: center; }
+.trail-state h1 { max-width: 12ch; margin: 0; font-size: clamp(42px, 7vw, 82px); line-height: .92; letter-spacing: -.04em; }
+.trail-state p { max-width: 52ch; margin: 0; color: var(--ink-secondary); font-size: 14px; line-height: 1.6; }
+.trail-state > button { min-height: 42px; padding: 10px 14px; border: 1px solid var(--line); cursor: pointer; color: var(--ink); background: transparent; font: 9px var(--mono); letter-spacing: .1em; }
+
+.trail-intro { width: 100%; height: 100%; display: grid; grid-template-columns: minmax(300px, .85fr) minmax(420px, 1.15fr); }
+.trail-intro__signal { position: relative; overflow: hidden; border-right: 1px solid var(--line); background: #05070b; }
+.trail-intro__signal::before { content: "VISIBLE / INFRARED / ULTRAVIOLET / X-RAY / RADIO"; position: absolute; left: 24px; bottom: 24px; z-index: 2; width: 22ch; color: rgba(255,255,255,.5); font: 8px/1.7 var(--mono); letter-spacing: .12em; }
+.trail-intro__signal::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 16%, rgba(255,255,255,.08) 16.2%, transparent 16.8%), radial-gradient(circle at 54% 45%, rgba(61,103,168,.2), transparent 43%); }
+.trail-intro__signal i { --x: calc((var(--trail-index) + 1) * 7.25%); position: absolute; left: var(--x); top: 12%; bottom: 10%; width: 1px; background: rgba(255,255,255,.28); box-shadow: 0 0 24px rgba(100,150,255,.16); }
+.trail-intro__signal i:nth-child(3n + 2) { top: 22%; bottom: 17%; }
+.trail-intro__signal i:nth-child(4n) { top: 31%; bottom: 8%; }
+.trail-intro__copy { align-self: center; max-width: 690px; padding: 72px clamp(38px, 6vw, 92px); }
+.trail-intro h1 { max-width: 11ch; margin: 0; font-size: clamp(54px, 7vw, 94px); line-height: .86; letter-spacing: -.04em; text-wrap: balance; }
+.trail-intro__dek { max-width: 48ch; margin: 28px 0 0; color: var(--ink); font-size: 18px; line-height: 1.5; }
+.trail-intro__objective { max-width: 65ch; margin: 20px 0 0; color: var(--ink-secondary); font-size: 14px; line-height: 1.65; }
+.trail-intro dl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 36px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.trail-intro dl div { padding: 13px 12px 13px 0; }
+.trail-intro dt, .trail-intro dd { margin: 0; font: 8px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+.trail-intro dt { margin-bottom: 7px; color: var(--ink-muted); }
+.trail-intro dd { color: var(--ink); font-variant-numeric: tabular-nums; }
+.trail-primary-action { min-height: 48px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.55); cursor: pointer; color: var(--ink); background: transparent; font: 10px var(--mono); letter-spacing: .12em; }
+.trail-primary-action span { display: inline-block; margin-left: 18px; transition: transform 180ms cubic-bezier(.2,.8,.2,1); }
+.trail-primary-action:hover span { transform: translateX(5px); }
+
+.trail-visual { position: relative; min-width: 0; min-height: 0; overflow: hidden; background-color: #06080c; background-repeat: no-repeat; }
+.trail-visual::before { content: ""; position: absolute; inset: 0; z-index: 0; background: inherit; filter: blur(20px) saturate(.75); transform: scale(1.08); opacity: .58; }
+.trail-visual::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(0,0,0,.66), transparent 38%); }
+.trail-visual.is-resolving::after { background: linear-gradient(to top, rgba(0,0,0,.66), transparent 38%), linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: auto, calc(100% / 12) calc(100% / 9), calc(100% / 12) calc(100% / 9); }
+.trail-visual img { position: relative; z-index: 1; width: 100%; height: 100%; display: block; object-fit: cover; opacity: 0; transform: scale(1.015); transition: opacity 360ms ease, transform 700ms cubic-bezier(.2,.8,.2,1); }
+.trail-visual img.is-loaded { opacity: 1; transform: scale(1); }
+.trail-visual__loading { position: absolute; left: 50%; top: 50%; z-index: 3; transform: translate(-50%,-50%); color: var(--ink-muted); font: 8px var(--mono); letter-spacing: .12em; }
+.trail-visual__number { position: absolute; left: 20px; bottom: 24px; z-index: 3; color: rgba(255,255,255,.94); font: 600 clamp(42px, 6vw, 88px)/.8 var(--sans); letter-spacing: -.04em; }
+.trail-visual__credit { position: absolute; right: 20px; bottom: 22px; z-index: 3; max-width: 42ch; color: rgba(255,255,255,.58); font: 7px/1.5 var(--mono); letter-spacing: .07em; text-align: right; text-transform: uppercase; }
+
+.trail-copy { min-width: 0; overflow: auto; padding: 70px clamp(26px, 3vw, 44px) 46px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.18) transparent; }
+.trail-copy__position { margin-bottom: 18px; color: var(--ink-muted); font: 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.trail-copy h1 { max-width: 13ch; margin: 0; font-size: clamp(34px, 3.2vw, 56px); line-height: .95; letter-spacing: -.04em; text-wrap: balance; }
+.trail-observe { margin-top: 34px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.trail-observe > p { margin: 0; color: var(--ink); font-size: 19px; line-height: 1.42; }
+.trail-observe ul { margin: 18px 0 0; padding: 0; list-style: none; }
+.trail-observe li { position: relative; margin-top: 9px; padding-left: 18px; color: var(--ink-secondary); font-size: 13px; line-height: 1.55; }
+.trail-observe li::before { content: ""; position: absolute; left: 0; top: .62em; width: 7px; height: 1px; background: var(--ink-muted); }
+.trail-reveal { width: 100%; min-height: 48px; margin-top: 20px; border: 1px solid rgba(255,255,255,.28); cursor: pointer; color: var(--ink); background: rgba(255,255,255,.04); font: 9px var(--mono); letter-spacing: .12em; }
+.trail-reveal:hover:not(:disabled) { background: rgba(255,255,255,.09); }
+.trail-reveal:disabled { cursor: wait; color: var(--ink-muted); }
+.trail-explanation { padding-top: 28px; animation: trail-reveal-in 420ms cubic-bezier(.2,.8,.2,1) both; }
+.trail-explanation__intro { margin: 0 0 30px; color: var(--ink); font-size: 16px; line-height: 1.6; }
+.trail-explanation section { margin-top: 25px; }
+.trail-explanation h2 { margin: 0 0 8px; color: var(--ink-muted); font: 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.trail-explanation section p { margin: 0; color: var(--ink-secondary); font-size: 14px; line-height: 1.65; }
+.trail-explanation__source { display: grid; gap: 10px; margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--line); font: 8px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.trail-explanation__source span { color: var(--ink-muted); }
+.trail-explanation__source a { width: fit-content; color: var(--ink-secondary); text-decoration: underline; text-decoration-color: rgba(255,255,255,.3); text-underline-offset: 5px; }
+.trail-inline-error { margin-top: 20px; padding: 16px 0; color: var(--ink-secondary); font-size: 13px; }
+.trail-inline-error p { margin: 0 0 10px; }
+.trail-inline-error button { padding: 7px 0; border-bottom: 1px solid var(--line); cursor: pointer; color: var(--ink); background: transparent; font: 9px var(--mono); }
+@keyframes trail-reveal-in { from { opacity: .2; transform: translateY(10px); filter: blur(5px); } }
+
+.trail-progress { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px; height: 44px; padding: 0 10px; background: #07090e; }
+.trail-progress button { min-width: 0; min-height: 44px; display: grid; place-items: center; padding: 0; cursor: pointer; background: transparent; }
+.trail-progress button span { width: 100%; display: block; height: 2px; background: rgba(255,255,255,.14); transition: background 180ms ease, transform 180ms ease; }
+.trail-progress button.is-visited span { background: rgba(255,255,255,.42); }
+.trail-progress button.is-current span { background: rgba(255,255,255,.96); transform: scaleY(2); }
+.trail-floating-nav { position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 55; width: min(720px, calc(100vw - 32px)); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; padding: 8px; border: 1px solid var(--line); transform: translateX(-50%); background: rgba(8,11,17,.95); box-shadow: 0 16px 48px rgba(0,0,0,.48); backdrop-filter: blur(12px); }
+.trail-floating-nav button { min-height: 42px; padding: 8px 12px; cursor: pointer; color: var(--ink-secondary); background: transparent; font: 9px var(--mono); letter-spacing: .09em; text-align: left; }
+.trail-floating-nav button:nth-child(2) { color: var(--ink-muted); text-align: center; }
+.trail-floating-nav button:last-child { text-align: right; }
+.trail-floating-nav button:hover:not(:disabled) { color: var(--ink); background: rgba(255,255,255,.045); }
+.trail-floating-nav button:disabled { cursor: default; opacity: .25; }
+.trail-floating-nav button span { font-size: 14px; }
+
+@media (max-width: 820px) {
+  .trail-backdrop { padding: 8px 8px 76px; }
+  .trail-panel { min-width: 0; width: calc(100vw - 16px); max-width: calc(100vw - 16px); height: calc(100dvh - 84px); }
+  .trail-panel.is-started { grid-template-columns: 1fr; grid-template-rows: 41% minmax(0, 59%) 44px; }
+  .trail-intro { grid-template-columns: 34% 66%; }
+  .trail-intro__copy { padding: 58px 34px 36px; }
+  .trail-intro h1 { font-size: clamp(46px, 9vw, 72px); }
+  .trail-intro dl { grid-template-columns: repeat(2, 1fr); }
+  .trail-copy { width: 100%; min-width: 0; overflow-x: hidden; padding: 32px 24px max(36px, env(safe-area-inset-bottom)); }
+  .trail-copy h1 { max-width: none; font-size: clamp(32px, 7vw, 44px); }
+  .trail-observe { margin-top: 24px; }
+  .trail-progress { grid-row: 3; }
+}
+
+@media (max-width: 560px) {
+  .hud__trail-link { font-size: 0 !important; }
+  .hud__trail-link::before { width: 8px; height: 8px; margin: 0; }
+  .trail-intro { display: block; overflow: auto; }
+  .trail-intro__signal { height: 26%; min-height: 150px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .trail-intro__copy { padding: 38px 22px 34px; }
+  .trail-intro h1 { font-size: 50px; }
+  .trail-intro__dek { font-size: 16px; }
+  .trail-intro__objective { font-size: 13px; }
+  .trail-panel.is-started { grid-template-rows: 34% minmax(0, 66%) 44px; }
+  .trail-copy { padding: 26px 20px 40px; }
+  .trail-copy__position { padding-right: 54px; font-size: 8px; }
+  .trail-copy h1 { font-size: 32px; }
+  .trail-observe > p { font-size: 17px; }
+  .trail-observe > p, .trail-observe li { overflow-wrap: anywhere; }
+  .trail-visual__number { font-size: 44px; }
+  .trail-visual__credit { display: none; }
+  .trail-floating-nav { bottom: max(8px, env(safe-area-inset-bottom)); grid-template-columns: 1fr auto 1fr; }
+  .trail-floating-nav button { min-height: 48px; padding-inline: 8px; font-size: 8px; }
+  .trail-floating-nav button:nth-child(2) { font-size: 0; }
+  .trail-floating-nav button:nth-child(2)::after { content: "COPY"; font-size: 8px; }
+}

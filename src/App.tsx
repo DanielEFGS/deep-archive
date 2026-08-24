@@ -6,6 +6,8 @@ import { Hud } from './components/Hud';
 import { InfoPanel } from './components/InfoPanel';
 import { IndexPanel } from './components/IndexPanel';
 import { FieldCursor } from './components/FieldCursor';
+import { TrailPanel } from './components/TrailPanel';
+import type { EducationalContent, EditorialTrail } from './types/editorial';
 
 const EMPTY: CatalogPayload = {
   generatedAt: '',
@@ -16,12 +18,15 @@ const EMPTY: CatalogPayload = {
 
 const DATASET = import.meta.env.VITE_DATASET === 'nasa' || (!import.meta.env.VITE_DATASET && import.meta.env.PROD) ? 'nasa' : 'demo';
 const CATALOG_URL = `/datasets/${DATASET}/catalog.json`;
+const FIRST_TRAIL_URL = '/editorial/trails/en/how-space-gets-its-colors.json';
 
 export default function App() {
   const [catalog, setCatalog] = useState<CatalogPayload>(EMPTY);
   const itemsRef = useRef<CatalogItem[]>([]);
   const shardCacheRef = useRef(new Map<string, Promise<DetailShard>>());
   const detailRequestRef = useRef(0);
+  const trailRequestRef = useRef(0);
+  const trailRestoreAttemptedRef = useRef(false);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [selectedDetail, setSelectedDetail] = useState<CatalogItem | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
@@ -40,6 +45,13 @@ export default function App() {
   const [quality, setQuality] = useState<RenderQuality>({ label: 'HIGH', pixelRatio: 1 });
   const [diagnostics, setDiagnostics] = useState<RenderDiagnostics | null>(null);
   const [diagnosticsOpen, setDiagnosticsOpen] = useState(false);
+  const [trailOpen, setTrailOpen] = useState(false);
+  const [trailStarted, setTrailStarted] = useState(false);
+  const [trail, setTrail] = useState<EditorialTrail | null>(null);
+  const [trailStep, setTrailStep] = useState(0);
+  const [trailContent, setTrailContent] = useState<EducationalContent | null>(null);
+  const [trailLoading, setTrailLoading] = useState(false);
+  const [trailError, setTrailError] = useState(false);
 
   useEffect(() => {
     if (!import.meta.env.DEV) return;
@@ -80,17 +92,20 @@ export default function App() {
     setHoveredId(item?.id ?? null);
   }, []);
 
-  const handleSelectIndex = useCallback((index: number) => {
-    const base = itemsRef.current[index];
+  const loadBaseItem = useCallback((base: CatalogItem, updateObjectUrl: boolean) => {
     if (!base) return;
     localStorage.setItem('deep500:field-guide', 'seen');
     setOnboardingVisible(false);
 
     setSelectedId(base.id);
-    const url = new URL(window.location.href);
-    if (base.slug) url.searchParams.set('object', base.slug);
-    else url.searchParams.delete('object');
-    window.history.replaceState(null, '', url);
+    if (updateObjectUrl) {
+      const url = new URL(window.location.href);
+      if (base.slug) url.searchParams.set('object', base.slug);
+      else url.searchParams.delete('object');
+      url.searchParams.delete('trail');
+      url.searchParams.delete('step');
+      window.history.replaceState(null, '', url);
+    }
     setDetailError(false);
     if (!base.detailShard) {
       setSelectedDetail(base);
@@ -134,6 +149,11 @@ export default function App() {
       });
   }, []);
 
+  const handleSelectIndex = useCallback((index: number) => {
+    const base = itemsRef.current[index];
+    if (base) loadBaseItem(base, true);
+  }, [loadBaseItem]);
+
   const closeDetail = useCallback(() => {
     detailRequestRef.current++;
     setSelectedId(null);
@@ -141,6 +161,107 @@ export default function App() {
     setDetailLoading(false);
     setDetailError(false);
     const url = new URL(window.location.href);
+    url.searchParams.delete('object');
+    window.history.replaceState(null, '', url);
+  }, []);
+
+  const enterTrailStep = useCallback((trailData: EditorialTrail, requestedStep: number) => {
+    const nextStep = Math.min(Math.max(requestedStep, 0), trailData.steps.length - 1);
+    const catalogId = trailData.steps[nextStep]?.catalogId;
+    const base = itemsRef.current.find((item) => item.id === catalogId);
+    if (!base) {
+      setTrailError(true);
+      setTrailLoading(false);
+      return;
+    }
+
+    const requestId = ++trailRequestRef.current;
+    setTrailStep(nextStep);
+    setTrailStarted(true);
+    setTrailContent(null);
+    setTrailError(false);
+    setTrailLoading(true);
+    loadBaseItem(base, false);
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete('object');
+    url.searchParams.set('trail', trailData.slug);
+    url.searchParams.set('step', String(nextStep + 1));
+    window.history.replaceState(null, '', url);
+
+    fetch(`/editorial/objects/${trailData.locale}/${String(catalogId).padStart(3, '0')}.json`, { cache: 'default', credentials: 'omit' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Editorial object HTTP ${response.status}`);
+        return response.json() as Promise<EducationalContent>;
+      })
+      .then((content) => {
+        if (requestId !== trailRequestRef.current) return;
+        setTrailContent(content);
+        setTrailLoading(false);
+      })
+      .catch((error) => {
+        if (requestId !== trailRequestRef.current) return;
+        if (import.meta.env.DEV) console.error(error);
+        setTrailError(true);
+        setTrailLoading(false);
+      });
+  }, [loadBaseItem]);
+
+  const openTrail = useCallback((restoreStep?: number) => {
+    const requestId = ++trailRequestRef.current;
+    setInfoOpen(false);
+    setIndexOpen(false);
+    setTrailOpen(true);
+    setTrailStarted(false);
+    setTrail(null);
+    setTrailContent(null);
+    setTrailError(false);
+    setTrailLoading(true);
+
+    fetch(FIRST_TRAIL_URL, { cache: 'default', credentials: 'omit' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Trail HTTP ${response.status}`);
+        return response.json() as Promise<EditorialTrail>;
+      })
+      .then((trailData) => {
+        if (requestId !== trailRequestRef.current) return;
+        setTrail(trailData);
+        setTrailLoading(false);
+        if (restoreStep != null) enterTrailStep(trailData, restoreStep);
+        else {
+          setSelectedId(null);
+          setSelectedDetail(null);
+          const url = new URL(window.location.href);
+          url.searchParams.delete('object');
+          url.searchParams.set('trail', trailData.slug);
+          url.searchParams.delete('step');
+          window.history.replaceState(null, '', url);
+        }
+      })
+      .catch((error) => {
+        if (requestId !== trailRequestRef.current) return;
+        if (import.meta.env.DEV) console.error(error);
+        setTrailError(true);
+        setTrailLoading(false);
+      });
+  }, [enterTrailStep]);
+
+  const closeTrail = useCallback(() => {
+    trailRequestRef.current++;
+    detailRequestRef.current++;
+    setTrailOpen(false);
+    setTrailStarted(false);
+    setTrail(null);
+    setTrailContent(null);
+    setTrailLoading(false);
+    setTrailError(false);
+    setSelectedId(null);
+    setSelectedDetail(null);
+    setDetailLoading(false);
+    setDetailError(false);
+    const url = new URL(window.location.href);
+    url.searchParams.delete('trail');
+    url.searchParams.delete('step');
     url.searchParams.delete('object');
     window.history.replaceState(null, '', url);
   }, []);
@@ -157,11 +278,22 @@ export default function App() {
 
   useEffect(() => {
     if (!catalogReady || selectedId != null) return;
-    const slug = new URL(window.location.href).searchParams.get('object');
+    const currentUrl = new URL(window.location.href);
+    if (currentUrl.searchParams.has('trail')) return;
+    const slug = currentUrl.searchParams.get('object');
     if (!slug) return;
     const index = catalog.items.findIndex((item) => item.slug === slug);
     if (index >= 0) handleSelectIndex(index);
   }, [catalog.items, catalogReady, handleSelectIndex, selectedId]);
+
+  useEffect(() => {
+    if (!catalogReady || trailRestoreAttemptedRef.current) return;
+    trailRestoreAttemptedRef.current = true;
+    const url = new URL(window.location.href);
+    if (url.searchParams.get('trail') !== 'how-space-gets-its-colors') return;
+    const rawStep = Number(url.searchParams.get('step'));
+    openTrail(Number.isFinite(rawStep) && rawStep > 0 ? rawStep - 1 : undefined);
+  }, [catalogReady, openTrail]);
 
   const navigateDetail = useCallback((direction: -1 | 1) => {
     if (selectedId == null) return;
@@ -221,10 +353,11 @@ export default function App() {
         onCategoryChange={setActiveCategory}
         onOpenInfo={() => setInfoOpen(true)}
         onOpenIndex={() => setIndexOpen(true)}
+        onOpenTrail={() => openTrail()}
         onboardingVisible={ready && onboardingVisible}
         onDismissOnboarding={() => { localStorage.setItem('deep500:field-guide', 'seen'); setOnboardingVisible(false); }}
       />
-      <FieldCursor active={hovered != null && selected == null && !infoOpen && !indexOpen} />
+      <FieldCursor active={hovered != null && selected == null && !infoOpen && !indexOpen && !trailOpen} />
 
       {!ready && !loadError && (
         <div className="boot-screen" aria-live="polite">
@@ -253,7 +386,24 @@ export default function App() {
         </aside>
       )}
 
-      {selected && <DetailPanel item={selected} atlas={catalog.atlas} metadataLoading={detailLoading} metadataError={detailError} position={catalog.items.findIndex((item) => item.id === selected.id) + 1} total={catalog.items.length} onRetry={() => handleSelectIndex(catalog.items.findIndex((item) => item.id === selected.id))} onNavigate={navigateDetail} onClose={closeDetail} />}
+      {selected && !trailOpen && <DetailPanel item={selected} atlas={catalog.atlas} metadataLoading={detailLoading} metadataError={detailError} position={catalog.items.findIndex((item) => item.id === selected.id) + 1} total={catalog.items.length} onRetry={() => handleSelectIndex(catalog.items.findIndex((item) => item.id === selected.id))} onNavigate={navigateDetail} onClose={closeDetail} />}
+      {trailOpen && (
+        <TrailPanel
+          trail={trail}
+          item={selected}
+          content={trailContent}
+          atlas={catalog.atlas}
+          step={trailStep}
+          started={trailStarted}
+          loading={trailLoading || detailLoading}
+          error={trailError || detailError}
+          onStart={() => trail && enterTrailStep(trail, 0)}
+          onRetry={() => trail ? enterTrailStep(trail, trailStep) : openTrail()}
+          onNavigate={(direction) => trail && enterTrailStep(trail, trailStep + direction)}
+          onSelectStep={(step) => trail && enterTrailStep(trail, step)}
+          onClose={closeTrail}
+        />
+      )}
       {infoOpen && <InfoPanel catalog={catalog} quality={quality} onClose={() => setInfoOpen(false)} />}
       {indexOpen && <IndexPanel items={catalog.items} atlas={catalog.atlas} onSelect={handleSelectIndex} onClose={() => setIndexOpen(false)} />}
     </main>

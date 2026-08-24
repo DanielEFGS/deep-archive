@@ -26,6 +26,11 @@
 - contained dialog focus and larger mobile interaction targets
 - accurate combined category/search result count and recoverable catalog loading
 - one-time field exposure and record-to-record detail transitions
+- first source-checked educational Trail with introduction, observation-first reveal and 12 steps
+- restorable Trail/step URLs and copyable step links
+- floating Trail navigation, direct progress controls and arrow-key support
+- independent on-demand editorial and HD loading with stale-request protection
+- Trail loading, retry, completion, touch and reduced-motion states
 
 ### Performance
 
@@ -40,6 +45,7 @@
 - in-memory shard promise cache with concurrent-request deduplication and retry after failure
 - content-hashed atlas/detail assets
 - Netlify immutable cache headers for versioned assets
+- editorial records remain outside the initial bundle and load as independent static JSON
 
 ### Build/data
 
@@ -51,11 +57,13 @@
 - catalog integrity validator
 - rights-review flags when source metadata contains explicit copyright fields
 - category-balanced NASA discovery quotas and automated rejection of common non-editorial results
+- editorial object/Trail schema, source files, delivery builder and catalog/rights validator
 
 ## Validation performed here
 
 - `npm run check:catalog` passes;
 - `npm run build` passes with TypeScript checks and a production Vite bundle;
+- `npm run check:editorial` passes for 12 English objects and one Trail;
 - demo catalog contains exactly 500 records;
 - all 500 demo details resolve exactly once across 10 shards;
 - demo atlas exists and matches its catalog byte count;
@@ -65,7 +73,7 @@
 
 ## Validation still required on release hardware
 
-The current environment did not expose the in-app browser runtime needed for visual viewport automation. Desktop/mobile composition, reduced motion and WebGL console behavior should receive a final device/browser pass before publication.
+The current environment did not expose the in-app browser runtime, so the Trail was inspected through local headless Edge captures at 1440×1000 and 500×844. Desktop/mobile composition and reduced motion passed the bounded visual review. Real-device touch, Safari and WebGL console behavior should still receive a final release pass.
 
 ## REAL NASA CATALOG
 

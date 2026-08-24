@@ -14,6 +14,7 @@ type Props = {
   onCategoryChange: (category: string) => void;
   onOpenInfo: () => void;
   onOpenIndex: () => void;
+  onOpenTrail: () => void;
   onboardingVisible: boolean;
   onDismissOnboarding: () => void;
 };
@@ -30,6 +31,7 @@ export function Hud({
   onCategoryChange,
   onOpenInfo,
   onOpenIndex,
+  onOpenTrail,
   onboardingVisible,
   onDismissOnboarding,
 }: Props) {
@@ -77,7 +79,7 @@ export function Hud({
           </label>
           <span aria-live="polite">{visibleCount === 0 ? 'NO MATCHES' : source === 'demo' ? `${visibleCount} DEMO RECORDS` : `${visibleCount} VISIBLE`}</span>
           <span className="hud__quality">{quality.label} · {quality.pixelRatio.toFixed(2)}×</span>
-          <div className="hud__links"><button type="button" onClick={onOpenIndex}>INDEX</button><button type="button" onClick={onOpenInfo}>ABOUT</button></div>
+          <div className="hud__links"><button className="hud__trail-link" type="button" onClick={onOpenTrail}>TRAIL 01</button><button type="button" onClick={onOpenIndex}>INDEX</button><button type="button" onClick={onOpenInfo}>ABOUT</button></div>
         </div>
       </header>
 
