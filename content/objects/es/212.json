@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA23409",
+  "slug": "sofia-reveals-how-the-swan-nebula-hatched",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "La Nebulosa Omega se organiza mediante cuatro rangos de longitud de onda infrarroja obtenidos por SOFIA, Herschel y Spitzer.",
+  "observe": [
+    "Sigue el azul y el verde cerca del centro antes de dirigirte hacia el borde rojo.",
+    "Observa el campo estelar blanco detrás del material coloreado."
+  ],
+  "explanation": "Las longitudes de onda representadas distinguen gas caliente, polvo templado, polvo frío y el campo estelar dentro de una sola composición.",
+  "colorMethod": "El azul representa observaciones de SOFIA a 20 micrones; el verde, a 37 micrones; el rojo, observaciones de Herschel a 70 micrones; y el blanco, observaciones de Spitzer a 3,6 micrones.",
+  "whyItMatters": "El color permite leer simultáneamente varias bandas infrarrojas invisibles y conserva la posición de sus señales.",
+  "relatedNasaIds": ["PIA23646", "PIA14731"],
+  "sources": [
+    {
+      "label": "NASA Image Library — PIA23409",
+      "url": "https://images.nasa.gov/details/PIA23409"
+    }
+  ],
+  "approvedBy": "DG"
+}

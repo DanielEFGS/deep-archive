@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA07909",
+  "slug": "face-on-barred-and-ringed-spiral-galaxy-ngc-3351",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "NGC 3351 aparece lado a lado en luz ultravioleta y visible.",
+  "observe": [
+    "Compara qué partes del anillo y de la estructura espiral destacan en cada mitad.",
+    "No interpretes el panel ultravioleta como un color que el ojo humano podría ver."
+  ],
+  "explanation": "Galaxy Evolution Explorer registró luz ultravioleta, mientras que la vista complementaria muestra la galaxia en luz visible.",
+  "colorMethod": "Los datos ultravioletas se traducen a colores visibles para poder examinar un rango de longitudes de onda que, de otro modo, sería invisible.",
+  "whyItMatters": "Comparar longitudes de onda muestra que la apariencia de un objeto depende de aquello que el detector fue diseñado para recibir.",
+  "relatedNasaIds": ["PIA09109", "PIA02587"],
+  "sources": [
+    {
+      "label": "NASA Image Library — PIA07909",
+      "url": "https://images.nasa.gov/details/PIA07909"
+    }
+  ],
+  "approvedBy": "DG"
+}

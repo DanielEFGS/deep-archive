@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA23646",
+  "slug": "tarantula-nebula-spitzer-2-color-image",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Dos longitudes de onda infrarrojas se traducen en color dentro de una sola vista de Spitzer de la Nebulosa de la Tarántula.",
+  "observe": [
+    "Compara la región central roja con las estructuras azules que la rodean.",
+    "Busca las zonas blancas donde están presentes ambas longitudes de onda representadas."
+  ],
+  "explanation": "La fuente vincula la emisión roja central con gas caliente a 4,5 micrómetros y las regiones azules con polvo que contiene moléculas de HAP.",
+  "colorMethod": "El rojo y el azul distinguen dos señales infrarrojas; las regiones que emiten ambas aparecen blancas.",
+  "whyItMatters": "Incluso dentro de la luz infrarroja, distintas bandas pueden revelar materiales y condiciones diferentes.",
+  "relatedNasaIds": ["PIA09108", "PIA23409"],
+  "sources": [
+    {
+      "label": "NASA Image Library — PIA23646",
+      "url": "https://images.nasa.gov/details/PIA23646"
+    }
+  ],
+  "approvedBy": "DG"
+}

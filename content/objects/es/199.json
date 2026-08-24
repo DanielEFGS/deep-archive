@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA07225",
+  "slug": "new-views-of-a-familiar-beauty",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Los paneles visible e infrarrojos convierten la Nebulosa Trífida en una comparación directa de lo que el polvo oculta y revela.",
+  "observe": [
+    "Busca las franjas oscuras de polvo en el panel visible.",
+    "Luego busca las regiones brillantes de formación estelar que ocupan áreas equivalentes en los paneles infrarrojos."
+  ],
+  "explanation": "Las observaciones infrarrojas de Spitzer revelan actividad de formación estelar en regiones que aparecen como franjas oscuras en la vista de luz visible.",
+  "colorMethod": "La fuente identifica los paneles de Spitzer como vistas infrarrojas en falso color situadas junto a una imagen de luz visible.",
+  "whyItMatters": "La comparación muestra por qué la oscuridad en una longitud de onda no implica ausencia de actividad.",
+  "relatedNasaIds": ["PIA09109", "PIA09108"],
+  "sources": [
+    {
+      "label": "NASA Image Library — PIA07225",
+      "url": "https://images.nasa.gov/details/PIA07225"
+    }
+  ],
+  "approvedBy": "DG"
+}

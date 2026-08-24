@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA14415",
+  "slug": "a-new-view-of-the-tarantula-nebula",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Esta vista de la Nebulosa de la Tarántula asigna tres observatorios a tres canales de color.",
+  "observe": [
+    "Separa mentalmente las estructuras azules, verdes y rojas antes de leer la leyenda.",
+    "Observa dónde se superponen dos o más colores."
+  ],
+  "explanation": "La composición contiene datos de rayos X de Chandra, datos ópticos de Hubble y datos infrarrojos de Spitzer.",
+  "colorMethod": "Los rayos X de Chandra aparecen en azul, las observaciones ópticas de Hubble en verde y las observaciones infrarrojas de Spitzer en rojo.",
+  "whyItMatters": "Una clave de color compartida permite comparar en una imagen gas energético, estructuras visibles y material que emite en infrarrojo.",
+  "relatedNasaIds": ["PIA14731", "GSFC_20171208_Archive_e000054"],
+  "sources": [
+    {
+      "label": "NASA Image Library — PIA14415",
+      "url": "https://images.nasa.gov/details/PIA14415"
+    }
+  ],
+  "approvedBy": "DG"
+}

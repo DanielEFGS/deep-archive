@@ -1,6 +1,8 @@
-# Codex prompt — Phase 3: real NASA catalog + visual polish
+# Archived Codex prompt — Phase 3: real NASA catalog + visual polish
 
-Continue development of **DEEP / 500**, a React + TypeScript + Vite + Three.js single-screen astronomical archive. The repository already contains the v0.2 architecture, synthetic 500-record catalog, WebGL atlas renderer, metadata split, filtering, keyboard accessibility, adaptive DPR, fallback behavior, Netlify config, NASA ingestion scripts, and project documentation.
+> Historical document: this phase has been completed and the repository has since evolved into **deep-archive / DEEP / 1000**. Use `docs/IMPLEMENTATION_STATUS.md` and `docs/PRODUCT_ROADMAP.md` for current planning.
+
+Continue development of **DEEP / 500**, the historical 500-record phase of the React + TypeScript + Vite + Three.js astronomical archive.
 
 Before changing code, read `AGENTS.md`, `README.md`, and every document under `docs/`. Inspect the current implementation instead of rebuilding it from scratch.
 

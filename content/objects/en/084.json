@@ -5,11 +5,70 @@
   "locale": "en",
   "status": "source-checked",
   "introduction": "The Eagle Nebula is shown through infrared observations from Spitzer and visible-light observations from Hubble.",
-  "observe": ["Compare the apparent density of the pillars in visible and infrared light.", "Look for stars or structures that become easier to distinguish in one view."],
+  "observe": [
+    "Compare the apparent density of the pillars in visible and infrared light.",
+    "Look for stars or structures that become easier to distinguish in one view."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 12,
+    "rows": 8,
+    "features": [
+      {
+        "id": "visible-reference",
+        "label": "Hubble reference insets",
+        "description": "The two upper insets are Hubble visible-light references showing the pillars as opaque, detailed silhouettes.",
+        "kind": "visible-feature",
+        "cells": [
+          "B-01",
+          "C-01",
+          "D-01",
+          "E-01",
+          "H-01",
+          "I-01",
+          "J-01",
+          "K-01",
+          "B-02",
+          "C-02",
+          "D-02",
+          "E-02",
+          "H-02",
+          "I-02",
+          "J-02",
+          "K-02"
+        ]
+      },
+      {
+        "id": "infrared-field",
+        "label": "Spitzer infrared matches",
+        "description": "These sample areas sit inside the outlined pillar locations in the lower infrared view, where embedded stars become visible through dust.",
+        "kind": "processed-signal",
+        "cells": [
+          "C-06",
+          "D-06",
+          "E-06",
+          "F-06",
+          "H-06",
+          "I-06",
+          "C-07",
+          "D-07",
+          "E-07",
+          "F-07",
+          "H-07",
+          "I-07"
+        ]
+      }
+    ]
+  },
   "explanation": "Different wavelength ranges interact differently with the dust in the nebula, so the same region does not reveal the same structure in every view.",
   "colorMethod": "The composite places infrared and visible-light views together for comparison; the panels do not represent one uniform visible-color exposure.",
   "whyItMatters": "Changing wavelength can reveal information hidden in a familiar visible-light image.",
   "relatedNasaIds": ["PIA07225", "PIA09108"],
-  "sources": [{ "label": "NASA Image Library — PIA09109", "url": "https://images.nasa.gov/details/PIA09109" }],
+  "sources": [
+    {
+      "label": "NASA Science — PIA09109",
+      "url": "https://science.nasa.gov/photojournal/unwrapping-the-pillars/"
+    }
+  ],
   "approvedBy": "DG"
 }

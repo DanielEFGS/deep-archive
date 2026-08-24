@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA14731",
+  "slug": "the-pacman-nebula",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "La Nebulosa Pacman combina rayos X de alta energía con observaciones infrarrojas de la misma región.",
+  "observe": [
+    "Separa las estructuras púrpuras del campo rojo, verde y azul.",
+    "Busca lugares donde coincidan los rasgos de rayos X e infrarrojos."
+  ],
+  "explanation": "La fuente combina datos de rayos X de Chandra con observaciones infrarrojas de Spitzer del cúmulo estelar y la nebulosa.",
+  "colorMethod": "Los rayos X están representados en púrpura; las observaciones infrarrojas de Spitzer se distribuyen entre rojo, verde y azul.",
+  "whyItMatters": "Una composición puede comparar distintos regímenes de energía sin obligar a separarlos en imágenes diferentes.",
+  "relatedNasaIds": ["PIA14415", "PIA23409"],
+  "sources": [
+    {
+      "label": "NASA Image Library — PIA14731",
+      "url": "https://images.nasa.gov/details/PIA14731"
+    }
+  ],
+  "approvedBy": "DG"
+}

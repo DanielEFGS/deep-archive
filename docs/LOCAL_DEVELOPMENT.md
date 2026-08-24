@@ -29,7 +29,7 @@ npm run dev
 # Validate current catalog/assets
 npm run check:catalog
 
-# Regenerate the synthetic 500-item dataset
+# Regenerate the retained synthetic 500-item development dataset
 npm run catalog:demo
 
 # Build a NASA-backed dataset (requires network access)

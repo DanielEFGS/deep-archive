@@ -6,7 +6,7 @@
 
 ## Longer disclosure
 
-> DEEP / 500 is an independent educational and informational frontend experiment. Astronomical imagery and related metadata may be sourced from publicly available NASA resources. NASA, collaborating institutions, photographers and other credited creators remain the sources of the original material. This project is not affiliated with, sponsored by, or endorsed by NASA. Third-party material remains subject to its respective rights and usage terms.
+> DEEP / 1000 is an independent educational and informational frontend experiment. Astronomical imagery and related metadata may be sourced from publicly available NASA resources. NASA, collaborating institutions, photographers and other credited creators remain the sources of the original material. This project is not affiliated with, sponsored by, or endorsed by NASA. Third-party material remains subject to its respective rights and usage terms.
 
 ## Important implementation rule
 
@@ -16,7 +16,7 @@ The catalog stores the supplied source, NASA ID, center/creator fields and a cre
 
 ## NASA branding
 
-This application deliberately does not use NASA's insignia, seal or logotype as its own branding. The visual identity is `DEEP / 500`.
+This application deliberately does not use NASA's insignia, seal or logotype as its own branding. The visual identity is `DEEP / 1000`.
 
 ## Source link
 
@@ -24,7 +24,7 @@ Every real catalog record should retain a link to its original NASA Image and Vi
 
 ## Real NASA pilot review
 
-The current build preserves individual source URLs and supplied credits for all 500 records. The initial 15-record rights queue was resolved through documented inclusion decisions for three records explicitly marked Public and exclusion of twelve ambiguous or non-editorial records. `npm run audit:media` now checks all 500 generated records and fails the production build when a source, credit, HTTPS media URL or rights decision is incomplete. This is a publication-risk control, not legal clearance.
+The current build preserves individual source URLs and supplied credits for all 1,000 records. Explicit curation decisions exclude ambiguous, non-editorial and rights-pending records or series. `npm run audit:media` checks all 1,000 generated records and fails the production build when a source, credit, HTTPS media URL or rights decision is incomplete. This is a publication-risk control, not legal clearance.
 
 ## References
 

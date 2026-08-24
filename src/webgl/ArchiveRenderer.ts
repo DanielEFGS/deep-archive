@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import type { RenderDiagnostics, RenderQuality } from '../types/catalog';
+import * as THREE from "three";
+import type { RenderDiagnostics, RenderQuality } from "../types/catalog";
 
 type Options = {
   canvas: HTMLCanvasElement;
@@ -10,7 +10,6 @@ type Options = {
   atlasHeight: number;
   itemCount: number;
   onReady: () => void;
-  onProgress?: (progress: number) => void;
   onError?: (error: unknown) => void;
   onQualityChange?: (quality: RenderQuality) => void;
 };
@@ -49,19 +48,23 @@ const vertexShader = /* glsl */ `
   uniform float uSpeed;
 
   void main() {
-    vec2 vertexDeltaPx = (position.xy - uMouse) * 0.5 * uResolution;
-    float distancePx = length(vertexDeltaPx);
-    float field = smoothstep(uRadius * 0.82, 0.0, distancePx) * uMotion;
-    float eased = field * field * (3.0 - 2.0 * field);
-    vec2 direction = distancePx > 0.0001 ? vertexDeltaPx / distancePx : vec2(0.0);
+    float currentHoveredTile = 1.0 - smoothstep(0.2, 0.8, abs(aIndex - uHoverIndex));
+    float previousHoveredTile = 1.0 - smoothstep(0.2, 0.8, abs(aIndex - uPreviousHoverIndex));
+    float hoveredTile = currentHoveredTile * uHoverAmount + previousHoveredTile * (1.0 - uHoverAmount);
 
-    // A constant-scale plateau covers the complete focused cell. Outside it,
-    // the surrounding sheet absorbs the enlargement with a smooth falloff.
-    float plateauRadius = length(uCellSize) * 0.56;
-    float plateau = 1.0 - smoothstep(plateauRadius, plateauRadius + uRadius * 0.50, distancePx);
-    float sheetZoom = 0.30 * plateau * uMotion;
-    vec2 pushPx = vertexDeltaPx * sheetZoom;
-    pushPx += uVelocity * eased * uSpeed * 3.0;
+    // Archive aperture: every record remains a rigid rectangular plate. The
+    // focused tile grows uniformly while only its nearest neighbours yield.
+    vec2 centerDeltaPx = (aCenter - uMouse) * 0.5 * uResolution;
+    float centerDistance = length(centerDeltaPx);
+    float cellDiagonal = max(1.0, length(uCellSize));
+    float neighbourField = 1.0 - smoothstep(cellDiagonal * 0.62, cellDiagonal * 2.05, centerDistance);
+    neighbourField *= (1.0 - hoveredTile) * uMotion;
+    vec2 neighbourDirection = centerDistance > 0.0001 ? centerDeltaPx / centerDistance : vec2(0.0);
+    vec2 pushPx = neighbourDirection * neighbourField * cellDiagonal * 0.17;
+    pushPx += uVelocity * neighbourField * uSpeed * 1.5;
+
+    float tileScale = 1.0 + hoveredTile * uMotion * 0.29;
+    vec2 localPosition = aCenter + (position.xy - aCenter) * tileScale;
 
     vec2 rippleDeltaPx = (position.xy - uRippleOrigin) * 0.5 * uResolution;
     float rippleDistance = length(rippleDeltaPx);
@@ -72,16 +75,13 @@ const vertexShader = /* glsl */ `
     vec2 rippleDirection = rippleDistance > 0.0001 ? rippleDeltaPx / rippleDistance : vec2(0.0);
     pushPx += rippleDirection * ripple * 7.0;
 
-    float focus = 1.0 - smoothstep(0.2, 0.8, abs(aIndex - uFocusIndex));
     vec2 pushNdc = pushPx * 2.0 / uResolution;
-    vec2 centerDeltaPx = (aCenter - uMouse) * 0.5 * uResolution;
-    float tileFocus = smoothstep(uRadius * 1.15, 0.0, length(centerDeltaPx)) * uMotion;
-    vec2 finalPosition = position.xy + pushNdc;
+    vec2 finalPosition = localPosition + pushNdc;
 
     vUv = uv;
     vUvMin = aUvMin;
     vUvMax = aUvMax;
-    vStrength = max(eased, tileFocus * 0.34);
+    vStrength = max(hoveredTile, neighbourField * 0.18);
     vVisibility = aVisibility;
     vIndex = aIndex;
     vRipple = ripple;
@@ -112,6 +112,7 @@ const fragmentShader = /* glsl */ `
   uniform float uHoverAmount;
   uniform vec2 uVelocity;
   uniform float uSpeed;
+  uniform float uRevealProgress;
 
   vec2 safeUv(vec2 value) {
     vec2 pad = 0.75 / uAtlasSize;
@@ -119,23 +120,11 @@ const fragmentShader = /* glsl */ `
   }
 
   void main() {
-    vec2 fragNdc = vec2(
-      gl_FragCoord.x / uResolution.x * 2.0 - 1.0,
-      gl_FragCoord.y / uResolution.y * 2.0 - 1.0
-    );
-
-    vec2 deltaPx = (fragNdc - uMouse) * 0.5 * uResolution;
-    float distancePx = length(deltaPx);
-    float lens = smoothstep(uRadius * 0.72, 0.0, distancePx) * uMotion;
-    vec2 direction = distancePx > 0.001 ? deltaPx / distancePx : vec2(0.0);
-
     float currentHoveredTile = 1.0 - smoothstep(0.2, 0.8, abs(vIndex - uHoverIndex));
     float previousHoveredTile = 1.0 - smoothstep(0.2, 0.8, abs(vIndex - uPreviousHoverIndex));
     float hoveredTile = currentHoveredTile * uHoverAmount + previousHoveredTile * (1.0 - uHoverAmount);
-    float coreClarity = smoothstep(uRadius * 0.34, uRadius * 0.62, distancePx);
-    float dispersion = lens * lens * mix(0.06, 1.0, coreClarity) * (0.24 + uSpeed * 0.72);
-    dispersion *= 1.0 - hoveredTile * 0.96;
-    vec2 channelOffset = (direction + uVelocity * uSpeed * 0.45) * dispersion / uAtlasSize;
+    // Aperture stays optically clean: layout and focus replace chromatic warp.
+    vec2 channelOffset = vec2(0.0);
 
     vec2 tileCenterUv = (vUvMin + vUvMax) * 0.5;
     float textureZoom = 1.0 + hoveredTile * 0.06;
@@ -157,8 +146,18 @@ const fragmentShader = /* glsl */ `
     color *= mix(0.28, 1.0, seam);
 
     float focus = 1.0 - smoothstep(0.2, 0.8, abs(vIndex - uFocusIndex));
-    color *= 0.78 + max(vStrength, lens) * 0.31 + focus * 0.08 + vRipple * 0.12;
+    color *= 0.78 + vStrength * 0.31 + focus * 0.08 + vRipple * 0.12;
     color = mix(color * 0.14, color, vVisibility);
+
+    // Each atlas record is exposed on its actual rendered tile. Using the
+    // instance index keeps the transition registered to responsive geometry.
+    float revealOrder = fract(sin((vIndex + 1.0) * 12.9898) * 43758.5453);
+    float tileReveal = smoothstep(
+      revealOrder * 0.72,
+      revealOrder * 0.72 + 0.24,
+      uRevealProgress
+    );
+    color *= mix(0.07, 1.0, tileReveal);
 
     gl_FragColor = vec4(color, 1.0);
   }
@@ -195,7 +194,8 @@ export class ArchiveRenderer {
   private disposed = false;
   private reducedMotion = false;
   private rippleStartedAt: number | null = null;
-  private quality: RenderQuality = { label: 'HIGH', pixelRatio: 1 };
+  private revealStartedAt: number | null = null;
+  private quality: RenderQuality = { label: "HIGH", pixelRatio: 1 };
   private frameSamples: number[] = [];
   private lastFrameAt = 0;
   private qualityAdjusted = false;
@@ -213,13 +213,15 @@ export class ArchiveRenderer {
     this.atlasRows = options.atlasRows;
     this.itemCount = options.itemCount;
     this.onQualityChange = options.onQualityChange;
-    this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       antialias: false,
       alpha: false,
-      powerPreference: 'high-performance',
+      powerPreference: "high-performance",
     });
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.setClearColor(0x06080d, 1);
@@ -227,7 +229,9 @@ export class ArchiveRenderer {
     this.material = new THREE.ShaderMaterial({
       uniforms: {
         uAtlas: { value: null },
-        uAtlasSize: { value: new THREE.Vector2(options.atlasWidth, options.atlasHeight) },
+        uAtlasSize: {
+          value: new THREE.Vector2(options.atlasWidth, options.atlasHeight),
+        },
         uMouse: { value: this.currentMouse.clone() },
         uResolution: { value: new THREE.Vector2(1, 1) },
         uCellSize: { value: new THREE.Vector2(1, 1) },
@@ -242,6 +246,7 @@ export class ArchiveRenderer {
         uHoverAmount: { value: 0 },
         uVelocity: { value: this.velocityCurrent.clone() },
         uSpeed: { value: 0 },
+        uRevealProgress: { value: this.reducedMotion ? 1 : 0 },
       },
       vertexShader,
       fragmentShader,
@@ -265,16 +270,19 @@ export class ArchiveRenderer {
         texture.magFilter = THREE.LinearFilter;
         texture.generateMipmaps = true;
         this.material.uniforms.uAtlas.value = texture;
-        options.onProgress?.(1);
-        this.renderOnce();
+        if (this.reducedMotion) {
+          this.material.uniforms.uRevealProgress.value = 1;
+          this.renderOnce();
+        } else {
+          this.revealStartedAt = performance.now();
+          this.material.uniforms.uRevealProgress.value = 0;
+          this.invalidate();
+        }
         options.onReady();
       },
-      (event) => {
-        if (!event.total) return;
-        options.onProgress?.(Math.min(0.98, event.loaded / event.total));
-      },
+      undefined,
       (error) => {
-        console.error('Atlas load failed', error);
+        console.error("Atlas load failed", error);
         options.onError?.(error);
       },
     );
@@ -306,20 +314,26 @@ export class ArchiveRenderer {
     const now = performance.now();
     const delta = Math.max(8, Math.min(80, now - this.lastPointerAt));
     if (this.lastPointerAt && this.previousPointer.x > -2) {
-      this.velocityTarget.copy(point).sub(this.previousPointer).multiplyScalar(16 / delta);
-      if (this.velocityTarget.lengthSq() > .09) this.velocityTarget.setLength(.3);
+      this.velocityTarget
+        .copy(point)
+        .sub(this.previousPointer)
+        .multiplyScalar(16 / delta);
+      if (this.velocityTarget.lengthSq() > 0.09)
+        this.velocityTarget.setLength(0.3);
     } else this.velocityTarget.set(0, 0);
     this.previousPointer.copy(point);
     this.lastPointerAt = now;
     if (hoveredIndex !== this.hoveredIndex) {
-      this.material.uniforms.uPreviousHoverIndex.value = this.hoveredIndex ?? -10;
+      this.material.uniforms.uPreviousHoverIndex.value =
+        this.hoveredIndex ?? -10;
       this.hoveredIndex = hoveredIndex;
       this.hoverAmount = 0;
       this.hoverAmountTarget = 1;
       this.material.uniforms.uHoverIndex.value = hoveredIndex ?? -10;
       this.material.uniforms.uHoverAmount.value = 0;
     }
-    const snappedCenter = hoveredIndex == null ? null : this.getCellCenterNdc(hoveredIndex);
+    const snappedCenter =
+      hoveredIndex == null ? null : this.getCellCenterNdc(hoveredIndex);
     if (snappedCenter) this.targetMouse.copy(snappedCenter);
     else this.targetMouse.copy(point);
     this.pointerActive = true;
@@ -372,7 +386,8 @@ export class ArchiveRenderer {
     for (let index = 0; index < this.itemCount; index++) {
       const visible = indices == null || indices.has(index) ? 1 : 0;
       const offset = index * verticesPerTile;
-      for (let vertex = 0; vertex < verticesPerTile; vertex++) values[offset + vertex] = visible;
+      for (let vertex = 0; vertex < verticesPerTile; vertex++)
+        values[offset + vertex] = visible;
     }
     this.visibilityAttribute.needsUpdate = true;
     this.renderOnce();
@@ -394,10 +409,19 @@ export class ArchiveRenderer {
     const x = clientX - rect.left;
     const y = clientY - rect.top;
     const fieldHeight = rect.height - this.fieldTop - this.fieldBottom;
-    if (x < 0 || y < this.fieldTop || x >= rect.width || y >= rect.height - this.fieldBottom || fieldHeight <= 0) return null;
+    if (
+      x < 0 ||
+      y < this.fieldTop ||
+      x >= rect.width ||
+      y >= rect.height - this.fieldBottom ||
+      fieldHeight <= 0
+    )
+      return null;
 
     const column = Math.floor((x / rect.width) * this.displayColumns);
-    const row = Math.floor(((y - this.fieldTop) / fieldHeight) * this.displayRows);
+    const row = Math.floor(
+      ((y - this.fieldTop) / fieldHeight) * this.displayRows,
+    );
     const index = row * this.displayColumns + column;
     if (index < 0 || index >= this.itemCount) return null;
     return this.isVisible(index) ? index : null;
@@ -409,22 +433,35 @@ export class ArchiveRenderer {
     let column = startColumn;
     let row = startRow;
 
-    for (let step = 0; step < Math.max(this.displayColumns, this.displayRows); step++) {
+    for (
+      let step = 0;
+      step < Math.max(this.displayColumns, this.displayRows);
+      step++
+    ) {
       column += columnDelta;
       row += rowDelta;
-      if (column < 0 || column >= this.displayColumns || row < 0 || row >= this.displayRows) break;
+      if (
+        column < 0 ||
+        column >= this.displayColumns ||
+        row < 0 ||
+        row >= this.displayRows
+      )
+        break;
       const candidate = row * this.displayColumns + column;
-      if (candidate < this.itemCount && this.isVisible(candidate)) return candidate;
+      if (candidate < this.itemCount && this.isVisible(candidate))
+        return candidate;
     }
     return index;
   }
 
   getBoundaryIndex(last = false) {
     if (last) {
-      for (let index = this.itemCount - 1; index >= 0; index--) if (this.isVisible(index)) return index;
+      for (let index = this.itemCount - 1; index >= 0; index--)
+        if (this.isVisible(index)) return index;
       return 0;
     }
-    for (let index = 0; index < this.itemCount; index++) if (this.isVisible(index)) return index;
+    for (let index = 0; index < this.itemCount; index++)
+      if (this.isVisible(index)) return index;
     return 0;
   }
 
@@ -442,7 +479,7 @@ export class ArchiveRenderer {
   getDiagnostics(): RenderDiagnostics {
     const now = performance.now();
     const elapsed = Math.max(1, now - this.diagnosticStartedAt);
-    const fps = this.diagnosticFrames * 1000 / elapsed;
+    const fps = (this.diagnosticFrames * 1000) / elapsed;
     const size = this.renderer.getDrawingBufferSize(this.drawingBufferSize);
     if (elapsed > 1000) {
       this.diagnosticFrames = 0;
@@ -460,7 +497,6 @@ export class ArchiveRenderer {
       active: this.frameId != null,
     };
   }
-
 
   private isVisible(index: number) {
     return this.visibleIndices == null || this.visibleIndices.has(index);
@@ -491,20 +527,37 @@ export class ArchiveRenderer {
 
   private chooseGrid(width: number) {
     if (width < 640) return 16;
-    if (width < 1024) return 20;
-    return 25;
+    if (width < 1024) return this.itemCount > 500 ? 24 : 20;
+    return this.itemCount > 500 ? 32 : 25;
   }
 
   private desiredQuality(width: number): RenderQuality {
     const nav = navigator as NavigatorHints;
-    const constrained = (nav.deviceMemory != null && nav.deviceMemory <= 4) || navigator.hardwareConcurrency <= 4;
-    if (constrained) return { label: 'ECO', pixelRatio: Math.min(window.devicePixelRatio || 1, 1) };
-    if (width < 700) return { label: 'BALANCED', pixelRatio: Math.min(window.devicePixelRatio || 1, 1.15) };
-    return { label: 'HIGH', pixelRatio: Math.min(window.devicePixelRatio || 1, 1.5) };
+    const constrained =
+      (nav.deviceMemory != null && nav.deviceMemory <= 4) ||
+      navigator.hardwareConcurrency <= 4;
+    if (constrained)
+      return {
+        label: "ECO",
+        pixelRatio: Math.min(window.devicePixelRatio || 1, 1),
+      };
+    if (width < 700)
+      return {
+        label: "BALANCED",
+        pixelRatio: Math.min(window.devicePixelRatio || 1, 1.15),
+      };
+    return {
+      label: "HIGH",
+      pixelRatio: Math.min(window.devicePixelRatio || 1, 1.5),
+    };
   }
 
   private applyQuality(next: RenderQuality) {
-    if (Math.abs(next.pixelRatio - this.quality.pixelRatio) < 0.01 && next.label === this.quality.label) return;
+    if (
+      Math.abs(next.pixelRatio - this.quality.pixelRatio) < 0.01 &&
+      next.label === this.quality.label
+    )
+      return;
     this.quality = next;
     this.renderer.setPixelRatio(next.pixelRatio);
     this.onQualityChange?.(next);
@@ -520,7 +573,8 @@ export class ArchiveRenderer {
     this.renderer.getDrawingBufferSize(this.drawingBufferSize);
     this.material.uniforms.uResolution.value.copy(this.drawingBufferSize);
     const cssRadius = width < 700 ? 126 : width < 1100 ? 174 : 226;
-    this.material.uniforms.uRadius.value = cssRadius * this.renderer.getPixelRatio();
+    this.material.uniforms.uRadius.value =
+      cssRadius * this.renderer.getPixelRatio();
 
     const nextColumns = this.chooseGrid(width);
     const nextRows = Math.ceil(this.itemCount / nextColumns);
@@ -542,10 +596,13 @@ export class ArchiveRenderer {
       this.rebuildGeometry();
     }
 
-    const fieldHeightCss = Math.max(1, height - this.fieldTop - this.fieldBottom);
+    const fieldHeightCss = Math.max(
+      1,
+      height - this.fieldTop - this.fieldBottom,
+    );
     this.material.uniforms.uCellSize.value.set(
       this.drawingBufferSize.x / this.displayColumns,
-      fieldHeightCss * this.renderer.getPixelRatio() / this.displayRows,
+      (fieldHeightCss * this.renderer.getPixelRatio()) / this.displayRows,
     );
 
     this.renderOnce();
@@ -565,7 +622,10 @@ export class ArchiveRenderer {
     const indices: number[] = [];
 
     const cellWidth = 2 / this.displayColumns;
-    const canvasHeight = Math.max(1, this.canvas.getBoundingClientRect().height);
+    const canvasHeight = Math.max(
+      1,
+      this.canvas.getBoundingClientRect().height,
+    );
     const fieldTopNdc = 1 - (this.fieldTop / canvasHeight) * 2;
     const fieldBottomNdc = -1 + (this.fieldBottom / canvasHeight) * 2;
     const cellHeight = (fieldTopNdc - fieldBottomNdc) / this.displayRows;
@@ -626,24 +686,111 @@ export class ArchiveRenderer {
           const quadULeft = THREE.MathUtils.lerp(u0, u1, xStart);
           const quadURight = THREE.MathUtils.lerp(u0, u1, xEnd);
 
-          pushVertex(quadLeft, quadTop, quadULeft, quadVTop, centerX, centerY, u0, v0, u1, v1, index);
-          pushVertex(quadLeft, quadBottom, quadULeft, quadVBottom, centerX, centerY, u0, v0, u1, v1, index);
-          pushVertex(quadRight, quadTop, quadURight, quadVTop, centerX, centerY, u0, v0, u1, v1, index);
-          pushVertex(quadRight, quadTop, quadURight, quadVTop, centerX, centerY, u0, v0, u1, v1, index);
-          pushVertex(quadLeft, quadBottom, quadULeft, quadVBottom, centerX, centerY, u0, v0, u1, v1, index);
-          pushVertex(quadRight, quadBottom, quadURight, quadVBottom, centerX, centerY, u0, v0, u1, v1, index);
+          pushVertex(
+            quadLeft,
+            quadTop,
+            quadULeft,
+            quadVTop,
+            centerX,
+            centerY,
+            u0,
+            v0,
+            u1,
+            v1,
+            index,
+          );
+          pushVertex(
+            quadLeft,
+            quadBottom,
+            quadULeft,
+            quadVBottom,
+            centerX,
+            centerY,
+            u0,
+            v0,
+            u1,
+            v1,
+            index,
+          );
+          pushVertex(
+            quadRight,
+            quadTop,
+            quadURight,
+            quadVTop,
+            centerX,
+            centerY,
+            u0,
+            v0,
+            u1,
+            v1,
+            index,
+          );
+          pushVertex(
+            quadRight,
+            quadTop,
+            quadURight,
+            quadVTop,
+            centerX,
+            centerY,
+            u0,
+            v0,
+            u1,
+            v1,
+            index,
+          );
+          pushVertex(
+            quadLeft,
+            quadBottom,
+            quadULeft,
+            quadVBottom,
+            centerX,
+            centerY,
+            u0,
+            v0,
+            u1,
+            v1,
+            index,
+          );
+          pushVertex(
+            quadRight,
+            quadBottom,
+            quadURight,
+            quadVBottom,
+            centerX,
+            centerY,
+            u0,
+            v0,
+            u1,
+            v1,
+            index,
+          );
         }
       }
     }
 
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
-    geometry.setAttribute('aCenter', new THREE.Float32BufferAttribute(centers, 2));
-    geometry.setAttribute('aUvMin', new THREE.Float32BufferAttribute(uvMins, 2));
-    geometry.setAttribute('aUvMax', new THREE.Float32BufferAttribute(uvMaxs, 2));
+    geometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(positions, 3),
+    );
+    geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
+    geometry.setAttribute(
+      "aCenter",
+      new THREE.Float32BufferAttribute(centers, 2),
+    );
+    geometry.setAttribute(
+      "aUvMin",
+      new THREE.Float32BufferAttribute(uvMins, 2),
+    );
+    geometry.setAttribute(
+      "aUvMax",
+      new THREE.Float32BufferAttribute(uvMaxs, 2),
+    );
     this.visibilityAttribute = new THREE.Float32BufferAttribute(visibility, 1);
-    geometry.setAttribute('aVisibility', this.visibilityAttribute);
-    geometry.setAttribute('aIndex', new THREE.Float32BufferAttribute(indices, 1));
+    geometry.setAttribute("aVisibility", this.visibilityAttribute);
+    geometry.setAttribute(
+      "aIndex",
+      new THREE.Float32BufferAttribute(indices, 1),
+    );
     geometry.computeBoundingSphere();
 
     this.mesh = new THREE.Mesh(geometry, this.material);
@@ -665,14 +812,23 @@ export class ArchiveRenderer {
     if (delta > 4 && delta < 80) this.frameSamples.push(delta);
     if (this.frameSamples.length < 45 || this.qualityAdjusted) return;
 
-    const average = this.frameSamples.reduce((sum, value) => sum + value, 0) / this.frameSamples.length;
+    const average =
+      this.frameSamples.reduce((sum, value) => sum + value, 0) /
+      this.frameSamples.length;
     this.frameSamples = [];
     if (average > 23 && this.quality.pixelRatio > 1) {
       this.qualityAdjusted = true;
       const pixelRatio = Math.max(1, this.quality.pixelRatio - 0.25);
-      this.applyQuality({ label: pixelRatio <= 1.01 ? 'ECO' : 'BALANCED', pixelRatio });
+      this.applyQuality({
+        label: pixelRatio <= 1.01 ? "ECO" : "BALANCED",
+        pixelRatio,
+      });
       const rect = this.canvas.getBoundingClientRect();
-      this.renderer.setSize(Math.max(1, Math.floor(rect.width)), Math.max(1, Math.floor(rect.height)), false);
+      this.renderer.setSize(
+        Math.max(1, Math.floor(rect.width)),
+        Math.max(1, Math.floor(rect.height)),
+        false,
+      );
     }
   }
 
@@ -683,13 +839,21 @@ export class ArchiveRenderer {
 
     if (this.reducedMotion) this.currentMouse.copy(this.targetMouse);
     else this.currentMouse.lerp(this.targetMouse, 0.125);
-    this.velocityCurrent.lerp(this.velocityTarget, this.reducedMotion ? 1 : .16);
-    this.velocityTarget.multiplyScalar(.82);
+    this.velocityCurrent.lerp(
+      this.velocityTarget,
+      this.reducedMotion ? 1 : 0.16,
+    );
+    this.velocityTarget.multiplyScalar(0.82);
 
     this.material.uniforms.uMouse.value.copy(this.currentMouse);
     this.material.uniforms.uVelocity.value.copy(this.velocityCurrent);
-    this.material.uniforms.uSpeed.value = Math.min(1, this.velocityCurrent.length() * 4.5);
-    this.hoverAmount += (this.hoverAmountTarget - this.hoverAmount) * (this.reducedMotion ? 1 : 0.14);
+    this.material.uniforms.uSpeed.value = Math.min(
+      1,
+      this.velocityCurrent.length() * 4.5,
+    );
+    this.hoverAmount +=
+      (this.hoverAmountTarget - this.hoverAmount) *
+      (this.reducedMotion ? 1 : 0.14);
     this.material.uniforms.uHoverAmount.value = this.hoverAmount;
 
     let rippleActive = false;
@@ -701,12 +865,28 @@ export class ArchiveRenderer {
       if (!rippleActive) this.rippleStartedAt = null;
     }
 
+    let revealActive = false;
+    if (this.revealStartedAt != null) {
+      const revealProgress = Math.min(1, (now - this.revealStartedAt) / 620);
+      this.material.uniforms.uRevealProgress.value = revealProgress;
+      revealActive = revealProgress < 1;
+      if (!revealActive) this.revealStartedAt = null;
+    }
+
     this.renderer.render(this.scene, this.camera);
     this.diagnosticFrames++;
 
     const remaining = this.currentMouse.distanceToSquared(this.targetMouse);
-    const hoverSettling = Math.abs(this.hoverAmountTarget - this.hoverAmount) > 0.002;
-    if (remaining > 0.000002 || this.velocityCurrent.lengthSq() > 0.000004 || rippleActive || hoverSettling) this.invalidate();
+    const hoverSettling =
+      Math.abs(this.hoverAmountTarget - this.hoverAmount) > 0.002;
+    if (
+      remaining > 0.000002 ||
+      this.velocityCurrent.lengthSq() > 0.000004 ||
+      rippleActive ||
+      revealActive ||
+      hoverSettling
+    )
+      this.invalidate();
   };
 
   private renderOnce() {

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "slug": "how-space-gets-its-colors",
+  "locale": "es",
+  "status": "source-checked",
+  "title": "Cómo obtiene sus colores el espacio",
+  "dek": "Doce imágenes muestran cómo los telescopios convierten longitudes de onda y mediciones en color.",
+  "learningObjective": "Este recorrido permite distinguir el color visible, el color asignado a longitudes de onda, las composiciones de varios observatorios y las capas de datos inferidos.",
+  "estimatedMinutes": 12,
+  "steps": [
+    {
+      "nasaId": "PIA26702",
+      "chapter": "El color puede ser un dato",
+      "prompt": "¿Todos los colores de una imagen astronómica fueron captados como luz?"
+    },
+    {
+      "nasaId": "PIA07909",
+      "chapter": "Más allá de la vista",
+      "prompt": "¿Qué cambia cuando el detector recibe luz ultravioleta en vez de luz visible?"
+    },
+    {
+      "nasaId": "PIA09109",
+      "chapter": "Mirar a través del polvo",
+      "prompt": "¿Qué estructuras aparecen o desaparecen entre las vistas visible e infrarroja?"
+    },
+    {
+      "nasaId": "PIA09108",
+      "chapter": "El infrarrojo es un espectro",
+      "prompt": "¿Por qué una misma nebulosa puede tener varios retratos infrarrojos?"
+    },
+    {
+      "nasaId": "PIA23646",
+      "chapter": "Dos bandas, tres colores",
+      "prompt": "¿Qué significa el blanco cuando el rojo y el azul representan canales de datos?"
+    },
+    {
+      "nasaId": "PIA07225",
+      "chapter": "Oscuro no significa vacío",
+      "prompt": "¿Qué se oculta dentro de las franjas de polvo en luz visible?"
+    },
+    {
+      "nasaId": "PIA17563",
+      "chapter": "Combinar observatorios",
+      "prompt": "¿Qué pueden aportar dos instrumentos a un mismo encuadre?"
+    },
+    {
+      "nasaId": "PIA14731",
+      "chapter": "Leer una clave de color",
+      "prompt": "¿Puedes separar la estructura de rayos X de la estructura infrarroja antes de leer el texto?"
+    },
+    {
+      "nasaId": "PIA14415",
+      "chapter": "Tres telescopios, una región",
+      "prompt": "¿Dónde se superponen las observaciones de rayos X, ópticas e infrarrojas?"
+    },
+    {
+      "nasaId": "PIA23409",
+      "chapter": "El color como longitud de onda",
+      "prompt": "¿Cómo representa la imagen cuatro rangos de longitud de onda infrarroja?"
+    },
+    {
+      "nasaId": "PIA02587",
+      "chapter": "Color falso, medición real",
+      "prompt": "¿Qué afirma realmente el color falso y qué no afirma?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e000054",
+      "chapter": "Un espectro ensamblado",
+      "prompt": "¿Cuántas historias físicas puede contener una composición sin convertirse en una vista literal?"
+    }
+  ],
+  "approvedBy": "DG"
+}

@@ -20,24 +20,24 @@ Unlike a conventional media search, DEEP presents a finite continuous field and 
 
 ## Operating Context
 
-Visitors explore a 500-record WebGL mosaic, focus one object, load its high-resolution media and metadata on demand, and may follow editorial Trails. The current edition is DEEP / 500; the scalable project and repository name is deep-archive.
+Visitors explore a 1,000-record WebGL mosaic, focus one object, load its high-resolution media and metadata on demand, and may follow editorial Trails. The current edition is DEEP / 1000; the scalable project and repository name is deep-archive.
 
 ## Capabilities and Constraints
 
-- English is the initial editorial language; Spanish and Japanese are planned reviewed localization layers.
+- English and Spanish are implemented as independently reviewed editorial layers; Japanese remains planned.
 - The site remains statically deployable to Netlify, account-free and privacy-conscious.
-- The initial gallery remains one atlas on one WebGL canvas; heavy media and editorial content load on demand.
+- The gallery remains one WebGL canvas with one active 500-record atlas sector; additional sectors, heavy media and editorial content load on demand.
 - Source, credit and rights-review state are preserved per media asset.
 - Content is labelled source-checked under DG editorial approval, not scientifically reviewed.
-- The first validation slice contains 12 objects and one Trail, followed by a 30-object, three-Trail learning MVP.
+- The first validation slice contains 12 objects and one Trail in both English and Spanish, followed by a 30-object, three-Trail learning MVP.
 
 ## Brand Commitments
 
-The permanent product name is DEEP and the current edition is DEEP / 500. Public authorship is DG, linked to GitHub and LinkedIn. The voice is precise, restrained, curious and accessible without becoming childish or falsely authoritative. The product must not imitate NASA branding or imply affiliation.
+The permanent product name is DEEP and the current edition is DEEP / 1000. Public authorship is DG, linked to GitHub and LinkedIn. The voice is precise, restrained, curious and accessible without becoming childish or falsely authoritative. The product must not imitate NASA branding or imply affiliation.
 
 ## Evidence on Hand
 
-- A 500-record NASA-derived catalog with individual credits and sources under `public/datasets/nasa/`.
+- A 1,000-record NASA-derived catalog with individual credits and sources under `public/datasets/nasa/`.
 - Product strategy and review policy in `docs/PRODUCT_DEFINITION.md`.
 - Architecture and performance constraints in `docs/ARCHITECTURE.md` and `docs/PERFORMANCE.md`.
 - No qualified astronomy reviewer or comprehension research is currently available; neither may be fabricated.

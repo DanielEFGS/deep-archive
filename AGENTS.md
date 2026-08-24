@@ -1,10 +1,10 @@
-# AGENTS.md — DEEP / 500
+# AGENTS.md — DEEP Archive
 
 ## Project intent
 
-DEEP / 500 is a single-screen astronomical visual archive and frontend performance study. It should feel like a polished interactive exhibit while remaining intentionally lightweight at runtime.
+DEEP Archive is a single-screen astronomical visual archive and frontend performance study. The current public edition is **DEEP / 1000**; the repository and scalable product name are **deep-archive**. It should feel like a polished interactive exhibit while remaining intentionally lightweight at runtime.
 
-The core engineering constraint is: **represent ~500 visual records without 500 initial image requests and without 500 DOM `<img>` nodes**.
+The core engineering constraint is: **represent 1,000+ visual records without a request or DOM node per thumbnail**.
 
 ## Read before changing architecture
 
@@ -23,7 +23,7 @@ Review these files first:
 - Keep the application statically deployable to Netlify.
 - Do not introduce SSR, a backend, a database, or server functions unless a concrete requirement proves they are necessary.
 - React owns UI/application state. Pointer animation must not use React state per frame.
-- Keep the 500-tile gallery in WebGL/Three.js rather than converting it to hundreds of DOM images.
+- Keep the gallery in WebGL/Three.js rather than converting it to hundreds or thousands of DOM images.
 - Preserve atlas-based initial loading.
 - Full-resolution media and heavy metadata must remain on-demand.
 - Avoid permanent 60 FPS rendering when the scene is idle.
@@ -85,4 +85,4 @@ At minimum:
 
 ## Current phase
 
-The repository is a v0.2 starter with a synthetic astronomical catalog. The next major phase is documented in `NEXT_PHASE_PROMPT.md`.
+The repository contains the DEEP / 1000 production catalog, a retained 500-record synthetic development dataset, English/Spanish UI and editorial content, the first guided Trail, security controls and Netlify deployment configuration. `docs/IMPLEMENTATION_STATUS.md` is the source of truth for delivered and pending work. `NEXT_PHASE_PROMPT.md` is retained only as historical Phase 3 context.

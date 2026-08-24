@@ -1,7 +1,608 @@
 {
   "schemaVersion": 1,
-  "catalogGeneratedAt": "2026-08-24T14:12:45.517Z",
-  "auditedRecords": 500,
+  "catalogGeneratedAt": "2026-08-24T20:21:20.895Z",
+  "auditedRecords": 1000,
   "blockers": [],
-  "editorialWarnings": []
+  "editorialWarnings": [
+    {
+      "id": 148,
+      "nasaId": "KSC-98pc1186",
+      "title": "KSC-98pc1186",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 241,
+      "nasaId": "ARC-1985-AC85-0199-3",
+      "title": "ARC-1985-AC85-0199-3",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 389,
+      "nasaId": "ARC-1969-AC87-0100",
+      "title": "ARC-1969-AC87-0100",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 413,
+      "nasaId": "ARC-2002-ACD02-0139-004",
+      "title": "ARC-2002-ACD02-0139-004",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 414,
+      "nasaId": "ARC-2002-ACD02-0139-003",
+      "title": "ARC-2002-ACD02-0139-003",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 415,
+      "nasaId": "ARC-2002-ACD02-0139-002",
+      "title": "ARC-2002-ACD02-0139-002",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 416,
+      "nasaId": "ARC-2002-ACD02-0139-005",
+      "title": "ARC-2002-ACD02-0139-005",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 417,
+      "nasaId": "ARC-2002-ACD02-0139-001",
+      "title": "ARC-2002-ACD02-0139-001",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 660,
+      "nasaId": "01pp0749",
+      "title": "KSC-01PP-0749",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 674,
+      "nasaId": "KSC-2013-3972",
+      "title": "KSC-2013-3972",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 718,
+      "nasaId": "KSC-2012-3168",
+      "title": "KSC-2012-3168",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 719,
+      "nasaId": "KSC-2012-3157",
+      "title": "KSC-2012-3157",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 720,
+      "nasaId": "KSC-2012-3147",
+      "title": "KSC-2012-3147",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 721,
+      "nasaId": "KSC-2012-3155",
+      "title": "KSC-2012-3155",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 722,
+      "nasaId": "KSC-2012-3165",
+      "title": "KSC-2012-3165",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 723,
+      "nasaId": "KSC-2012-3161",
+      "title": "KSC-2012-3161",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 724,
+      "nasaId": "KSC-2012-3166",
+      "title": "KSC-2012-3166",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 725,
+      "nasaId": "KSC-2012-3153",
+      "title": "KSC-2012-3153",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 726,
+      "nasaId": "KSC-2012-3154",
+      "title": "KSC-2012-3154",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 727,
+      "nasaId": "KSC-2012-3167",
+      "title": "KSC-2012-3167",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 729,
+      "nasaId": "KSC-2012-3145",
+      "title": "KSC-2012-3145",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 730,
+      "nasaId": "KSC-2012-3143",
+      "title": "KSC-2012-3143",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 731,
+      "nasaId": "KSC-2012-3141",
+      "title": "KSC-2012-3141",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 732,
+      "nasaId": "KSC-2011-4528",
+      "title": "KSC-2011-4528",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 733,
+      "nasaId": "KSC-2012-3142",
+      "title": "KSC-2012-3142",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 734,
+      "nasaId": "KSC-2012-3146",
+      "title": "KSC-2012-3146",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 735,
+      "nasaId": "KSC-2012-3144",
+      "title": "KSC-2012-3144",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 737,
+      "nasaId": "KSC-2012-1800",
+      "title": "KSC-2012-1800",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 738,
+      "nasaId": "KSC-2011-7034",
+      "title": "KSC-2011-7034",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 739,
+      "nasaId": "KSC-2012-1802",
+      "title": "KSC-2012-1802",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 740,
+      "nasaId": "KSC-2012-1769",
+      "title": "KSC-2012-1769",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 741,
+      "nasaId": "KSC-2012-1793",
+      "title": "KSC-2012-1793",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 742,
+      "nasaId": "KSC-2012-3210",
+      "title": "KSC-2012-3210",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 743,
+      "nasaId": "KSC-2011-4527",
+      "title": "KSC-2011-4527",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 744,
+      "nasaId": "KSC-2011-6954",
+      "title": "KSC-2011-6954",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 745,
+      "nasaId": "KSC-2012-1791",
+      "title": "KSC-2012-1791",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 746,
+      "nasaId": "KSC-2011-6957",
+      "title": "KSC-2011-6957",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 747,
+      "nasaId": "KSC-2012-3224a",
+      "title": "KSC-2012-3224a",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 748,
+      "nasaId": "KSC-2012-2015",
+      "title": "KSC-2012-2015",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 749,
+      "nasaId": "KSC-2012-3226a",
+      "title": "KSC-2012-3226a",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 750,
+      "nasaId": "KSC-2011-6958",
+      "title": "KSC-2011-6958",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 751,
+      "nasaId": "KSC-2012-1774",
+      "title": "KSC-2012-1774",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 752,
+      "nasaId": "KSC-2012-1789",
+      "title": "KSC-2012-1789",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 753,
+      "nasaId": "KSC-2011-6955",
+      "title": "KSC-2011-6955",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 754,
+      "nasaId": "KSC-2012-3218",
+      "title": "KSC-2012-3218",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 755,
+      "nasaId": "KSC-2012-2016",
+      "title": "KSC-2012-2016",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 756,
+      "nasaId": "KSC-2012-1803",
+      "title": "KSC-2012-1803",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 757,
+      "nasaId": "KSC-2011-5941",
+      "title": "KSC-2011-5941",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 758,
+      "nasaId": "KSC-2012-3216",
+      "title": "KSC-2012-3216",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 788,
+      "nasaId": "KSC-2009-1891",
+      "title": "KSC-2009-1891",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 789,
+      "nasaId": "KSC-2009-1887",
+      "title": "KSC-2009-1887",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 790,
+      "nasaId": "KSC-2009-1890",
+      "title": "KSC-2009-1890",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 792,
+      "nasaId": "KSC-2009-1889",
+      "title": "KSC-2009-1889",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 793,
+      "nasaId": "KSC-2009-1886",
+      "title": "KSC-2009-1886",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 794,
+      "nasaId": "KSC-2009-1888",
+      "title": "KSC-2009-1888",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 795,
+      "nasaId": "KSC-2009-1884",
+      "title": "KSC-2009-1884",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 796,
+      "nasaId": "KSC-2009-1885",
+      "title": "KSC-2009-1885",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 831,
+      "nasaId": "98pc1387",
+      "title": "KSC-98PC-1387",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 877,
+      "nasaId": "02pd0118",
+      "title": "KSC-02PD-0118",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 888,
+      "nasaId": "KSC-06pd1132",
+      "title": "KSC-06pd1132",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 916,
+      "nasaId": "KSC-03pd0803",
+      "title": "KSC-03pd0803",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 917,
+      "nasaId": "KSC-03pd0804",
+      "title": "KSC-03pd0804",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 918,
+      "nasaId": "ARC-1983-A83-0768-1",
+      "title": "ARC-1983-A83-0768-1",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 920,
+      "nasaId": "KSC-03pd0799",
+      "title": "KSC-03pd0799",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 921,
+      "nasaId": "KSC-03pd0801",
+      "title": "KSC-03pd0801",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 922,
+      "nasaId": "KSC-03pd0800",
+      "title": "KSC-03pd0800",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 923,
+      "nasaId": "KSC-03pd0802",
+      "title": "KSC-03pd0802",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 925,
+      "nasaId": "KSC-2012-3523",
+      "title": "KSC-2012-3523",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 926,
+      "nasaId": "KSC-03pd0505",
+      "title": "KSC-03pd0505",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 927,
+      "nasaId": "KSC-2012-3524",
+      "title": "KSC-2012-3524",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 928,
+      "nasaId": "KSC-2012-3525",
+      "title": "KSC-2012-3525",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 929,
+      "nasaId": "KSC-03pd0506",
+      "title": "KSC-03pd0506",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 930,
+      "nasaId": "KSC-2009-1127",
+      "title": "KSC-2009-1127",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 931,
+      "nasaId": "KSC-2009-1129",
+      "title": "KSC-2009-1129",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 932,
+      "nasaId": "KSC-2009-1125",
+      "title": "KSC-2009-1125",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 933,
+      "nasaId": "KSC-2009-1126",
+      "title": "KSC-2009-1126",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 934,
+      "nasaId": "KSC-2009-1123",
+      "title": "KSC-2009-1123",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 935,
+      "nasaId": "KSC-03pd0504",
+      "title": "KSC-03pd0504",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 936,
+      "nasaId": "KSC-2009-1124",
+      "title": "KSC-2009-1124",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 943,
+      "nasaId": "KSC-2009-1128",
+      "title": "KSC-2009-1128",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 944,
+      "nasaId": "KSC-2012-3522",
+      "title": "KSC-2012-3522",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 962,
+      "nasaId": "iss053e023915",
+      "title": "iss053e023915",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 969,
+      "nasaId": "iss066e146457",
+      "title": "iss066e146457",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 972,
+      "nasaId": "iss042e033478",
+      "title": "iss042e033478",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 973,
+      "nasaId": "iss066e008713",
+      "title": "iss066e008713",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 974,
+      "nasaId": "iss067e269019",
+      "title": "iss067e269019",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 975,
+      "nasaId": "iss068e010113",
+      "title": "iss068e010113",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 978,
+      "nasaId": "iss071e693961",
+      "title": "iss071e693961",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 981,
+      "nasaId": "iss070e051763",
+      "title": "iss070e051763",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 982,
+      "nasaId": "iss071e117686",
+      "title": "iss071e117686",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 983,
+      "nasaId": "iss069e092496",
+      "title": "iss069e092496",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 984,
+      "nasaId": "iss067e272195",
+      "title": "iss067e272195",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 985,
+      "nasaId": "iss071e695419",
+      "title": "iss071e695419",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 988,
+      "nasaId": "iss070e022660",
+      "title": "iss070e022660",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 989,
+      "nasaId": "iss050e034428",
+      "title": "iss050e034428",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 994,
+      "nasaId": "iss070e025086",
+      "title": "iss070e025086",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 997,
+      "nasaId": "KSC-07pd0053",
+      "title": "KSC-07pd0053",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 998,
+      "nasaId": "iss071e586401",
+      "title": "iss071e586401",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 999,
+      "nasaId": "iss071e503153",
+      "title": "iss071e503153",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    },
+    {
+      "id": 1000,
+      "nasaId": "iss062e102390",
+      "title": "iss062e102390",
+      "reason": "Opaque identifier-style title requires an editorial title check."
+    }
+  ]
 }

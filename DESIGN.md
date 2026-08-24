@@ -1,5 +1,5 @@
 ---
-name: "DEEP / 500"
+name: "DEEP / 1000"
 description: "A contemporary observatory for image-led, source-backed astronomical exploration."
 colors:
   field-black: "#06080d"
@@ -85,7 +85,7 @@ components:
     height: "28px"
 ---
 
-# Design System: DEEP / 500
+# Design System: DEEP / 1000
 
 ## Overview
 

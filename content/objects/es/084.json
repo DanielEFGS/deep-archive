@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA09109",
+  "slug": "unwrapping-the-pillars",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "La Nebulosa del Águila aparece mediante observaciones infrarrojas de Spitzer y observaciones en luz visible de Hubble.",
+  "observe": [
+    "Compara la densidad aparente de los pilares en luz visible e infrarroja.",
+    "Busca estrellas o estructuras que resulten más fáciles de distinguir en una de las vistas."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 12,
+    "rows": 8,
+    "features": [
+      {
+        "id": "visible-reference",
+        "label": "Referencias visibles de Hubble",
+        "description": "Los dos recuadros superiores son referencias de Hubble en luz visible que muestran los pilares como siluetas opacas y detalladas.",
+        "kind": "visible-feature",
+        "cells": [
+          "B-01",
+          "C-01",
+          "D-01",
+          "E-01",
+          "H-01",
+          "I-01",
+          "J-01",
+          "K-01",
+          "B-02",
+          "C-02",
+          "D-02",
+          "E-02",
+          "H-02",
+          "I-02",
+          "J-02",
+          "K-02"
+        ]
+      },
+      {
+        "id": "infrared-field",
+        "label": "Correspondencias infrarrojas de Spitzer",
+        "description": "Estas áreas se encuentran dentro de la posición señalada de los pilares en la vista infrarroja inferior, donde las estrellas incrustadas se hacen visibles a través del polvo.",
+        "kind": "processed-signal",
+        "cells": [
+          "C-06",
+          "D-06",
+          "E-06",
+          "F-06",
+          "H-06",
+          "I-06",
+          "C-07",
+          "D-07",
+          "E-07",
+          "F-07",
+          "H-07",
+          "I-07"
+        ]
+      }
+    ]
+  },
+  "explanation": "Los distintos rangos de longitud de onda interactúan de forma diferente con el polvo de la nebulosa, por lo que una misma región no revela la misma estructura en todas las vistas.",
+  "colorMethod": "La composición sitúa juntas las vistas infrarroja y de luz visible para compararlas; los paneles no representan una exposición uniforme en color visible.",
+  "whyItMatters": "Cambiar la longitud de onda puede revelar información oculta en una imagen conocida de luz visible.",
+  "relatedNasaIds": ["PIA07225", "PIA09108"],
+  "sources": [
+    {
+      "label": "NASA Science — PIA09109",
+      "url": "https://science.nasa.gov/photojournal/unwrapping-the-pillars/"
+    }
+  ],
+  "approvedBy": "DG"
+}

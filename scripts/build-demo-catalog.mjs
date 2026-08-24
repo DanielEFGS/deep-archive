@@ -84,7 +84,7 @@ const fullItems = Array.from({ length: COUNT }, (_, index) => {
     category,
     date: `20${String(id % 26).padStart(2, '0')}`,
     center: 'LOCAL DEMO DATASET',
-    credit: 'Synthetic asset generated for DEEP / 500 development.',
+    credit: 'Synthetic asset generated for DEEP Archive development.',
     keywords: ['demo', 'placeholder', category.toLowerCase()],
   };
 });
@@ -113,6 +113,16 @@ const catalog = {
     tileHeight: TILE_H,
     bytes: atlas.bytes,
   },
+  atlases: [{
+    url: `${URL_PREFIX}/atlas/${atlas.fileName}`,
+    columns: COLUMNS,
+    rows: ROWS,
+    tileWidth: TILE_W,
+    tileHeight: TILE_H,
+    bytes: atlas.bytes,
+    startIndex: 0,
+    itemCount: COUNT,
+  }],
   items,
 };
 

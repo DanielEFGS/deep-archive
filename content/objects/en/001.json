@@ -5,11 +5,40 @@
   "locale": "en",
   "status": "source-checked",
   "introduction": "This Webb field combines observed galaxies with a map of something the telescope cannot see directly: dark matter.",
-  "observe": ["Find the blue overlay before looking at individual galaxies.", "Notice that the blue behaves like a map, not like light emitted by the objects."],
+  "observe": [
+    "Find the blue overlay before looking at individual galaxies.",
+    "Notice that the blue behaves like a map, not like light emitted by the objects."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 12,
+    "rows": 8,
+    "features": [
+      {
+        "id": "density-field",
+        "label": "Inferred density field",
+        "description": "The blue patches form an assigned data layer representing inferred dark-matter density, not visible blue light.",
+        "kind": "processed-signal",
+        "cells": ["D-01", "K-01", "H-02", "G-05", "K-05", "D-06"]
+      },
+      {
+        "id": "background-galaxies",
+        "label": "Observed galaxy samples",
+        "description": "These sample areas contain observed galaxies whose subtle shape distortions contribute to the inferred map.",
+        "kind": "editorial-guide",
+        "cells": ["B-03", "C-04", "J-04", "F-07"]
+      }
+    ]
+  },
   "explanation": "Researchers inferred the distribution of invisible dark matter from its gravitational effect on the shapes of many background galaxies.",
   "colorMethod": "Blue is an assigned data layer representing inferred dark-matter density. Brighter blue indicates greater density; it is not the visible color of dark matter.",
   "whyItMatters": "The image establishes the central rule of the Trail: astronomical color can encode measurement and interpretation as well as visible light.",
   "relatedNasaIds": ["PIA07909", "GSFC_20171208_Archive_e000054"],
-  "sources": [{ "label": "NASA Image Library — PIA26702", "url": "https://images.nasa.gov/details/PIA26702" }],
+  "sources": [
+    {
+      "label": "NASA Science — PIA26702",
+      "url": "https://science.nasa.gov/photojournal/webb-data-reveals-dark-matter/"
+    }
+  ],
   "approvedBy": "DG"
 }

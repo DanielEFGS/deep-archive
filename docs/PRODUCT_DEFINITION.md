@@ -8,7 +8,7 @@ Decision owner: DG
 
 DEEP is an interactive visual archive for learning how to observe and interpret astronomical imagery.
 
-Current edition: **DEEP / 500**. The number describes the present collection, not the permanent product name. The repository and scalable platform name remain **deep-archive**.
+Current edition: **DEEP / 1000**. The number describes the present collection, not the permanent product name. The repository and scalable platform name remain **deep-archive**.
 
 ## 2. The problem
 
@@ -50,17 +50,17 @@ The learning experience is designed for the primary audience. Technical implemen
 
 ## 5. Product promise
 
-Initial English promise:
+English promise:
 
 > An interactive visual archive for learning how to read the universe.
 
-Future Spanish adaptation:
+Spanish promise:
 
 > Un archivo visual interactivo para aprender a observar el universo.
 
 Supporting line:
 
-> Five hundred images, curated into paths that reveal how astronomical images are made, what they show and why they matter.
+> One thousand images, curated into paths that reveal how astronomical images are made, what they show and why they matter.
 
 ## 6. Positioning
 
@@ -184,7 +184,7 @@ The validation slice precedes this MVP and exists to test the proposition before
 ## 13. Explicit non-goals
 
 - replacing NASA's media search or scientific databases;
-- publishing explanations for all 500 records in the first release;
+- publishing explanations for all 1,000 records in the first release;
 - user accounts, public profiles, comments, likes or rankings;
 - an internal social network or feed;
 - runtime dependence on NASA APIs;
@@ -238,12 +238,12 @@ This is a product hypothesis, not yet a fixed analytics specification.
 
 ## 17. Approved product decisions
 
-1. Use **DEEP** as the permanent product name and **DEEP / 500** as the current edition.
+1. Use **DEEP** as the permanent product name and **DEEP / 1000** as the current edition.
 2. Design primarily for curious non-specialists aged 16+, with educators as the main secondary audience.
 3. Use **How Space Gets Its Colors** as the first Trail.
-4. Launch editorial content in English. Treat Spanish and Japanese as planned, separately reviewed localization layers rather than automatic translations.
+4. Maintain English and Spanish as separately reviewed editorial layers. Treat Japanese as planned, and never substitute automatic translations for reviewed editorial or supplied source metadata.
 5. Target an informed general-reader level, avoiding both specialist shorthand and child-oriented simplification.
-6. Build the 12-object pilot before committing to the 30-record MVP subset.
+6. Use the completed bilingual 12-object pilot to validate the learning experience before committing to the 30-record MVP subset.
 7. Attribute the independent project publicly to **DG**. The About view links to [GitHub](https://github.com/DanielEFGS) and [LinkedIn](https://www.linkedin.com/in/daniel-garcia-silva-695086213/); email is not required.
 8. Publish content as **source-checked** under DG's editorial approval. Do not claim scientific review unless a qualified reviewer participates later.
 9. Do not add behavioral analytics to the pilot. Reconsider aggregate, privacy-conscious measurement only when there is a concrete validation question.

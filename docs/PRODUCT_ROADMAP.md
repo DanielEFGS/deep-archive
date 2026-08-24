@@ -1,12 +1,12 @@
-# Product roadmap — DEEP / 500
+# Product roadmap — DEEP Archive
 
 The product strategy, primary audience, validation slice and MVP boundary are defined in [`PRODUCT_DEFINITION.md`](PRODUCT_DEFINITION.md). This roadmap describes the intended release sequence.
 
 ## Product promise
 
-DEEP / 500 should evolve from a visual experiment into a free tool for learning how to observe and understand astronomical imagery.
+DEEP Archive should evolve from a visual experiment into a free tool for learning how to observe and understand astronomical imagery. The current collection is presented as **DEEP / 1000**, while the product name remains independent of catalog size.
 
-> Five hundred images, curated into paths that help people read the universe.
+> A growing astronomical archive, curated into paths that help people read the universe.
 
 The project should not attempt to replace NASA's much larger media search products. Its value is a small, coherent and editorially guided field: what to notice, how an image was produced, why it matters and how it relates to other records.
 
@@ -20,12 +20,12 @@ The project should not attempt to replace NASA's much larger media search produc
 ## Product principles
 
 - Remain free, static and privacy-conscious.
-- Preserve the one-atlas, one-canvas initial architecture.
+- Preserve the one-canvas architecture with one active, virtualized atlas sector.
 - Load editorial content and HD media on demand.
 - Preserve individual sources, credits and rights-review status.
 - Make useful artifacts shareable without requiring accounts.
-- Start with 30–50 editorially enriched records rather than weakly enriching all 500.
-- Launch in English. Treat future Spanish and Japanese support as separately reviewed editorial layers, not automatic replacements for source metadata.
+- Start with 30–50 editorially enriched records rather than weakly enriching all 1,000.
+- Maintain English and Spanish as separately reviewed editorial layers. Japanese remains planned; source metadata is not automatically translated.
 
 ## Success signals
 
@@ -97,7 +97,7 @@ Acceptance criteria:
 
 Generate HTML shells during the build for featured objects and trails. A post-build script should reuse the same React bundle while injecting unique titles, descriptions, canonical URLs, social metadata, credit/source information and JSON-LD.
 
-Release 1 begins with pages for the editorially reviewed subset, not all 500.
+Release 1 begins with pages for the editorially reviewed subset, not all 1,000.
 
 ## Release 2 — Compare
 
@@ -148,7 +148,7 @@ English is the source editorial language. Translate the interface, trails, gloss
 - user accounts or profiles;
 - an internal social feed;
 - unreviewed AI-generated scientific explanations;
-- claims that DEEP / 500 is a citizen-science project;
+- claims that DEEP Archive is a citizen-science project;
 - runtime dependence on external NASA APIs.
 
 ## Recommended implementation order

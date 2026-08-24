@@ -1,6 +1,6 @@
-# DEEP / 500
+# DEEP Archive — DEEP / 1000
 
-A single-screen astronomical archive built as a frontend performance study. The visual goal is a dense field of 500 astronomical images with GPU-driven pointer interaction; the engineering goal is to keep network, DOM and main-thread work intentionally small.
+A single-screen astronomical archive built as a frontend performance study. **DEEP Archive** is the scalable product/repository name; **DEEP / 1000** is the current collection edition. The visual goal is a dense field of 1,000 astronomical images with GPU-driven pointer interaction; the engineering goal is to keep network, DOM and main-thread work intentionally small.
 
 ## Stack
 
@@ -44,7 +44,7 @@ During local development, press `D` to inspect renderer diagnostics. Detail view
 
 ### Dataset selection
 
-Development defaults to `demo`; production defaults to the 500-record NASA catalog. Override either with `VITE_DATASET=demo` or `VITE_DATASET=nasa`. Build both independently with `npm run catalog:demo` and `npm run catalog:nasa`; outputs live under `public/datasets/` and never overwrite one another. `/` focuses index-only search and `?object=<slug>` opens a shareable detail.
+Development defaults to the retained 500-record `demo`; production defaults to the 1,000-record NASA catalog. Override either with `VITE_DATASET=demo` or `VITE_DATASET=nasa`. Build both independently with `npm run catalog:demo` and `npm run catalog:nasa`; outputs live under `public/datasets/` and never overwrite one another. `/` focuses index-only search and `?object=<slug>` opens a shareable detail.
 
 ## Runtime architecture
 
@@ -52,11 +52,11 @@ Initial runtime media is deliberately small:
 
 1. `index.html` + bundled JS/CSS
 2. `catalog.json` — lightweight hover/filter index
-3. one content-hashed WebGL texture atlas
+3. one active content-hashed WebGL texture-atlas sector
 
-The 500 thumbnails are not 500 `<img>` elements. They are 500 quads in a single `BufferGeometry`, rendered through one shader material and one atlas texture.
+The 1,000 production thumbnails are not 1,000 `<img>` elements. The catalog is split into 500-record atlas sectors. Only one sector is mounted as a combined `BufferGeometry` and GPU texture at a time; wheel/Page Up/Page Down or the sector rail loads another sector, and the old renderer disposes its GPU resources.
 
-Detailed descriptions, credits and full-image URLs are grouped into approximately ten content-hashed `/details/*.json` shards. The relevant shard is requested only when the visitor opens an item, cached in memory, and reused for nearby records. The large image itself is loaded on demand.
+Detailed descriptions, credits and full-image URLs are grouped into twenty content-hashed `/details/*.json` shards. The relevant shard is requested only when the visitor opens an item, cached in memory, and reused for nearby records. The large image itself is loaded on demand.
 
 ## NASA catalog pipeline
 
@@ -70,8 +70,8 @@ The build script:
 - deduplicates by `nasa_id`;
 - caches API responses and source previews under `.cache/nasa`;
 - retries transient failures with bounded backoff;
-- normalizes 96×72 thumbnails with Sharp;
-- builds one content-hashed WebP atlas;
+- normalizes 128×96 production thumbnails with Sharp;
+- builds content-hashed WebP atlas sectors of at most 500 records;
 - creates a compact initial index;
 - creates content-hashed detail shards of approximately 50 records;
 - preserves source, credit and rights-review metadata when available.
@@ -93,7 +93,7 @@ By default, the detail view resolves a NASA `~medium`, `~large` or original asse
 - device pixel ratio is capped and may be reduced after slow frame samples;
 - low-memory/low-core devices begin in an ECO quality profile;
 - filters update one small GPU attribute instead of rebuilding the mesh;
-- atlas filenames and detail-shard filenames are content-hashed and cached as immutable;
+- atlas-sector filenames and detail-shard filenames are content-hashed and cached as immutable;
 - `prefers-reduced-motion` disables motion-heavy shader behavior;
 - WebGL failure falls back to a static atlas surface;
 - full media loads only after an item is opened.
@@ -108,7 +108,7 @@ By default, the detail view resolves a NASA `~medium`, `~large` or original asse
 
 ## Media policy
 
-DEEP / 500 is an independent educational and non-commercial visual study. Production imagery/metadata should be sourced from publicly accessible NASA resources while preserving each item's supplied credit and original source. NASA-hosted third-party material may have separate rights; generated catalogs must therefore be reviewed before publication.
+DEEP / 1000 is an independent educational and non-commercial visual study. Production imagery/metadata should be sourced from publicly accessible NASA resources while preserving each item's supplied credit and original source. NASA-hosted third-party material may have separate rights; generated catalogs must therefore be reviewed before publication.
 
 The project does not use NASA branding as its own identity and does not imply affiliation, sponsorship or endorsement.
 
@@ -119,6 +119,7 @@ The project does not use NASA branding as its own identity and does not imply af
 - [`docs/DATA_PIPELINE.md`](docs/DATA_PIPELINE.md)
 - [`docs/MEDIA_AND_CREDITS.md`](docs/MEDIA_AND_CREDITS.md)
 - [`docs/ACCESSIBILITY.md`](docs/ACCESSIBILITY.md)
+- [`docs/SECURITY.md`](docs/SECURITY.md)
 - [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 - [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md)
 - [`docs/PRODUCT_ROADMAP.md`](docs/PRODUCT_ROADMAP.md)
@@ -128,4 +129,4 @@ The project does not use NASA branding as its own identity and does not imply af
 - [`docs/RELEASE_V1_CHECKLIST.md`](docs/RELEASE_V1_CHECKLIST.md)
 - [`docs/LOCAL_DEVELOPMENT.md`](docs/LOCAL_DEVELOPMENT.md)
 - [`AGENTS.md`](AGENTS.md) — implementation rules/context for coding agents
-- [`NEXT_PHASE_PROMPT.md`](NEXT_PHASE_PROMPT.md) — ready-to-use Codex prompt for the next milestone
+- [`NEXT_PHASE_PROMPT.md`](NEXT_PHASE_PROMPT.md) — archived Phase 3 implementation brief

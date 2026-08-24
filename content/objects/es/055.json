@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA17563",
+  "slug": "crab-nebula-as-seen-by-herschel-and-hubble",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Dos observatorios contribuyen a esta vista compuesta de la Nebulosa del Cangrejo, un remanente de supernova de la Vía Láctea.",
+  "observe": [
+    "Busca estructuras que parezcan pertenecer a distintas capas visuales.",
+    "Compara esta combinación contenida con la vista del Cangrejo creada por cinco observatorios al final del recorrido."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 12,
+    "rows": 8,
+    "features": [
+      {
+        "id": "herschel-dust",
+        "label": "Emisión de polvo en infrarrojo lejano",
+        "description": "Las estructuras rojas y rosadas muestran una muestra de la emisión del polvo registrada por Herschel en longitudes de onda del infrarrojo lejano.",
+        "kind": "processed-signal",
+        "cells": [
+          "D-04",
+          "E-04",
+          "F-04",
+          "G-04",
+          "H-04",
+          "I-04",
+          "J-04",
+          "F-05",
+          "G-05",
+          "H-05",
+          "I-05",
+          "G-06"
+        ]
+      },
+      {
+        "id": "hubble-gas",
+        "label": "Emisión de gas visible",
+        "description": "Las regiones azules muestran una muestra de la vista de Hubble en longitudes de onda visibles de la emisión de iones de oxígeno y azufre.",
+        "kind": "visible-feature",
+        "cells": [
+          "D-02",
+          "E-02",
+          "F-02",
+          "G-02",
+          "H-02",
+          "I-02",
+          "C-03",
+          "J-03",
+          "C-06",
+          "D-06",
+          "I-06",
+          "J-06"
+        ]
+      }
+    ]
+  },
+  "explanation": "El registro combina observaciones del Observatorio Espacial Herschel y del Telescopio Espacial Hubble; no presenta una sola exposición.",
+  "colorMethod": "La fuente identifica la imagen como una composición Herschel–Hubble. Sus colores deben leerse como una vista científica combinada, no como una escena visible a simple vista.",
+  "whyItMatters": "Combinar instrumentos permite situar distintas estructuras físicas en un mismo encuadre y conservar su relación espacial.",
+  "relatedNasaIds": ["GSFC_20171208_Archive_e000054", "PIA14415"],
+  "sources": [
+    {
+      "label": "NASA JPL — PIA17563",
+      "url": "https://www.jpl.nasa.gov/images/pia17563-crab-nebula-as-seen-by-herschel-and-hubble/"
+    }
+  ],
+  "approvedBy": "DG"
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA26702",
+  "slug": "webb-data-reveals-dark-matter",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Este campo de Webb combina galaxias observadas con un mapa de algo que el telescopio no puede ver directamente: la materia oscura.",
+  "observe": [
+    "Busca la capa azul antes de observar las galaxias individuales.",
+    "Fíjate en que el azul se comporta como un mapa, no como luz emitida por los objetos."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 12,
+    "rows": 8,
+    "features": [
+      {
+        "id": "density-field",
+        "label": "Campo de densidad inferido",
+        "description": "Las zonas azules forman una capa de datos asignada que representa la densidad inferida de materia oscura, no luz azul visible.",
+        "kind": "processed-signal",
+        "cells": ["D-01", "K-01", "H-02", "G-05", "K-05", "D-06"]
+      },
+      {
+        "id": "background-galaxies",
+        "label": "Muestras de galaxias observadas",
+        "description": "Estas áreas contienen galaxias observadas cuyas sutiles distorsiones de forma contribuyen al mapa inferido.",
+        "kind": "editorial-guide",
+        "cells": ["B-03", "C-04", "J-04", "F-07"]
+      }
+    ]
+  },
+  "explanation": "Los investigadores dedujeron la distribución de la materia oscura invisible a partir de su efecto gravitacional sobre la forma de numerosas galaxias de fondo.",
+  "colorMethod": "El azul es una capa de datos asignada que representa la densidad inferida de materia oscura. Un azul más brillante indica mayor densidad; no es el color visible de la materia oscura.",
+  "whyItMatters": "La imagen establece la regla central del recorrido: el color astronómico puede codificar mediciones e interpretaciones, además de luz visible.",
+  "relatedNasaIds": ["PIA07909", "GSFC_20171208_Archive_e000054"],
+  "sources": [
+    {
+      "label": "NASA Science — PIA26702",
+      "url": "https://science.nasa.gov/photojournal/webb-data-reveals-dark-matter/"
+    }
+  ],
+  "approvedBy": "DG"
+}

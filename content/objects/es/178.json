@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e000054",
+  "slug": "observatories-combine-to-crack-open-the-crab-nebula",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Cinco observatorios componen la Nebulosa del Cangrejo a lo largo de casi todo el espectro electromagnético.",
+  "observe": [
+    "Lee la imagen como cinco historias físicas superpuestas, no como una sola exposición.",
+    "Localiza la región central y observa cómo cambia con el color la estructura que la rodea."
+  ],
+  "explanation": "La composición combina observaciones de radio, infrarrojo, luz visible, ultravioleta y rayos X de VLA, Spitzer, Hubble, XMM-Newton y Chandra.",
+  "colorMethod": "La fuente asigna el rojo a radio, el amarillo a infrarrojo, el verde a luz visible, el azul a ultravioleta y el púrpura a rayos X.",
+  "whyItMatters": "La imagen final muestra por qué el color astronómico suele funcionar como un sistema compacto de coordenadas para longitudes de onda y procesos físicos.",
+  "relatedNasaIds": ["PIA17563", "PIA14415"],
+  "sources": [
+    {
+      "label": "NASA Image Library — archivo GSFC e000054",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000054"
+    }
+  ],
+  "approvedBy": "DG"
+}

@@ -37,10 +37,16 @@ export type AtlasConfig = {
   bytes?: number;
 };
 
+export type AtlasSector = AtlasConfig & {
+  startIndex: number;
+  itemCount: number;
+};
+
 export type CatalogPayload = {
   generatedAt: string;
   source: 'demo' | 'nasa';
   atlas: AtlasConfig;
+  atlases?: AtlasSector[];
   items: CatalogItem[];
 };
 

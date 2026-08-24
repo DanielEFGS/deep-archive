@@ -1,4 +1,14 @@
-# Implementation status — v0.2
+# Implementation status — current working tree
+
+## Security and localization foundation
+
+- Netlify sends CSP, anti-framing, HSTS, MIME, referrer and browser-permission headers.
+- Runtime catalog shard paths are restricted to same-origin dataset files and external media/source links require HTTPS.
+- The dependency audit currently reports zero known vulnerabilities.
+- English/Spanish locale selection supports `?lang=`, browser preference and persisted choice without a runtime i18n dependency.
+- Archive HUD, filters, onboarding, boot/error states, Detail, Index, About, Trail controls and the Visual Guide have Spanish UI and accessible names.
+- The first Trail and all 12 of its editorial object records have complete English and Spanish editions. Changing language while the Trail is open reloads the same introduction or step in the selected locale.
+- NASA source metadata remains in its supplied language by policy.
 
 ## Implemented
 
@@ -6,12 +16,12 @@
 
 - React/TypeScript application shell
 - one-canvas Three.js renderer
-- 500-tile combined BufferGeometry
-- one atlas texture / shader material
-- responsive 25/20/16-column geometry
-- gravitational-lens-inspired tile expansion/reveal
-- continuous radial sheet deformation with subdivided, non-overlapping atlas cells
-- tile-safe chromatic dispersion sampling
+- 1,000-tile combined BufferGeometry in production
+- one active 500-record atlas texture / shader material, virtualized across two production sectors
+- responsive 32/24/16-column production geometry
+- provisional Archive Aperture tile expansion/reveal
+- rigid, aspect-preserving focused tile with a short neighbour displacement field
+- tile-snapped color reveal without chromatic image deformation
 - click ripple
 - category filtering through GPU visibility data
 - hover HUD
@@ -29,8 +39,13 @@
 - first source-checked educational Trail with introduction, observation-first reveal and 12 steps
 - restorable Trail/step URLs and copyable step links
 - floating Trail navigation, direct progress controls and arrow-key support
+- persistent mobile Trail-start action that remains available in the first viewport
+- reversible Observe, UI-hidden and compact reading states for Trail steps
+- Reveal Context focus handoff and explicit return to observation
 - independent on-demand editorial and HD loading with stale-request protection
 - Trail loading, retry, completion, touch and reduced-motion states
+- three-object fixed visual-guide pilot with authored, approximate areas
+- explicit visible-feature, processed-signal and editorial-guide classifications
 
 ### Performance
 
@@ -58,14 +73,14 @@
 - rights-review flags when source metadata contains explicit copyright fields
 - category-balanced NASA discovery quotas and automated rejection of common non-editorial results
 - editorial object/Trail schema, source files, delivery builder and catalog/rights validator
-- automated 500-record publication audit for credits, source/media hosts and unresolved rights state
+- automated 1,000-record publication audit for credits, source/media hosts and unresolved rights state
 - stable NASA-ID editorial references that survive catalog regeneration
 
 ## Validation performed here
 
 - `npm run check:catalog` passes;
 - `npm run build` passes with TypeScript checks and a production Vite bundle;
-- `npm run check:editorial` passes for 12 English objects and one Trail;
+- `npm run check:editorial` passes for 12 English objects, 12 Spanish objects and two localized Trail definitions;
 - demo catalog contains exactly 500 records;
 - all 500 demo details resolve exactly once across 10 shards;
 - demo atlas exists and matches its catalog byte count;
@@ -79,16 +94,16 @@ The current environment did not expose the in-app browser runtime, so the Trail 
 
 ## REAL NASA CATALOG
 
-- 500 real NASA records across galaxies, nebulae, deep space, Solar System, Earth and missions;
+- 1,000 real NASA records across galaxies, nebulae, deep space, Solar System, Earth and missions;
 - independently retained 500-record demo dataset;
-- 4800×2880, 1,429,678-byte WebP atlas with 192×144 focal-point-aware crops;
-- ten on-demand content-hashed metadata shards;
+- two 3200×1920 WebP atlas sectors (approximately 576 KB and 619 KB) with 128×96 focal-point-aware crops;
+- twenty on-demand content-hashed metadata shards;
 - explicit curation manifest and media rights review report;
 - index-only search, slug deep linking and filter-aware detail navigation;
 - velocity-sensitive lens dispersion with clamped, smoothed pointer input;
 - progressive HD fallback and retry over the atlas placeholder.
 
-Administrative events, crew portraits, diagrams, historical series and unrelated technical documentation were rejected. The explicit rights-review queue and automated 500-record media audit now pass with zero blockers and zero editorial spot checks. Final mobile/Safari/Lighthouse measurements remain pending.
+Administrative events, crew portraits, diagrams, historical series, rights-ambiguous photographic series and unrelated technical documentation were rejected. The explicit rights-review queue and automated 1,000-record media audit pass with zero publication blockers. One hundred opaque or administrative titles remain recorded as non-blocking editorial spot checks for future visual curation. Final mobile/Safari/Lighthouse measurements remain pending.
 
 ## Next production milestone
 

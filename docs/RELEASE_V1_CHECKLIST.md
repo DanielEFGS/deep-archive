@@ -3,8 +3,8 @@
 ## Current technical state
 
 - [x] React/TypeScript production build passes.
-- [x] One WebGL gallery mesh and one initial atlas request.
-- [x] NASA catalog contains 500 records and ten detail shards.
+- [x] One active WebGL gallery mesh and one initial 500-record atlas-sector request.
+- [x] NASA catalog contains 1,000 records and twenty detail shards.
 - [x] HD media and detail metadata load on demand.
 - [x] Keyboard, touch, dialog focus and reduced-motion behavior exist.
 - [x] Netlify configuration selects Node 22 and the NASA dataset.
@@ -19,7 +19,7 @@
 
 - [x] Resolve all 15 records originally listed in `reports/media-review.json`.
 - [x] Exclude records whose third-party rights or editorial relevance cannot be confirmed.
-- [x] Automate source, credit, HTTPS media and rights-state checks across all 500 records.
+- [x] Automate source, credit, HTTPS media and rights-state checks across all 1,000 records.
 - [x] Confirm the independent, educational and non-commercial disclaimer.
 - [x] Verify that no NASA logo or wording implies affiliation or endorsement.
 
@@ -63,7 +63,7 @@ Required production files must be committed, including `public/datasets/nasa`. B
 ### Functional
 
 - [ ] Category and text filtering return accurate counts.
-- [ ] All 500 records are reachable through canvas, keyboard and Index pages.
+- [ ] All 1,000 records are reachable through canvas, keyboard and Index pages.
 - [ ] Direct `?object=<slug>` links open and close correctly.
 - [ ] Previous/Next follows the current filter.
 - [ ] Metadata and HD retry controls work.
@@ -111,7 +111,7 @@ npm run preview
 
 The first public version is ready only when:
 
-1. the automated 500-record media audit passes with no publication blockers;
+1. the automated 1,000-record media audit passes with no publication blockers;
 2. production URLs and identity links are real;
 3. desktop/mobile, keyboard and reduced-motion checks pass;
 4. the Netlify deploy preview has no console or missing-resource errors;

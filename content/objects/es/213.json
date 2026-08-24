@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA09108",
+  "slug": "eagle-nebula-flaunts-its-infrared-feathers",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "La apariencia de la Nebulosa del Águila cambia entre varias bandas infrarrojas registradas por Spitzer.",
+  "observe": [
+    "Compara qué regiones se iluminan o retroceden entre las vistas infrarrojas.",
+    "Busca rasgos que persistan aunque cambie la asignación de colores."
+  ],
+  "explanation": "La fuente presenta la nebulosa en diferentes matices de luz infrarroja y recalca que cada vista contiene información distinta.",
+  "colorMethod": "Los colores visibles de la pantalla distinguen combinaciones de longitudes de onda infrarrojas; no son los colores de la nebulosa a simple vista.",
+  "whyItMatters": "El infrarrojo no ofrece una sola vista uniforme. Seleccionar bandas cambia qué estructuras y materiales resultan más fáciles de leer.",
+  "relatedNasaIds": ["PIA23646", "PIA09109"],
+  "sources": [
+    {
+      "label": "NASA Image Library — PIA09108",
+      "url": "https://images.nasa.gov/details/PIA09108"
+    }
+  ],
+  "approvedBy": "DG"
+}
