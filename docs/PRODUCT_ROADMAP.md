@@ -1,5 +1,7 @@
 # Product roadmap — DEEP / 500
 
+The product strategy, primary audience, validation slice and MVP boundary are defined in [`PRODUCT_DEFINITION.md`](PRODUCT_DEFINITION.md). This roadmap describes the intended release sequence.
+
 ## Product promise
 
 DEEP / 500 should evolve from a visual experiment into a free tool for learning how to observe and understand astronomical imagery.

@@ -122,6 +122,7 @@ The project does not use NASA branding as its own identity and does not imply af
 - [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 - [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md)
 - [`docs/PRODUCT_ROADMAP.md`](docs/PRODUCT_ROADMAP.md)
+- [`docs/PRODUCT_DEFINITION.md`](docs/PRODUCT_DEFINITION.md)
 - [`docs/RELEASE_V1_CHECKLIST.md`](docs/RELEASE_V1_CHECKLIST.md)
 - [`docs/LOCAL_DEVELOPMENT.md`](docs/LOCAL_DEVELOPMENT.md)
 - [`AGENTS.md`](AGENTS.md) — implementation rules/context for coding agents
