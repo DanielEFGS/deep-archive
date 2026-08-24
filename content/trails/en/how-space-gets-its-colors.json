@@ -8,18 +8,18 @@
   "learningObjective": "By the end of the Trail, a visitor should be able to distinguish visible color, mapped wavelength color, multi-observatory composites and inferred data overlays without treating any of them as less truthful.",
   "estimatedMinutes": 12,
   "steps": [
-    { "catalogId": 1, "chapter": "Color can be data", "prompt": "Is every color in an astronomical image captured as light?" },
-    { "catalogId": 96, "chapter": "Beyond the eye", "prompt": "What changes when the detector receives ultraviolet instead of visible light?" },
-    { "catalogId": 84, "chapter": "Looking through dust", "prompt": "Which structures appear or disappear between visible and infrared views?" },
-    { "catalogId": 213, "chapter": "Infrared is a spectrum", "prompt": "Why can one nebula have several different infrared portraits?" },
-    { "catalogId": 216, "chapter": "Two bands, three colors", "prompt": "What does white mean when red and blue are data channels?" },
-    { "catalogId": 199, "chapter": "Dark does not mean empty", "prompt": "What is hidden inside the visible-light dust lanes?" },
-    { "catalogId": 55, "chapter": "Combining observatories", "prompt": "What can two instruments contribute to one shared frame?" },
-    { "catalogId": 209, "chapter": "Reading a color key", "prompt": "Can you separate X-ray structure from infrared structure before reading the caption?" },
-    { "catalogId": 71, "chapter": "Three telescopes, one region", "prompt": "Where do X-ray, optical and infrared observations overlap?" },
-    { "catalogId": 212, "chapter": "Color as wavelength", "prompt": "How does the image encode four infrared wavelength ranges?" },
-    { "catalogId": 158, "chapter": "False color, true measurement", "prompt": "What does false color actually claim—and what does it not claim?" },
-    { "catalogId": 178, "chapter": "A spectrum assembled", "prompt": "How many physical stories can one composite hold without becoming one literal view?" }
+    { "nasaId": "PIA26702", "chapter": "Color can be data", "prompt": "Is every color in an astronomical image captured as light?" },
+    { "nasaId": "PIA07909", "chapter": "Beyond the eye", "prompt": "What changes when the detector receives ultraviolet instead of visible light?" },
+    { "nasaId": "PIA09109", "chapter": "Looking through dust", "prompt": "Which structures appear or disappear between visible and infrared views?" },
+    { "nasaId": "PIA09108", "chapter": "Infrared is a spectrum", "prompt": "Why can one nebula have several different infrared portraits?" },
+    { "nasaId": "PIA23646", "chapter": "Two bands, three colors", "prompt": "What does white mean when red and blue are data channels?" },
+    { "nasaId": "PIA07225", "chapter": "Dark does not mean empty", "prompt": "What is hidden inside the visible-light dust lanes?" },
+    { "nasaId": "PIA17563", "chapter": "Combining observatories", "prompt": "What can two instruments contribute to one shared frame?" },
+    { "nasaId": "PIA14731", "chapter": "Reading a color key", "prompt": "Can you separate X-ray structure from infrared structure before reading the caption?" },
+    { "nasaId": "PIA14415", "chapter": "Three telescopes, one region", "prompt": "Where do X-ray, optical and infrared observations overlap?" },
+    { "nasaId": "PIA23409", "chapter": "Color as wavelength", "prompt": "How does the image encode four infrared wavelength ranges?" },
+    { "nasaId": "PIA02587", "chapter": "False color, true measurement", "prompt": "What does false color actually claim—and what does it not claim?" },
+    { "nasaId": "GSFC_20171208_Archive_e000054", "chapter": "A spectrum assembled", "prompt": "How many physical stories can one composite hold without becoming one literal view?" }
   ],
   "approvedBy": "DG"
 }

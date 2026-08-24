@@ -1,6 +1,5 @@
 {
   "schemaVersion": 1,
-  "catalogId": 199,
   "nasaId": "PIA07225",
   "slug": "new-views-of-a-familiar-beauty",
   "locale": "en",
@@ -10,7 +9,7 @@
   "explanation": "Spitzer's infrared observations reveal star-forming activity in regions that appear as dark lanes in the visible-light view.",
   "colorMethod": "The source identifies the Spitzer panels as false-color infrared views placed beside a visible-light image.",
   "whyItMatters": "The comparison shows why darkness in one wavelength does not mean absence of activity.",
-  "relatedIds": [84, 213],
+  "relatedNasaIds": ["PIA09109", "PIA09108"],
   "sources": [{ "label": "NASA Image Library — PIA07225", "url": "https://images.nasa.gov/details/PIA07225" }],
   "approvedBy": "DG"
 }

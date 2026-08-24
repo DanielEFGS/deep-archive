@@ -24,7 +24,7 @@ Every real catalog record should retain a link to its original NASA Image and Vi
 
 ## Real NASA pilot review
 
-The current build preserves individual source URLs and supplied credits for all 500 records. Fifteen records contain explicit rights/copyright signals and are listed in `reports/media-review.json`; this queue requires human review before publication. Curatorial inclusion is not rights clearance.
+The current build preserves individual source URLs and supplied credits for all 500 records. The initial 15-record rights queue was resolved through documented inclusion decisions for three records explicitly marked Public and exclusion of twelve ambiguous or non-editorial records. `npm run audit:media` now checks all 500 generated records and fails the production build when a source, credit, HTTPS media URL or rights decision is incomplete. This is a publication-risk control, not legal clearance.
 
 ## References
 

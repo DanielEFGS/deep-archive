@@ -32,9 +32,9 @@ NASA_DOWNLOAD_FULL=1
 9. Write one lightweight index record per item.
 10. Group detail metadata into content-hashed shards of approximately 50 records.
 11. Optionally download and optimize local 1600×1200 detail images.
-12. Run `npm run check:catalog`.
+12. Run `npm run check:catalog` and `npm run audit:media`.
 13. Remove obsolete detail JSON from previous builds.
-14. Manually review media credits and rights flags before publishing.
+14. Manually review any media audit blockers before publishing.
 
 ## Caching
 
@@ -44,7 +44,7 @@ Repeated catalog builds reuse `.cache/nasa` and therefore avoid unnecessarily re
 
 The NASA catalog contains 500 records after automated rejection, deduplication and explicit editorial overrides. `data/nasa-curation.json` records include/exclude decisions, category/title overrides, featured status, notes and normalized focal points. Cropping computes a clamped 4:3 extraction around `[x, y]`, then resizes to 192×144 without distortion. Cached API JSON, manifests and previews permit offline atlas rebuilds after the first successful collection.
 
-The catalog emits ten shards of fifty records and `reports/media-review.json`. Automated search is discovery only; the manifest is the durable editorial layer.
+The catalog emits ten shards of fifty records, `reports/media-review.json` and `reports/media-audit.json`. Automated search is discovery only; the manifest is the durable editorial layer. The audit fails production builds when a record lacks a supplied credit, an HTTPS NASA source/media URL, or a resolved rights decision. It also reports opaque or administrative records for editorial review.
 
 ## Curation
 
@@ -62,4 +62,4 @@ The eventual production workflow should add an explicit curated NASA ID manifest
 
 Learning content lives separately from the gallery catalog under `content/objects/<locale>/` and `content/trails/<locale>/`. This prevents the editorial layer from increasing the initial atlas or index payload. `npm run check:editorial` verifies schema version, catalog identity, locale, source URLs, DG approval, Trail references and rights-review state against the generated NASA detail shards.
 
-The first source-checked pilot is `content/trails/en/how-space-gets-its-colors.json`. Its twelve object records form a closed editorial subset, so every related-object link remains inside the pilot. During `prebuild`, `npm run editorial:build` copies the validated records into `public/editorial/` and writes a small delivery manifest. Vite then publishes them as independent static files: they are available on demand but are not requested or included in the initial client bundle.
+The first source-checked pilot is `content/trails/en/how-space-gets-its-colors.json`. Its twelve object records form a closed editorial subset, so every related-object link remains inside the pilot. Source content refers to stable NASA IDs; the editorial build resolves those identities to the current numeric catalog IDs after every regeneration. During `prebuild`, `npm run editorial:build` copies the validated records into `public/editorial/` and writes a small delivery manifest. Vite then publishes them as independent static files: they are available on demand but are not requested or included in the initial client bundle.

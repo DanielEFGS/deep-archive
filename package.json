@@ -13,8 +13,9 @@
     "check:catalog": "node scripts/check-catalog.mjs",
     "check:catalog:nasa": "node scripts/check-catalog.mjs --dataset=nasa",
     "check:editorial": "node scripts/check-editorial.mjs",
+    "audit:media": "node scripts/audit-media.mjs",
     "editorial:build": "node scripts/build-editorial.mjs",
-    "prebuild": "npm run check:catalog && npm run check:editorial && npm run editorial:build"
+    "prebuild": "npm run check:catalog && npm run audit:media && npm run check:editorial && npm run editorial:build"
   },
   "dependencies": {
     "react": "19.2.8",

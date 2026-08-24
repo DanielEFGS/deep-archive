@@ -1,6 +1,5 @@
 {
   "schemaVersion": 1,
-  "catalogId": 158,
   "nasaId": "PIA02587",
   "slug": "a-shocking-surprise-in-stephan-quintet",
   "locale": "en",
@@ -10,7 +9,7 @@
   "explanation": "The composite combines Spitzer Space Telescope data with observations from a ground-based telescope in Spain.",
   "colorMethod": "False color assigns visible colors to selected data so that structures or measurements can be distinguished.",
   "whyItMatters": "The phrase false color does not mean false information; it means the display color is an interpretive mapping that must be read with its legend.",
-  "relatedIds": [1, 178],
+  "relatedNasaIds": ["PIA26702", "GSFC_20171208_Archive_e000054"],
   "sources": [{ "label": "NASA Image Library — PIA02587", "url": "https://images.nasa.gov/details/PIA02587" }],
   "approvedBy": "DG"
 }

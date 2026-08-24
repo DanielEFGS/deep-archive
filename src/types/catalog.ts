@@ -21,6 +21,8 @@ export type CatalogItem = {
   featured?: boolean;
   focalPoint?: [number, number];
   rightsNote?: string;
+  rightsStatus?: 'not-flagged' | 'pending' | 'approved';
+  rightsReviewNote?: string;
   reviewRequired?: boolean;
 };
 

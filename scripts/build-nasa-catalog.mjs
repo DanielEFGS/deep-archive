@@ -47,7 +47,7 @@ const QUERIES = [
   { query: 'astronomical observation', category: 'DEEP SPACE', weight: .20 },
 ];
 
-const REJECT_PATTERN = /\b(logo|insignia|poster|brochure|infographic|chart|graph|diagram|illustration|concept art|artist'?s? concept|press conference|portrait|headshot|award|meeting|classroom|building|facility|crew photo|patch|history of|montage|mirrors?|revealed|hangout|animation|engineering model|technician)\b/i;
+const REJECT_PATTERN = /\b(logo|insignia|poster|brochure|infographic|chart|graph|diagram|illustration|concept art|artist'?s? concept|press conference|portrait|headshot|awards?|ceremony|competition|administrator|meeting|classroom|museum|building|facility|setup|activities|crew photo|patch|history of|montage|mirrors?|revealed|hangout|animation|engineering model|technician|measurement system|facility testing|containerized server|baseball game|public event)\b/i;
 
 function titleFingerprint(value) {
   return clean(value).toLowerCase().replace(/\b(nasa|hubble|webb|space telescope|image|view|sees?|spies|peers? at|of the|the|a|an)\b/g, '').replace(/[^a-z0-9]/g, '');
@@ -177,13 +177,19 @@ function clean(value) {
   return typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : '';
 }
 
-function rightsFromMetadata(metadata) {
+function rightsFromMetadata(metadata, override) {
   const note = [
     metadata?.['AVAIL:Copyright'],
     metadata?.['IPTC:CopyrightNotice'],
     metadata?.['XMP:Rights'],
   ].map(clean).filter(Boolean).join(' / ');
-  return { rightsNote: note || undefined, reviewRequired: Boolean(note) };
+  const approved = override?.rightsStatus === 'approved';
+  return {
+    rightsNote: note || undefined,
+    rightsStatus: approved ? 'approved' : note ? 'pending' : 'not-flagged',
+    rightsReviewNote: approved ? clean(override.rightsNote) : undefined,
+    reviewRequired: Boolean(note) && !approved,
+  };
 }
 
 function pickCredit(data, metadata) {
@@ -247,11 +253,12 @@ async function chooseFullAsset(nasaId) {
   try {
     const manifest = await fetchJson(`${API}/asset/${encodeURIComponent(nasaId)}`);
     const hrefs = (manifest?.collection?.items ?? []).map((item) => item.href).filter(Boolean);
-    return hrefs.find((href) => /~medium\./i.test(href))
+    const selected = hrefs.find((href) => /~medium\./i.test(href))
       || hrefs.find((href) => /~large\./i.test(href))
       || hrefs.find((href) => /~orig\./i.test(href))
       || hrefs.find((href) => /\.(jpg|jpeg|png|webp)$/i.test(href))
       || null;
+    return selected?.replace(/^http:\/\//i, 'https://') ?? null;
   } catch {
     return null;
   }
@@ -293,7 +300,7 @@ const processed = await mapLimit(searchResults, CONCURRENCY, async (entry, index
       }
   }
 
-  const rights = rightsFromMetadata(metadata);
+  const rights = rightsFromMetadata(metadata, override);
   const science = inferScienceFields(data);
   return {
     thumb,

@@ -1,6 +1,5 @@
 {
   "schemaVersion": 1,
-  "catalogId": 178,
   "nasaId": "GSFC_20171208_Archive_e000054",
   "slug": "observatories-combine-to-crack-open-the-crab-nebula",
   "locale": "en",
@@ -10,7 +9,7 @@
   "explanation": "The composite combines radio, infrared, visible, ultraviolet and X-ray observations from the VLA, Spitzer, Hubble, XMM-Newton and Chandra.",
   "colorMethod": "The source maps radio to red, infrared to yellow, visible light to green, ultraviolet to blue and X-rays to purple.",
   "whyItMatters": "The final image demonstrates why astronomical color is often a compact coordinate system for wavelength and physical process.",
-  "relatedIds": [55, 71],
+  "relatedNasaIds": ["PIA17563", "PIA14415"],
   "sources": [{ "label": "NASA Image Library — GSFC archive e000054", "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000054" }],
   "approvedBy": "DG"
 }

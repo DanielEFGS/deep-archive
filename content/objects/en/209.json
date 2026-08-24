@@ -1,6 +1,5 @@
 {
   "schemaVersion": 1,
-  "catalogId": 209,
   "nasaId": "PIA14731",
   "slug": "the-pacman-nebula",
   "locale": "en",
@@ -10,7 +9,7 @@
   "explanation": "The source combines Chandra X-ray data with Spitzer infrared observations of the star cluster and nebula.",
   "colorMethod": "X-rays are mapped to purple; Spitzer infrared observations are mapped across red, green and blue.",
   "whyItMatters": "A composite can compare different energy regimes without forcing them into separate images.",
-  "relatedIds": [71, 212],
+  "relatedNasaIds": ["PIA14415", "PIA23409"],
   "sources": [{ "label": "NASA Image Library — PIA14731", "url": "https://images.nasa.gov/details/PIA14731" }],
   "approvedBy": "DG"
 }

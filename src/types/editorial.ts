@@ -24,6 +24,7 @@ export type EducationalContent = {
 
 export type TrailStep = {
   catalogId: number;
+  nasaId: string;
   chapter: string;
   prompt: string;
 };

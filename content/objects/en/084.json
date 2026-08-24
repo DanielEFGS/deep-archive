@@ -1,6 +1,5 @@
 {
   "schemaVersion": 1,
-  "catalogId": 84,
   "nasaId": "PIA09109",
   "slug": "unwrapping-the-pillars",
   "locale": "en",
@@ -10,7 +9,7 @@
   "explanation": "Different wavelength ranges interact differently with the dust in the nebula, so the same region does not reveal the same structure in every view.",
   "colorMethod": "The composite places infrared and visible-light views together for comparison; the panels do not represent one uniform visible-color exposure.",
   "whyItMatters": "Changing wavelength can reveal information hidden in a familiar visible-light image.",
-  "relatedIds": [199, 213],
+  "relatedNasaIds": ["PIA07225", "PIA09108"],
   "sources": [{ "label": "NASA Image Library — PIA09109", "url": "https://images.nasa.gov/details/PIA09109" }],
   "approvedBy": "DG"
 }

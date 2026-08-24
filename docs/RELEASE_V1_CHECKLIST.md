@@ -11,37 +11,35 @@
 - [x] SPA fallback and immutable asset caching are configured.
 - [x] Base SEO, robots, favicon, social metadata and JSON-LD exist.
 - [x] Git repository initialized and private remote created: `DanielEFGS/deep-archive`.
-- [ ] Production domain selected.
-- [ ] Canonical and absolute social URLs configured.
-- [ ] Production social preview converted to PNG/JPG and tested.
+- [x] Current Netlify production URL accepted provisionally: `deeparchive-dg.netlify.app`.
+- [x] Canonical and absolute social URLs configured.
+- [x] Production social preview converted to a 1200×630 PNG.
 
 ## Blocking editorial and legal work
 
-- [ ] Review all 15 records listed in `reports/media-review.json`.
-- [ ] Exclude any record whose third-party rights cannot be confirmed.
-- [ ] Verify that each published record retains its original source and supplied credit.
-- [ ] Confirm the independent, educational and non-commercial disclaimer.
-- [ ] Verify that no NASA logo or wording implies affiliation or endorsement.
+- [x] Resolve all 15 records originally listed in `reports/media-review.json`.
+- [x] Exclude records whose third-party rights or editorial relevance cannot be confirmed.
+- [x] Automate source, credit, HTTPS media and rights-state checks across all 500 records.
+- [x] Confirm the independent, educational and non-commercial disclaimer.
+- [x] Verify that no NASA logo or wording implies affiliation or endorsement.
 
-Rights review is a publication gate. Passing `check:catalog:nasa` with warnings does not clear those assets.
+Rights review remains a publication gate. `npm run audit:media` now enforces the resolved state on every production build; it is a risk control rather than legal clearance.
 
 ## Identity and links
 
-- [ ] Set `VITE_GITHUB_URL`.
-- [ ] Set `VITE_LINKEDIN_URL`.
-- [ ] Set `VITE_PORTFOLIO_URL`.
-- [ ] Confirm the final DG signature text.
-- [ ] Confirm contact method, if one should be public.
+- [x] Configure GitHub and LinkedIn links with production fallbacks.
+- [x] Confirm the DG signature text.
+- [x] Use GitHub and LinkedIn as the public contact methods; portfolio/email are not required for v1.
 
 Use `.env.example` locally and configure production values in Netlify environment variables. Never commit `.env.local`.
 
 ## SEO and sharing
 
-- [ ] Register the final custom domain or accept the permanent Netlify domain.
-- [ ] Add an absolute canonical URL.
-- [ ] Add absolute `og:url`, `og:image` and Twitter image URLs.
-- [ ] Produce a 1200×630 PNG/JPG social image.
-- [ ] Generate `sitemap.xml` after the final domain is known.
+- [x] Accept the current Netlify domain for v1; a custom domain may be added later.
+- [x] Add an absolute canonical URL.
+- [x] Add absolute `og:url`, `og:image` and Twitter image URLs.
+- [x] Produce a 1200×630 PNG social image.
+- [x] Generate `sitemap.xml` for the current production URL.
 - [ ] Test previews with LinkedIn Post Inspector and other intended networks.
 - [ ] Add a useful static 404 page.
 
@@ -51,7 +49,7 @@ The initial SPA can launch with site-level SEO. Object-level search visibility b
 
 1. Push the repository to GitHub.
 2. Import the repository in Netlify.
-3. Confirm build command: `npm run check:catalog:nasa && npm run build`.
+3. Confirm build command: `npm run check:catalog:nasa && npm run audit:media && npm run build`.
 4. Confirm publish directory: `dist`.
 5. Add personal-link environment variables.
 6. Deploy a preview.
@@ -104,6 +102,7 @@ Required production files must be committed, including `public/datasets/nasa`. B
 ```bash
 npm install
 npm run check:catalog:nasa
+npm run audit:media
 npm run build
 npm run preview
 ```
@@ -112,7 +111,7 @@ npm run preview
 
 The first public version is ready only when:
 
-1. the 15-item rights queue has been resolved;
+1. the automated 500-record media audit passes with no publication blockers;
 2. production URLs and identity links are real;
 3. desktop/mobile, keyboard and reduced-motion checks pass;
 4. the Netlify deploy preview has no console or missing-resource errors;

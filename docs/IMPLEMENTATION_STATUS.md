@@ -58,6 +58,8 @@
 - rights-review flags when source metadata contains explicit copyright fields
 - category-balanced NASA discovery quotas and automated rejection of common non-editorial results
 - editorial object/Trail schema, source files, delivery builder and catalog/rights validator
+- automated 500-record publication audit for credits, source/media hosts and unresolved rights state
+- stable NASA-ID editorial references that survive catalog regeneration
 
 ## Validation performed here
 
@@ -86,13 +88,12 @@ The current environment did not expose the in-app browser runtime, so the Trail 
 - velocity-sensitive lens dispersion with clamped, smoothed pointer input;
 - progressive HD fallback and retry over the atlas placeholder.
 
-Administrative events, crew portraits, diagrams, historical series and telescope assembly documentation were rejected. Final mobile/Safari/Lighthouse measurements and manual rights clearance remain pending.
+Administrative events, crew portraits, diagrams, historical series and unrelated technical documentation were rejected. The explicit rights-review queue and automated 500-record media audit now pass with zero blockers and zero editorial spot checks. Final mobile/Safari/Lighthouse measurements remain pending.
 
 ## Next production milestone
 
 - run the real NASA builder and freeze an approved NASA ID manifest;
-- curate the 500 IDs manually;
-- review credits/rights flags;
+- continue visual curation as the catalog evolves;
 - profile real atlas quality/weight;
 - adjust thumbnail dimensions/compression from measured results;
 - add automated Lighthouse/performance-budget checks in CI.
