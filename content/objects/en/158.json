@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 158,
+  "nasaId": "PIA02587",
+  "slug": "a-shocking-surprise-in-stephan-quintet",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "This view of Stephan's Quintet is explicitly described by its source as a false-color composite.",
+  "observe": ["Treat each color as part of a visual key rather than immediate proof of visible appearance.", "Look for boundaries where one data layer becomes dominant."],
+  "explanation": "The composite combines Spitzer Space Telescope data with observations from a ground-based telescope in Spain.",
+  "colorMethod": "False color assigns visible colors to selected data so that structures or measurements can be distinguished.",
+  "whyItMatters": "The phrase false color does not mean false information; it means the display color is an interpretive mapping that must be read with its legend.",
+  "relatedIds": [1, 178],
+  "sources": [{ "label": "NASA Image Library — PIA02587", "url": "https://images.nasa.gov/details/PIA02587" }],
+  "approvedBy": "DG"
+}

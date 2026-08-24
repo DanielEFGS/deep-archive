@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 96,
+  "nasaId": "PIA07909",
+  "slug": "face-on-barred-and-ringed-spiral-galaxy-ngc-3351",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "NGC 3351 is placed side by side in ultraviolet and visible light.",
+  "observe": ["Compare which parts of the ring and spiral structure become prominent in each half.", "Do not treat the ultraviolet panel as a color the unaided eye could see."],
+  "explanation": "The Galaxy Evolution Explorer recorded ultraviolet light, while the companion view shows the galaxy in visible light.",
+  "colorMethod": "The ultraviolet data is translated into visible display colors so that an otherwise invisible wavelength range can be examined.",
+  "whyItMatters": "A wavelength comparison shows that an object's appearance depends on what the detector is built to receive.",
+  "relatedIds": [84, 158],
+  "sources": [{ "label": "NASA Image Library — PIA07909", "url": "https://images.nasa.gov/details/PIA07909" }],
+  "approvedBy": "DG"
+}

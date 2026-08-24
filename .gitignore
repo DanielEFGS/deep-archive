@@ -5,6 +5,7 @@ dist/
 *.log
 *.tsbuildinfo
 .impeccable/
+public/editorial/
 .env
 .env.*
 !.env.example

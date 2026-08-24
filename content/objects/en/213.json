@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 213,
+  "nasaId": "PIA09108",
+  "slug": "eagle-nebula-flaunts-its-infrared-feathers",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "The Eagle Nebula changes appearance across multiple infrared bands recorded by Spitzer.",
+  "observe": ["Compare which regions brighten or recede between the infrared views.", "Look for features that persist even as the color mapping changes."],
+  "explanation": "The source presents the nebula in different hues of infrared light and emphasizes that each view carries different information.",
+  "colorMethod": "Visible display colors distinguish infrared wavelength combinations; they are not the unaided-eye colors of the nebula.",
+  "whyItMatters": "Infrared is not one uniform view. Selecting bands changes which structures and materials become easiest to read.",
+  "relatedIds": [216, 84],
+  "sources": [{ "label": "NASA Image Library — PIA09108", "url": "https://images.nasa.gov/details/PIA09108" }],
+  "approvedBy": "DG"
+}

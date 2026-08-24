@@ -57,3 +57,9 @@ Discovery uses category quotas to avoid filling the catalog with the first broad
 - images that weaken the visual consistency of the archive.
 
 The eventual production workflow should add an explicit curated NASA ID manifest so builds are fully deterministic. Detail records also infer common telescope/mission/instrument fields from supplied NASA text when that evidence is present.
+
+## Editorial content
+
+Learning content lives separately from the gallery catalog under `content/objects/<locale>/` and `content/trails/<locale>/`. This prevents the editorial layer from increasing the initial atlas or index payload. `npm run check:editorial` verifies schema version, catalog identity, locale, source URLs, DG approval, Trail references and rights-review state against the generated NASA detail shards.
+
+The first source-checked pilot is `content/trails/en/how-space-gets-its-colors.json`. Its twelve object records form a closed editorial subset, so every related-object link remains inside the pilot. During `prebuild`, `npm run editorial:build` copies the validated records into `public/editorial/` and writes a small delivery manifest. Vite then publishes them as independent static files: they are available on demand but are not requested or included in the initial client bundle.

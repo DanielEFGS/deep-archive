@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 55,
+  "nasaId": "PIA17563",
+  "slug": "crab-nebula-as-seen-by-herschel-and-hubble",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "Two observatories contribute to this composite view of the Crab Nebula, a supernova remnant in the Milky Way.",
+  "observe": ["Look for structures that appear to belong to different visual layers.", "Compare this restrained combination with the five-observatory Crab view later in the Trail."],
+  "explanation": "The record combines observations from the Herschel Space Observatory and the Hubble Space Telescope rather than presenting a single exposure.",
+  "colorMethod": "The source identifies the image as a Herschel–Hubble composite. Its colors should be read as a combined scientific view, not assumed to be a naked-eye scene.",
+  "whyItMatters": "Combining instruments can place different physical structures into one frame while preserving their relationship in space.",
+  "relatedIds": [178, 71],
+  "sources": [{ "label": "NASA Image Library — PIA17563", "url": "https://images.nasa.gov/details/PIA17563" }],
+  "approvedBy": "DG"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 212,
+  "nasaId": "PIA23409",
+  "slug": "sofia-reveals-how-the-swan-nebula-hatched",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "The Omega Nebula is organized by four infrared wavelength ranges gathered by SOFIA, Herschel and Spitzer.",
+  "observe": ["Follow blue and green near the center before moving toward the red edge.", "Notice the white stellar field behind the colored material."],
+  "explanation": "The mapped wavelengths distinguish heated gas, warmed dust, colder dust and the stellar field in one composite.",
+  "colorMethod": "Blue represents SOFIA observations at 20 microns, green 37 microns, red Herschel observations at 70 microns and white Spitzer observations at 3.6 microns.",
+  "whyItMatters": "Color can make several invisible infrared bands legible at once while preserving where their signals occur.",
+  "relatedIds": [216, 209],
+  "sources": [{ "label": "NASA Image Library — PIA23409", "url": "https://images.nasa.gov/details/PIA23409" }],
+  "approvedBy": "DG"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 84,
+  "nasaId": "PIA09109",
+  "slug": "unwrapping-the-pillars",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "The Eagle Nebula is shown through infrared observations from Spitzer and visible-light observations from Hubble.",
+  "observe": ["Compare the apparent density of the pillars in visible and infrared light.", "Look for stars or structures that become easier to distinguish in one view."],
+  "explanation": "Different wavelength ranges interact differently with the dust in the nebula, so the same region does not reveal the same structure in every view.",
+  "colorMethod": "The composite places infrared and visible-light views together for comparison; the panels do not represent one uniform visible-color exposure.",
+  "whyItMatters": "Changing wavelength can reveal information hidden in a familiar visible-light image.",
+  "relatedIds": [199, 213],
+  "sources": [{ "label": "NASA Image Library — PIA09109", "url": "https://images.nasa.gov/details/PIA09109" }],
+  "approvedBy": "DG"
+}

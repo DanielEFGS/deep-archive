@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 199,
+  "nasaId": "PIA07225",
+  "slug": "new-views-of-a-familiar-beauty",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "Visible and infrared panels turn the Trifid Nebula into a direct comparison of what dust conceals and reveals.",
+  "observe": ["Find the dark dust lanes in the visible panel.", "Then find the bright star-forming regions occupying corresponding areas in the infrared panels."],
+  "explanation": "Spitzer's infrared observations reveal star-forming activity in regions that appear as dark lanes in the visible-light view.",
+  "colorMethod": "The source identifies the Spitzer panels as false-color infrared views placed beside a visible-light image.",
+  "whyItMatters": "The comparison shows why darkness in one wavelength does not mean absence of activity.",
+  "relatedIds": [84, 213],
+  "sources": [{ "label": "NASA Image Library — PIA07225", "url": "https://images.nasa.gov/details/PIA07225" }],
+  "approvedBy": "DG"
+}

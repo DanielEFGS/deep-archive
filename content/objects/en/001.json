@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 1,
+  "nasaId": "PIA26702",
+  "slug": "webb-data-reveals-dark-matter",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "This Webb field combines observed galaxies with a map of something the telescope cannot see directly: dark matter.",
+  "observe": ["Find the blue overlay before looking at individual galaxies.", "Notice that the blue behaves like a map, not like light emitted by the objects."],
+  "explanation": "Researchers inferred the distribution of invisible dark matter from its gravitational effect on the shapes of many background galaxies.",
+  "colorMethod": "Blue is an assigned data layer representing inferred dark-matter density. Brighter blue indicates greater density; it is not the visible color of dark matter.",
+  "whyItMatters": "The image establishes the central rule of the Trail: astronomical color can encode measurement and interpretation as well as visible light.",
+  "relatedIds": [96, 178],
+  "sources": [{ "label": "NASA Image Library — PIA26702", "url": "https://images.nasa.gov/details/PIA26702" }],
+  "approvedBy": "DG"
+}

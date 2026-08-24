@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 71,
+  "nasaId": "PIA14415",
+  "slug": "a-new-view-of-the-tarantula-nebula",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "This view of the Tarantula Nebula assigns three observatories to three color channels.",
+  "observe": ["Separate the blue, green and red structures mentally before reading the legend.", "Notice where two or more colors overlap."],
+  "explanation": "The composite contains X-ray data from Chandra, optical data from Hubble and infrared data from Spitzer.",
+  "colorMethod": "Chandra X-rays are blue, Hubble optical observations are green and Spitzer infrared observations are red.",
+  "whyItMatters": "A shared color legend lets one image compare energetic gas, visible structures and infrared-emitting material.",
+  "relatedIds": [209, 178],
+  "sources": [{ "label": "NASA Image Library — PIA14415", "url": "https://images.nasa.gov/details/PIA14415" }],
+  "approvedBy": "DG"
+}

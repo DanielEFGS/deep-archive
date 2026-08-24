@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "catalogId": 216,
+  "nasaId": "PIA23646",
+  "slug": "tarantula-nebula-spitzer-2-color-image",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "Two infrared wavelengths are translated into color inside a single Spitzer view of the Tarantula Nebula.",
+  "observe": ["Compare the red central region with the surrounding blue structures.", "Find the white areas where both mapped wavelengths are present."],
+  "explanation": "The source links the central red emission to hot gas at 4.5 micrometers and the blue regions to dust containing PAH molecules.",
+  "colorMethod": "Red and blue distinguish two infrared signals; regions emitting both appear white.",
+  "whyItMatters": "Even within infrared light, different bands can trace different materials and conditions.",
+  "relatedIds": [213, 212],
+  "sources": [{ "label": "NASA Image Library — PIA23646", "url": "https://images.nasa.gov/details/PIA23646" }],
+  "approvedBy": "DG"
+}
