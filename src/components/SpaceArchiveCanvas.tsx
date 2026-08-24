@@ -66,6 +66,8 @@ export function SpaceArchiveCanvas({
     }
 
     rendererRef.current = renderer;
+    let activeTouchPointerId: number | null = null;
+    let suppressClickUntil = 0;
 
     const setHover = (index: number | null) => {
       if (hoverRef.current === index) return;
@@ -79,12 +81,46 @@ export function SpaceArchiveCanvas({
       setHover(renderer.getIndexAtPointer(event.clientX, event.clientY));
     };
 
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.pointerType !== 'touch') return;
+      activeTouchPointerId = event.pointerId;
+      canvas.setPointerCapture(event.pointerId);
+      keyboardIndexRef.current = null;
+      renderer.setPointer(event.clientX, event.clientY);
+      setHover(renderer.getIndexAtPointer(event.clientX, event.clientY));
+    };
+
+    const finishTouch = (event: PointerEvent, openFocusedTile: boolean) => {
+      if (event.pointerType !== 'touch' || event.pointerId !== activeTouchPointerId) return;
+      event.preventDefault();
+
+      renderer.setPointer(event.clientX, event.clientY);
+      setHover(renderer.getIndexAtPointer(event.clientX, event.clientY));
+      const index = hoverRef.current;
+      suppressClickUntil = performance.now() + 700;
+
+      if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+      activeTouchPointerId = null;
+      renderer.clearPointer();
+      setHover(null);
+
+      if (openFocusedTile && index != null) {
+        renderer.triggerRipple(event.clientX, event.clientY);
+        callbacksRef.current.onSelectIndex(index);
+      }
+    };
+
+    const onPointerUp = (event: PointerEvent) => finishTouch(event, true);
+    const onPointerCancel = (event: PointerEvent) => finishTouch(event, false);
+
     const onPointerLeave = () => {
+      if (activeTouchPointerId != null) return;
       renderer.clearPointer();
       setHover(null);
     };
 
     const onClick = (event: MouseEvent) => {
+      if (performance.now() < suppressClickUntil) return;
       const index = renderer.getIndexAtPointer(event.clientX, event.clientY);
       if (index == null) return;
       renderer.triggerRipple(event.clientX, event.clientY);
@@ -128,14 +164,20 @@ export function SpaceArchiveCanvas({
       callbacksRef.current.onError();
     };
 
+    canvas.addEventListener('pointerdown', onPointerDown);
     canvas.addEventListener('pointermove', onPointerMove, { passive: true });
+    canvas.addEventListener('pointerup', onPointerUp);
+    canvas.addEventListener('pointercancel', onPointerCancel);
     canvas.addEventListener('pointerleave', onPointerLeave);
     canvas.addEventListener('click', onClick);
     canvas.addEventListener('keydown', onKeyDown);
     canvas.addEventListener('webglcontextlost', onContextLost);
 
     return () => {
+      canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
+      canvas.removeEventListener('pointerup', onPointerUp);
+      canvas.removeEventListener('pointercancel', onPointerCancel);
       canvas.removeEventListener('pointerleave', onPointerLeave);
       canvas.removeEventListener('click', onClick);
       canvas.removeEventListener('keydown', onKeyDown);

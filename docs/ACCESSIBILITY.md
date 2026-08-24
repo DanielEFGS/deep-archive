@@ -21,3 +21,5 @@ Implemented:
 The semantic index exposes all 500 records in pages of forty. Its visible thumbnails reuse the same atlas URL, keeping the alternate route useful without introducing per-record image requests.
 
 Phase 4 adds labelled text search focusable with `/`, shareable object URLs, visible image/metadata retry controls and filter-aware Previous/Next navigation. Search changes GPU interactivity rather than creating dozens of image nodes. Touch uses tap selection and does not require hover metadata to open a record.
+
+Touch exploration uses an explicit pointer lifecycle: press and drag moves the same tile-snapped lens used by pointer hover, and releasing opens the tile focused at that moment. Pointer capture keeps the gesture stable outside the original contact target, cancellation closes without selection, and the synthesized post-touch click is suppressed to prevent duplicate opens.
