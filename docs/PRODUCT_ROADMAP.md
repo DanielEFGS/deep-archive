@@ -25,7 +25,7 @@ The project should not attempt to replace NASA's much larger media search produc
 - Preserve individual sources, credits and rights-review status.
 - Make useful artifacts shareable without requiring accounts.
 - Start with 30–50 editorially enriched records rather than weakly enriching all 500.
-- Treat Spanish and English as reviewed editorial layers, not automatic replacements for source metadata.
+- Launch in English. Treat future Spanish and Japanese support as separately reviewed editorial layers, not automatic replacements for source metadata.
 
 ## Success signals
 
@@ -129,9 +129,9 @@ Choose one reviewed record deterministically from the UTC date. This requires no
 
 ## Release 4 — Teach
 
-### Progressive ES/EN support
+### Progressive EN/ES/JP support
 
-Translate the interface, trails, glossary and reviewed subset first. Locale must be encoded in the URL and static pages should expose `hreflang` alternates.
+English is the source editorial language. Translate the interface, trails, glossary and reviewed subset into Spanish and Japanese progressively. Locale must be encoded in the URL and static pages should expose `hreflang` alternates.
 
 ### Education mode
 

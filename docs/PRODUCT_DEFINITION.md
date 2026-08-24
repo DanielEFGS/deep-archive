@@ -50,13 +50,13 @@ The learning experience is designed for the primary audience. Technical implemen
 
 ## 5. Product promise
 
-Spanish:
-
-> Un archivo visual interactivo para aprender a observar el universo.
-
-English:
+Initial English promise:
 
 > An interactive visual archive for learning how to read the universe.
+
+Future Spanish adaptation:
+
+> Un archivo visual interactivo para aprender a observar el universo.
 
 Supporting line:
 
@@ -147,10 +147,10 @@ An editorially enriched object should answer five questions:
 Content states should be explicit:
 
 ```text
-source metadata → source-checked draft → editorial review → scientific review → publishable
+official source metadata → source-checked draft → DG editorial approval → publishable
 ```
 
-Until a qualified reviewer is identified, DEEP should use the label **source-checked**, not **scientifically reviewed**.
+The initial release does not have a qualified astronomy reviewer. Explanations must therefore remain closely derived from attributable primary or institutional sources, avoid unsupported interpretation and use the label **source-checked**, never **scientifically reviewed**. DG approves clarity, tone and publication, but that approval is not represented as scientific validation.
 
 ## 11. First validation slice
 
@@ -161,8 +161,8 @@ Before enriching 30–50 records, build a small end-to-end pilot:
 - observation prompt, concise explanation, image-process context and related-object link for each featured object;
 - stable URLs for the Trail and its steps;
 - keyboard, touch and reduced-motion support;
-- English source metadata with a reviewed Spanish editorial layer;
-- aggregate, privacy-conscious measurement only if it can be introduced without accounts or cross-site tracking.
+- English source metadata and editorial content;
+- no behavioral analytics during the pilot.
 
 Recommended first Trail: **How Space Gets Its Colors**. It directly teaches visual literacy, works across multiple object categories and gives DEEP a more distinctive proposition than a conventional object taxonomy.
 
@@ -224,33 +224,34 @@ This is a product hypothesis, not yet a fixed analytics specification.
 1. An observation prompt followed by explanation produces deeper exploration than metadata alone.
 2. A finite curated archive reduces decision fatigue compared with open-ended search.
 3. Trails create a stronger reason to return and share than isolated detail views.
-4. A carefully edited Spanish layer can make credible astronomical visual literacy more accessible and distinctive.
+4. Carefully edited Spanish and Japanese layers can later broaden access without weakening the initial English editorial standard.
 5. Compare and collection tools will have more value after visitors understand the objects they are manipulating.
 
 ## 16. Principal risks
 
 - the visual interaction may overshadow the educational value;
-- scientific review may become the editorial bottleneck;
+- source interpretation may introduce inaccuracies while no qualified scientific reviewer is available;
 - third-party rights may reduce the usable featured subset;
-- bilingual quality may exceed available editorial capacity;
+- multilingual quality may exceed available editorial capacity;
 - the desktop interaction may not translate into an equally legible mobile learning loop;
 - measuring novelty clicks as success may lead the product in the wrong direction.
 
-## 17. Decisions proposed for approval
+## 17. Approved product decisions
 
 1. Use **DEEP** as the permanent product name and **DEEP / 500** as the current edition.
 2. Design primarily for curious non-specialists aged 16+, with educators as the main secondary audience.
 3. Use **How Space Gets Its Colors** as the first Trail.
-4. Produce the pilot editorial layer Spanish-first while preserving English source metadata; add reviewed English editorial copy progressively.
+4. Launch editorial content in English. Treat Spanish and Japanese as planned, separately reviewed localization layers rather than automatic translations.
 5. Target an informed general-reader level, avoiding both specialist shorthand and child-oriented simplification.
 6. Build the 12-object pilot before committing to the 30-record MVP subset.
+7. Attribute the independent project publicly to **DG**. The About view may link to DG's GitHub and LinkedIn profiles; email is not required.
+8. Publish content as **source-checked** under DG's editorial approval. Do not claim scientific review unless a qualified reviewer participates later.
+9. Do not add behavioral analytics to the pilot. Reconsider aggregate, privacy-conscious measurement only when there is a concrete validation question.
 
 ## 18. Decisions still needed
 
-- Who can perform or coordinate scientific review?
-- Should the first public release expose both editorial languages or ship Spanish first?
-- Which privacy-conscious analytics, if any, are acceptable for the validation slice?
-- Should public authorship use **DG**, a full name or both?
 - What evidence will be considered sufficient to proceed from Learn to Compare?
+- Which exact GitHub and LinkedIn profile URLs should appear in About?
+- What review protocol should be added if a qualified astronomy contributor joins later?
 
-Once the proposed decisions are approved, the next product task is to define the first Trail's learning objective and select its 12-object pilot set.
+The next product task is to define the first Trail's learning objective and select its 12-object pilot set.
