@@ -40,6 +40,7 @@ export function SpaceArchiveCanvas({
   const es = locale === "es";
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rendererRef = useRef<ArchiveRenderer | null>(null);
+  const visibleIndicesRef = useRef(visibleIndices);
   const hoverRef = useRef<number | null>(null);
   const keyboardIndexRef = useRef<number | null>(null);
   const callbacksRef = useRef({
@@ -52,6 +53,7 @@ export function SpaceArchiveCanvas({
     onTouchExploringChange,
   });
   const [failed, setFailed] = useState(false);
+  visibleIndicesRef.current = visibleIndices;
 
   callbacksRef.current = {
     onHoverIndex,
@@ -92,6 +94,7 @@ export function SpaceArchiveCanvas({
             callbacksRef.current.onError();
           },
         });
+        renderer.setVisibleIndices(visibleIndicesRef.current);
       } catch (error) {
         if (disposed) return;
         console.error("WebGL initialization failed", error);

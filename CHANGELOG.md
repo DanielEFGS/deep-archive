@@ -25,6 +25,8 @@
 - added a shader-driven exposure while switching atlas sectors: the real 500 WebGL tiles now resolve in a restrained pseudo-random sequence that stays registered to the final mosaic at every viewport size;
 - aligned the complete footer row—DG signature, GitHub/LinkedIn links and independence notice—on one vertical center and normalized line box;
 - made the mobile sector controls retreat while a touch exploration gesture is active, then return smoothly on release; direct taps on the controls remain available;
+- aligned the mobile Trail observation control rail with the close control and made guide collapse request fullscreen landscape orientation on supported portrait touch browsers;
+- replaced the verbose mobile Trail close label with a compact, accessible SVG close control while retaining the keyboard-oriented label on desktop;
 - refined the gallery into a tile-snapped Archive Aperture interaction with aspect-preserving focus, eased transitions and touch preview placement;
 - added touch drag-to-focus and release-to-open behavior with pointer capture and duplicate-click suppression;
 - rebuilt detail and Trail layouts for mobile portrait/landscape, persistent navigation, compact titles/numbers and accessible close controls;
@@ -33,6 +35,8 @@
 
 ### Quality, safety and data
 
+- refined automated NASA categorization so terrestrial observation, mission operations and Solar System records discovered by broad astronomy queries no longer leak into Deep Space;
+- ensured a newly mounted atlas sector receives the active category/search visibility mask immediately, preserving filters across sector changes;
 - added catalog, editorial and media audits to the production build, including HTTPS/source/credit/rights checks;
 - sanitized NASA descriptions by decoding entities and removing embedded HTML, policy links and social boilerplate;
 - added restrictive Netlify security headers, safe dataset-path validation and HTTPS-only external media/source handling;

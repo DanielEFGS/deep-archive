@@ -507,6 +507,9 @@ canvas:focus-visible {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.34);
 }
+.panel-close__icon {
+  display: none;
+}
 
 .detail-panel__visual {
   position: relative;
@@ -2928,6 +2931,29 @@ canvas:focus-visible,
     border-right: 0;
     border-left: 0;
   }
+  .trail-panel .panel-close,
+  .trail-observation-controls {
+    right: 14px;
+  }
+  .trail-panel .panel-close {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    padding: 0;
+    place-items: center;
+  }
+  .trail-panel .panel-close__label {
+    display: none;
+  }
+  .trail-panel .panel-close__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.35;
+    stroke-linecap: square;
+  }
   .trail-backdrop:has(.trail-panel.is-intro) {
     padding-bottom: 0;
   }
@@ -3160,6 +3186,9 @@ canvas:focus-visible,
   .trail-observation-controls {
     right: 10px;
     top: 62px;
+  }
+  .trail-panel .panel-close {
+    right: 10px;
   }
   .trail-panel.is-immersive .observation-grid__finding {
     bottom: 12px;

@@ -24,6 +24,10 @@ type Props = {
   onClose: () => void;
 };
 
+type LockableOrientation = ScreenOrientation & {
+  lock?: (orientation: "landscape") => Promise<void>;
+};
+
 export function TrailPanel({
   trail,
   item,
@@ -46,6 +50,7 @@ export function TrailPanel({
   const panelRef = useRef<HTMLElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const explanationRef = useRef<HTMLDivElement | null>(null);
+  const orientationFullscreenRef = useRef(false);
   const [revealed, setRevealed] = useState(false);
   const [immersive, setImmersive] = useState(false);
   const [guideCollapsed, setGuideCollapsed] = useState(false);
@@ -53,6 +58,30 @@ export function TrailPanel({
   const [imageFailed, setImageFailed] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   useDialogFocus(panelRef, onClose, closeRef);
+
+  const releaseForcedLandscape = () => {
+    const orientation = screen.orientation as LockableOrientation | undefined;
+    orientation?.unlock?.();
+    if (
+      orientationFullscreenRef.current &&
+      document.fullscreenElement === panelRef.current
+    )
+      void document.exitFullscreen().catch(() => undefined);
+    orientationFullscreenRef.current = false;
+  };
+
+  useEffect(
+    () => () => {
+      const orientation = screen.orientation as LockableOrientation | undefined;
+      orientation?.unlock?.();
+      if (
+        orientationFullscreenRef.current &&
+        document.fullscreenElement === panelRef.current
+      )
+        void document.exitFullscreen().catch(() => undefined);
+    },
+    [],
+  );
 
   useEffect(() => {
     setRevealed(false);
@@ -99,6 +128,37 @@ export function TrailPanel({
     });
   };
 
+  const toggleGuide = () => {
+    const nextCollapsed = !guideCollapsed;
+    setGuideCollapsed(nextCollapsed);
+
+    if (!nextCollapsed) {
+      releaseForcedLandscape();
+      return;
+    }
+
+    const portraitTouch =
+      window.matchMedia("(orientation: portrait)").matches &&
+      window.matchMedia("(pointer: coarse)").matches;
+    if (!portraitTouch) return;
+
+    void (async () => {
+      try {
+        if (!document.fullscreenElement && panelRef.current) {
+          await panelRef.current.requestFullscreen();
+          orientationFullscreenRef.current = true;
+        }
+        const orientation = screen.orientation as
+          | LockableOrientation
+          | undefined;
+        await orientation?.lock?.("landscape");
+      } catch {
+        // Orientation locking is a progressive enhancement and is not
+        // supported by every mobile browser.
+      }
+    })();
+  };
+
   const previewStyle = item
     ? {
         backgroundImage: `url(${atlas.url})`,
@@ -133,8 +193,18 @@ export function TrailPanel({
           className="panel-close"
           type="button"
           onClick={onClose}
+          aria-label={es ? "Cerrar recorrido" : "Close Trail"}
         >
-          ESC / {es ? "CERRAR" : "CLOSE"}
+          <span className="panel-close__label">
+            ESC / {es ? "CERRAR" : "CLOSE"}
+          </span>
+          <svg
+            className="panel-close__icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
         </button>
 
         {!trail && loading && (
@@ -269,6 +339,7 @@ export function TrailPanel({
                     }
                     title={es ? "Salir de observación" : "Exit observation"}
                     onClick={() => {
+                      releaseForcedLandscape();
                       setImmersive(false);
                       setGuideCollapsed(false);
                     }}
@@ -300,7 +371,7 @@ export function TrailPanel({
                           : "Collapse guide"
                     }
                     aria-pressed={guideCollapsed}
-                    onClick={() => setGuideCollapsed((value) => !value)}
+                    onClick={toggleGuide}
                   >
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M4 5h16v14H4zM14 5v14" />

@@ -98,6 +98,46 @@ function isEditorialCandidate(data) {
   );
 }
 
+function refineCategory(data, fallbackCategory) {
+  if (fallbackCategory !== "DEEP SPACE") return fallbackCategory;
+
+  const text = [
+    data.title,
+    data.description,
+    data.center,
+    ...(data.keywords ?? []),
+  ]
+    .map(clean)
+    .join(" ")
+    .toLowerCase();
+
+  // Broad NASA searches regularly return operational photography alongside
+  // astronomical observations. Classify the depicted subject, not the query
+  // that happened to discover the record.
+  if (
+    /\b(earth observations?|earth from space|andes|altiplano|arctic|antarctic|greenland|iceland|hurricane|wildfire|forest fire|deforestation)\b/.test(
+      text,
+    )
+  )
+    return "EARTH";
+
+  if (
+    /\b(ksc|jsc|ames research center|armstrong flight research center|crewmen?|crewmembers?|astronaut training|field trip|simulator|prototype|test campaign|launch vehicle|pegasus xl|aircraft|hangar|technician|science team members?)\b/.test(
+      text,
+    )
+  )
+    return "MISSIONS";
+
+  if (
+    /\b(mars|martian|jupiter|saturn|ganymede|mercury|venus|pluto|asteroid|comet|lunar|moon|crater dunes?|roving vehicle)\b/.test(
+      text,
+    )
+  )
+    return "SOLAR SYSTEM";
+
+  return fallbackCategory;
+}
+
 function slugify(value, fallback) {
   return (
     clean(value)
@@ -475,7 +515,8 @@ const processed = await mapLimit(
           cleanDescription(data.description) ||
           cleanDescription(data.description_508) ||
           "No description supplied.",
-        category: clean(override.category) || category,
+        category:
+          clean(override.category) || refineCategory(data, category),
         date: data.date_created?.slice(0, 10),
         year: data.date_created?.slice(0, 4),
         center: clean(data.center),
