@@ -17,8 +17,8 @@ The repository includes `netlify.toml`:
 Copy `.env.example` to `.env.local` for local development, and configure the same values in **Netlify → Site configuration → Environment variables**:
 
 ```bash
-VITE_GITHUB_URL=https://github.com/your-user
-VITE_LINKEDIN_URL=https://www.linkedin.com/in/your-user
+VITE_GITHUB_URL=https://github.com/DanielEFGS
+VITE_LINKEDIN_URL=https://www.linkedin.com/in/daniel-garcia-silva-695086213/
 VITE_PORTFOLIO_URL=https://your-domain.com
 ```
 

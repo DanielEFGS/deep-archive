@@ -244,14 +244,13 @@ This is a product hypothesis, not yet a fixed analytics specification.
 4. Launch editorial content in English. Treat Spanish and Japanese as planned, separately reviewed localization layers rather than automatic translations.
 5. Target an informed general-reader level, avoiding both specialist shorthand and child-oriented simplification.
 6. Build the 12-object pilot before committing to the 30-record MVP subset.
-7. Attribute the independent project publicly to **DG**. The About view may link to DG's GitHub and LinkedIn profiles; email is not required.
+7. Attribute the independent project publicly to **DG**. The About view links to [GitHub](https://github.com/DanielEFGS) and [LinkedIn](https://www.linkedin.com/in/daniel-garcia-silva-695086213/); email is not required.
 8. Publish content as **source-checked** under DG's editorial approval. Do not claim scientific review unless a qualified reviewer participates later.
 9. Do not add behavioral analytics to the pilot. Reconsider aggregate, privacy-conscious measurement only when there is a concrete validation question.
 
 ## 18. Decisions still needed
 
 - What evidence will be considered sufficient to proceed from Learn to Compare?
-- Which exact GitHub and LinkedIn profile URLs should appear in About?
 - What review protocol should be added if a qualified astronomy contributor joins later?
 
 The next product task is to define the first Trail's learning objective and select its 12-object pilot set.
