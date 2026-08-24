@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "STS052-23-022",
+  "slug": "sunrise-earth-limb",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Vista de perfil desde la órbita, la atmósfera terrestre se convierte en un límite luminoso y delgado, en vez de un volumen invisible.",
+  "observe": ["Sigue la franja estrecha entre el primer plano oscuro y el espacio.", "Compara el grosor de la franja con la curva del horizonte."],
+  "explanation": "Una fotografía del transbordador espacial registra el amanecer sobre el limbo terrestre. Mirar lateralmente a través de la atmósfera alarga el recorrido de la luz por sus capas y hace visible el límite.",
+  "colorMethod": "Es una fotografía en luz visible; la dispersión y el largo recorrido por la atmósfera determinan el color cerca del limbo.",
+  "whyItMatters": "Un cambio de punto de vista puede revelar una estructura difícil de percibir desde su interior.",
+  "relatedNasaIds": ["s45-32-014", "GSFC_20171208_Archive_e000100"],
+  "sources": [{ "label": "Biblioteca de imágenes y videos de NASA", "url": "https://images.nasa.gov/details/STS052-23-022" }],
+  "approvedBy": "DG"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA25844",
+  "slug": "southern-dunes",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "Repeated dark forms make this Martian surface readable as a pattern before it becomes readable as a place.",
+  "observe": ["Look for a shared direction across the repeated forms.", "Notice where the pattern changes near larger terrain."],
+  "explanation": "NASA’s 2001 Mars Odyssey spacecraft imaged dunes in the southern highlands of Mars. Their repeated shapes record interactions between loose material, wind and surrounding topography.",
+  "colorMethod": "This is a visible-light THEMIS observation. Its contrast makes the dune field and the shallow remains of an older crater easier to separate.",
+  "whyItMatters": "Texture can suggest a process, but scale and instrument metadata are needed before assigning a location or material.",
+  "relatedNasaIds": ["S43-151-159", "PIA18771"],
+  "sources": [{ "label": "NASA Image and Video Library", "url": "https://images.nasa.gov/details/PIA25844" }],
+  "approvedBy": "DG"
+}

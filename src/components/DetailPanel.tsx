@@ -13,6 +13,12 @@ type Props = {
   metadataError?: boolean;
   position: number;
   total: number;
+  relatedItems?: Array<{
+    item: CatalogItem;
+    atlas: CatalogPayload["atlas"];
+    atlasIndex: number;
+  }>;
+  onSelectRelated?: (id: number) => void;
   onNavigate: (direction: -1 | 1) => void;
   onRetry: () => void;
   onClose: () => void;
@@ -26,6 +32,8 @@ export function DetailPanel({
   metadataError = false,
   position,
   total,
+  relatedItems = [],
+  onSelectRelated,
   onNavigate,
   onRetry,
   onClose,
@@ -249,6 +257,34 @@ export function DetailPanel({
               ? "Este proyecto educativo independiente conserva la fuente y los créditos suministrados con cada recurso. El material de terceros está sujeto a sus respectivos derechos y condiciones de uso."
               : "This independent educational project preserves the source and credit supplied with each media asset. Third-party material remains subject to its respective rights and usage terms."}
           </p>
+
+          {relatedItems.length > 0 && onSelectRelated && (
+            <section className="related-objects" aria-labelledby="related-objects-title">
+              <div className="related-objects__heading">
+                <h2 id="related-objects-title">{es ? "Objetos relacionados" : "Related objects"}</h2>
+                <span>{es ? "POR TEMA E INSTRUMENTO" : "BY SUBJECT AND INSTRUMENT"}</span>
+              </div>
+              <div className="related-objects__rail">
+                {relatedItems.map((related) => (
+                  <button key={related.item.id} type="button" onClick={() => onSelectRelated(related.item.id)}>
+                    <span
+                      className="related-objects__thumb"
+                      aria-hidden="true"
+                      style={{
+                        backgroundImage: `url(${related.atlas.url})`,
+                        backgroundSize: `${related.atlas.columns * 100}% ${related.atlas.rows * 100}%`,
+                        backgroundPosition: atlasPosition(related.atlasIndex, related.atlas.columns, related.atlas.rows),
+                      }}
+                    />
+                    <span className="related-objects__copy">
+                      <strong>{related.item.title}</strong>
+                      <span>{categoryLabel(related.item.category, locale)}</span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </article>
       <nav

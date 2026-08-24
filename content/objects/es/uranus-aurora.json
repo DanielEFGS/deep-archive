@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e000100",
+  "slug": "alien-aurorae-spotted-on-uranus-by-hubble",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Un fenómeno familiar aparece en un mundo desconocido: señales aurorales brillantes cerca de la atmósfera superior de Urano.",
+  "observe": ["Localiza las pequeñas regiones brillantes sobre el disco del planeta.", "Compara su escala y ubicación con el planeta completo."],
+  "explanation": "Observaciones de Hubble detectaron actividad auroral en Urano. Como en la Tierra, la emisión está ligada a partículas energéticas, una atmósfera y un campo magnético planetario, aunque Urano posee una geometría muy diferente.",
+  "colorMethod": "La vista publicada combina observaciones para hacer legibles las señales aurorales y el planeta; es un compuesto analítico, no una única exposición a simple vista.",
+  "whyItMatters": "Un mismo proceso físico general puede producir patrones visuales distintos cuando cambian la atmósfera y el campo magnético del planeta.",
+  "relatedNasaIds": ["s45-32-014", "STS052-23-022"],
+  "sources": [{ "label": "Biblioteca de imágenes y videos de NASA", "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000100" }],
+  "approvedBy": "DG"
+}

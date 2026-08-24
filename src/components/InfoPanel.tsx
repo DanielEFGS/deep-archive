@@ -41,7 +41,7 @@ export function InfoPanel({ catalog, quality, onClose }: Props) {
         </button>
 
         <div className="info-panel__heading">
-          <h2 id="info-title">DEEP / {catalog.items.length || 1000}</h2>
+          <h2 id="info-title">DEEP</h2>
           <p>
             {es
               ? `${catalog.items.length || 1000} registros reunidos en un campo continuo. Recorre primero el archivo como imagen; abre un cuadro cuando quieras conocer su nombre, historia y fuente.`

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "s45-32-014",
+  "slug": "sts-45-earth-observation-of-the-aurora-australis-or-southern-lights",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "From the Space Shuttle, aurora appears as a luminous layer suspended above Earth’s dark horizon.",
+  "observe": ["Separate the curved horizon from the glow above it.", "Look for structure within the luminous band rather than on the surface."],
+  "explanation": "The STS-45 crew photographed the aurora australis from orbit. Aurora is produced high in an atmosphere when energetic particles interact with gases along a planet’s magnetic environment.",
+  "colorMethod": "This photographic view records visible emission from atmospheric gases, shaped by exposure and viewing conditions.",
+  "whyItMatters": "Aurora links a visible atmospheric event to an otherwise invisible magnetic interaction.",
+  "relatedNasaIds": ["GSFC_20171208_Archive_e000100", "STS052-23-022"],
+  "sources": [{ "label": "NASA Image and Video Library", "url": "https://images.nasa.gov/details/s45-32-014" }],
+  "approvedBy": "DG"
+}

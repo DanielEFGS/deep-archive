@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "STS052-23-022",
+  "slug": "sunrise-earth-limb",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "Seen edge-on from orbit, Earth’s atmosphere becomes a thin luminous boundary rather than an invisible volume.",
+  "observe": ["Follow the narrow band between the dark foreground and space.", "Compare the band’s thickness with the curve of the horizon."],
+  "explanation": "A Space Shuttle photograph records sunrise along Earth’s limb. Looking through the atmosphere sideways lengthens the path of light through its layers, making the boundary visible.",
+  "colorMethod": "This is a visible-light photograph; scattering and the long viewing path through the atmosphere shape the color near the limb.",
+  "whyItMatters": "A change in viewpoint can reveal a structure that is difficult to perceive from inside it.",
+  "relatedNasaIds": ["s45-32-014", "GSFC_20171208_Archive_e000100"],
+  "sources": [{ "label": "NASA Image and Video Library", "url": "https://images.nasa.gov/details/STS052-23-022" }],
+  "approvedBy": "DG"
+}

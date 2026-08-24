@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "s45-32-014",
+  "slug": "sts-45-earth-observation-of-the-aurora-australis-or-southern-lights",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Desde el transbordador espacial, la aurora aparece como una capa luminosa suspendida sobre el horizonte oscuro de la Tierra.",
+  "observe": ["Separa el horizonte curvo del resplandor que está sobre él.", "Busca estructura dentro de la franja luminosa, no sobre la superficie."],
+  "explanation": "La tripulación de STS-45 fotografió la aurora austral desde órbita. Una aurora se produce en lo alto de una atmósfera cuando partículas energéticas interactúan con gases dentro del entorno magnético de un planeta.",
+  "colorMethod": "La fotografía registra emisión visible de gases atmosféricos, condicionada por la exposición y las condiciones de observación.",
+  "whyItMatters": "La aurora conecta un fenómeno atmosférico visible con una interacción magnética que no podemos ver directamente.",
+  "relatedNasaIds": ["GSFC_20171208_Archive_e000100", "STS052-23-022"],
+  "sources": [{ "label": "Biblioteca de imágenes y videos de NASA", "url": "https://images.nasa.gov/details/s45-32-014" }],
+  "approvedBy": "DG"
+}

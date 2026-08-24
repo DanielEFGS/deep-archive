@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "S43-151-159",
+  "slug": "andes-altiplano-south-america",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Una fotografía orbital oblicua convierte un enorme paisaje andino en un campo casi abstracto de cordones y cuencas.",
+  "observe": ["Busca las líneas de relieve superpuestas que revelan profundidad.", "Fíjate en lo poco que ofrece la imagen para estimar una escala humana."],
+  "explanation": "Es el Altiplano de los Andes en Sudamérica, fotografiado desde órbita. La perspectiva comprime los relieves distantes y facilita leer la elevación más que el tamaño absoluto.",
+  "colorMethod": "Los colores provienen de luz visible reflejada y registrada fotográficamente; la atmósfera, el ángulo de visión y los materiales de la superficie alteran su apariencia.",
+  "whyItMatters": "Los paisajes planetarios pueden parecer familiares a primera vista. La forma, el contexto y la escala son evidencias más sólidas que el parecido por sí solo.",
+  "relatedNasaIds": ["PIA18771", "PIA25844"],
+  "sources": [{ "label": "Biblioteca de imágenes y videos de NASA", "url": "https://images.nasa.gov/details/S43-151-159" }],
+  "approvedBy": "DG"
+}

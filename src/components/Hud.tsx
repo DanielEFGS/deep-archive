@@ -187,7 +187,6 @@ export function Hud({
             </span>
           )}
         </nav>
-        <span>{text.independent}</span>
       </footer>
     </div>
   );

@@ -37,6 +37,34 @@ React owns application state and accessible UI:
 
 React does **not** receive cursor coordinates every frame.
 
+## Source organization
+
+Runtime code is grouped by responsibility without introducing a framework-specific abstraction layer:
+
+```text
+src/
+  app/          lazy application boundaries
+  components/   reusable visual and accessible UI surfaces
+  config/       dataset and editorial endpoint configuration
+  features/     domain-specific pure logic
+  hooks/        catalog and detail-selection state machines
+  services/     shared transport primitives
+  types/        catalog and editorial contracts
+  utils/        atlas and security utilities
+  webgl/        imperative Three.js renderer
+```
+
+`App.tsx` remains the composition root. Network loading, detail-shard caching, filtering, related-record ranking and optional-panel imports live outside it so they can be tested independently. Feature extraction should remain incremental: components move only when they have a clear domain owner, and WebGL frame state must not migrate into React.
+
+Source-authored editorial JSON remains under `content/`; generated browser delivery assets live under `public/`; build-time generation and audits remain under `scripts/`; durable curation decisions live under `data/`.
+
+## Quality gates
+
+- `npm run lint` performs a fast TypeScript/React static lint with Oxlint.
+- `npm run test` runs bounded Vitest unit tests under `src/` only.
+- `npm run check` combines lint, tests and the full production build.
+- `npm run build` retains the catalog, category, media and editorial prebuild audits before TypeScript and Vite compilation.
+
 ## WebGL responsibilities
 
 `ArchiveRenderer` owns:

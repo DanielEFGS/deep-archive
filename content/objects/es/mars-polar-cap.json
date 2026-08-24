@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA18771",
+  "slug": "at-the-edge-of-a-polar-cap",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "En el borde polar norte de Marte, el terreno estratificado y la escarcha crean límites que pueden recordar a la geología terrestre.",
+  "observe": ["Sigue el límite marcado entre el terreno claro y oscuro.", "Compara las capas amplias con la textura más fina de la superficie."],
+  "explanation": "Mars Reconnaissance Orbiter registró un abismo en el borde del casquete polar norte, donde fuertes vientos descendentes ayudan a llevar sedimento hacia el campo de dunas Olympia Undae.",
+  "colorMethod": "La imagen de la nave fue procesada para hacer legible la estructura superficial; el color debe leerse como dato instrumental, no como una vista a simple vista desde el suelo.",
+  "whyItMatters": "Las formas del terreno no bastan para identificar un mundo. El instrumento, la ubicación y la escala convierten el parecido visual en evidencia.",
+  "relatedNasaIds": ["S43-151-159", "PIA25844"],
+  "sources": [{ "label": "Biblioteca de imágenes y videos de NASA", "url": "https://images.nasa.gov/details/PIA18771" }],
+  "approvedBy": "DG"
+}

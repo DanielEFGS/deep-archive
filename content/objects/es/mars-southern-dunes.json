@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA25844",
+  "slug": "southern-dunes",
+  "locale": "es",
+  "status": "source-checked",
+  "introduction": "Formas oscuras repetidas hacen que esta superficie marciana se lea primero como patrón y luego como lugar.",
+  "observe": ["Busca una dirección compartida entre las formas repetidas.", "Fíjate dónde cambia el patrón cerca de relieves mayores."],
+  "explanation": "La nave 2001 Mars Odyssey de NASA registró dunas en las tierras altas del sur de Marte. Sus formas repetidas muestran la interacción entre material suelto, viento y topografía.",
+  "colorMethod": "Es una observación en luz visible de THEMIS. Su contraste facilita separar el campo de dunas de los restos poco profundos de un cráter antiguo.",
+  "whyItMatters": "La textura puede sugerir un proceso, pero hacen falta escala y metadatos del instrumento antes de asignar una ubicación o material.",
+  "relatedNasaIds": ["S43-151-159", "PIA18771"],
+  "sources": [{ "label": "Biblioteca de imágenes y videos de NASA", "url": "https://images.nasa.gov/details/PIA25844" }],
+  "approvedBy": "DG"
+}

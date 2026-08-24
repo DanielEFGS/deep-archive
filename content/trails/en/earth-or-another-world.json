@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "slug": "earth-or-another-world",
+  "locale": "en",
+  "status": "source-checked",
+  "title": "Earth or Another World?",
+  "dek": "Six close views test what terrain, atmosphere and scale can—and cannot—tell you.",
+  "learningObjective": "Compare planetary images using visible evidence before relying on color, familiarity or captions.",
+  "estimatedMinutes": 7,
+  "steps": [
+    { "nasaId": "S43-151-159", "chapter": "Scale is hidden", "prompt": "Without the caption, what tells you how large this landscape is?" },
+    { "nasaId": "PIA18771", "chapter": "A polar edge", "prompt": "Which boundaries look carved, deposited or eroded?" },
+    { "nasaId": "STS052-23-022", "chapter": "Find the atmosphere", "prompt": "Where does the solid world end and its atmosphere begin?" },
+    { "nasaId": "PIA25844", "chapter": "Texture without scale", "prompt": "Could these repeated forms belong to Earth? What evidence is missing?" },
+    { "nasaId": "s45-32-014", "chapter": "Light above a world", "prompt": "What makes this glow different from light on the surface?" },
+    { "nasaId": "GSFC_20171208_Archive_e000100", "chapter": "Another magnetic sky", "prompt": "Which familiar pattern appears around a planet unlike Earth?" }
+  ],
+  "approvedBy": "DG"
+}

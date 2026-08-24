@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e000100",
+  "slug": "alien-aurorae-spotted-on-uranus-by-hubble",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "A familiar phenomenon appears on an unfamiliar world: bright auroral signatures near Uranus’s upper atmosphere.",
+  "observe": ["Locate the small bright regions against the planet’s disk.", "Compare their scale and placement with the whole planet."],
+  "explanation": "Hubble observations detected auroral activity on Uranus. As on Earth, the emission is tied to energetic particles, an atmosphere and a planetary magnetic field, though Uranus has a very different geometry.",
+  "colorMethod": "The published view combines observations to make the auroral signatures and the planet legible together; it is an analytical composite rather than a single naked-eye exposure.",
+  "whyItMatters": "The same broad physical process can produce different visual patterns when a planet’s atmosphere and magnetic field differ.",
+  "relatedNasaIds": ["s45-32-014", "STS052-23-022"],
+  "sources": [{ "label": "NASA Image and Video Library", "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000100" }],
+  "approvedBy": "DG"
+}

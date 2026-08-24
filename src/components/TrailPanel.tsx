@@ -280,6 +280,24 @@ export function TrailPanel({
               style={previewStyle}
               aria-busy={imageResolving}
             >
+              {imageResolving && (
+                <span className="trail-visual__pixel-preview" aria-hidden="true" />
+              )}
+              {imageResolving && (
+                <span className="trail-visual__pixel-pulses" aria-hidden="true">
+                  {Array.from({ length: 18 }, (_, pulse) => (
+                    <i
+                      key={pulse}
+                      style={{
+                        gridColumn: ((item.id * 3 + pulse * 7) % 12) + 1,
+                        gridRow: ((item.id * 5 + pulse * 11) % 9) + 1,
+                        animationDelay: `${-((item.id + pulse * 0.73) % 4.2)}s`,
+                        animationDuration: `${2.2 + ((item.id + pulse * 13) % 19) / 10}s`,
+                      }}
+                    />
+                  ))}
+                </span>
+              )}
               {fullImageUrl && !imageFailed && (
                 <img
                   className={imageLoaded ? "is-loaded" : ""}

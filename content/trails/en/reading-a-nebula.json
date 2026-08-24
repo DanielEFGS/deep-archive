@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "slug": "reading-a-nebula",
+  "locale": "en",
+  "status": "source-checked",
+  "title": "Reading a Nebula",
+  "dek": "Six images turn clouds of gas and dust into structures you can learn to read.",
+  "learningObjective": "Recognize how shape, wavelength and combined observations reveal different physical structures in nebulae.",
+  "estimatedMinutes": 7,
+  "steps": [
+    { "nasaId": "PIA09109", "chapter": "Dust changes the view", "prompt": "Which structures survive when the wavelength changes?" },
+    { "nasaId": "PIA09108", "chapter": "A cloud has layers", "prompt": "Where do dense material and exposed edges separate?" },
+    { "nasaId": "PIA23409", "chapter": "Follow the cavity", "prompt": "Can you trace where young stars have pushed material aside?" },
+    { "nasaId": "PIA14731", "chapter": "Read the energy", "prompt": "Which structures belong to hot gas and which to cooler dust?" },
+    { "nasaId": "PIA17563", "chapter": "A remnant in motion", "prompt": "What suggests expansion away from a compact center?" },
+    { "nasaId": "GSFC_20171208_Archive_e000054", "chapter": "One object, many instruments", "prompt": "What becomes legible only after several observatories are combined?" }
+  ],
+  "approvedBy": "DG"
+}

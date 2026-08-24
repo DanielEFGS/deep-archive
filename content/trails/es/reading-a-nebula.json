@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "slug": "reading-a-nebula",
+  "locale": "es",
+  "status": "source-checked",
+  "title": "Cómo leer una nebulosa",
+  "dek": "Seis imágenes convierten nubes de gas y polvo en estructuras que puedes aprender a leer.",
+  "learningObjective": "Reconocer cómo la forma, la longitud de onda y las observaciones combinadas revelan distintas estructuras físicas en las nebulosas.",
+  "estimatedMinutes": 7,
+  "steps": [
+    { "nasaId": "PIA09109", "chapter": "El polvo cambia la vista", "prompt": "¿Qué estructuras permanecen cuando cambia la longitud de onda?" },
+    { "nasaId": "PIA09108", "chapter": "Una nube tiene capas", "prompt": "¿Dónde se separan el material denso y los bordes expuestos?" },
+    { "nasaId": "PIA23409", "chapter": "Sigue la cavidad", "prompt": "¿Puedes seguir dónde las estrellas jóvenes han desplazado material?" },
+    { "nasaId": "PIA14731", "chapter": "Lee la energía", "prompt": "¿Qué estructuras pertenecen al gas caliente y cuáles al polvo más frío?" },
+    { "nasaId": "PIA17563", "chapter": "Un remanente en movimiento", "prompt": "¿Qué sugiere una expansión desde un centro compacto?" },
+    { "nasaId": "GSFC_20171208_Archive_e000054", "chapter": "Un objeto, varios instrumentos", "prompt": "¿Qué se vuelve legible solo al combinar varios observatorios?" }
+  ],
+  "approvedBy": "DG"
+}

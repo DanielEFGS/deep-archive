@@ -7,7 +7,7 @@
 - The dependency audit currently reports zero known vulnerabilities.
 - English/Spanish locale selection supports `?lang=`, browser preference and persisted choice without a runtime i18n dependency.
 - Archive HUD, filters, onboarding, boot/error states, Detail, Index, About, Trail controls and the Visual Guide have Spanish UI and accessible names.
-- The first Trail and all 12 of its editorial object records have complete English and Spanish editions. Changing language while the Trail is open reloads the same introduction or step in the selected locale.
+- Three Trails and 18 editorial objects have complete English and Spanish editions. Changing language while a Trail is open reloads the same introduction or step in the selected locale.
 - NASA source metadata remains in its supplied language by policy.
 
 ## Implemented
@@ -36,7 +36,7 @@
 - contained dialog focus and larger mobile interaction targets
 - accurate combined category/search result count and recoverable catalog loading
 - one-time field exposure and record-to-record detail transitions
-- first source-checked educational Trail with introduction, observation-first reveal and 12 steps
+- responsive Trail index and three source-checked educational Trails with 24 total steps
 - restorable Trail/step URLs and copyable step links
 - floating Trail navigation, direct progress controls and arrow-key support
 - persistent mobile Trail-start action that remains available in the first viewport
@@ -46,6 +46,9 @@
 - Trail loading, retry, completion, touch and reduced-motion states
 - three-object fixed visual-guide pilot with authored, approximate areas
 - explicit visible-feature, processed-signal and editorial-guide classifications
+- compact related-object continuation below detail credits, including cross-sector navigation
+- catalog bootstrap, detail-shard selection and pure archive selectors extracted from the React composition root
+- independently lazy-loaded optional panel boundary declared under `src/app/`
 
 ### Performance
 
@@ -72,15 +75,18 @@
 - catalog integrity validator
 - rights-review flags when source metadata contains explicit copyright fields
 - category-balanced NASA discovery quotas and automated rejection of common non-editorial results
+- deterministic subject-based category correction plus a build-blocking 1,000-record category audit
 - editorial object/Trail schema, source files, delivery builder and catalog/rights validator
 - automated 1,000-record publication audit for credits, source/media hosts and unresolved rights state
 - stable NASA-ID editorial references that survive catalog regeneration
+- source linting, focused unit tests and a combined local quality command (`npm run check`)
 
 ## Validation performed here
 
 - `npm run check:catalog` passes;
 - `npm run build` passes with TypeScript checks and a production Vite bundle;
-- `npm run check:editorial` passes for 12 English objects, 12 Spanish objects and two localized Trail definitions;
+- `npm run check:editorial` passes for 18 English objects, 18 Spanish objects and six localized Trail definitions;
+- `npm run audit:categories` passes for all 1,000 NASA records after 64 strong subject conflicts were corrected;
 - demo catalog contains exactly 500 records;
 - all 500 demo details resolve exactly once across 10 shards;
 - demo atlas exists and matches its catalog byte count;

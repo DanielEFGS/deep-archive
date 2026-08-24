@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "slug": "earth-or-another-world",
+  "locale": "es",
+  "status": "source-checked",
+  "title": "¿La Tierra u otro mundo?",
+  "dek": "Seis vistas cercanas ponen a prueba lo que el terreno, la atmósfera y la escala pueden —y no pueden— revelar.",
+  "learningObjective": "Comparar imágenes planetarias usando primero la evidencia visible, antes que el color, la familiaridad o los textos.",
+  "estimatedMinutes": 7,
+  "steps": [
+    { "nasaId": "S43-151-159", "chapter": "La escala está oculta", "prompt": "Sin leer el texto, ¿qué permite estimar el tamaño de este paisaje?" },
+    { "nasaId": "PIA18771", "chapter": "El borde polar", "prompt": "¿Qué límites parecen tallados, depositados o erosionados?" },
+    { "nasaId": "STS052-23-022", "chapter": "Encuentra la atmósfera", "prompt": "¿Dónde termina el mundo sólido y comienza su atmósfera?" },
+    { "nasaId": "PIA25844", "chapter": "Textura sin escala", "prompt": "¿Estas formas repetidas podrían pertenecer a la Tierra? ¿Qué evidencia falta?" },
+    { "nasaId": "s45-32-014", "chapter": "Luz sobre un mundo", "prompt": "¿Qué diferencia este resplandor de la luz sobre la superficie?" },
+    { "nasaId": "GSFC_20171208_Archive_e000100", "chapter": "Otro cielo magnético", "prompt": "¿Qué patrón familiar aparece alrededor de un planeta distinto de la Tierra?" }
+  ],
+  "approvedBy": "DG"
+}

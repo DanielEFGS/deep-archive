@@ -108,3 +108,14 @@ After splitting the WebGL renderer and the four optional panels from the initial
 | Desktop optimized |          99 | 0.3 s | 0.4 s |       0.7 s |  90 ms | 0.001 |
 
 The initial JavaScript chunk fell from 744 KiB to 209 KiB raw (201 KiB to 66 KiB gzip). Three.js and `ArchiveRenderer` now form a separate 535 KiB raw chunk loaded only when the catalog is ready, while Detail, Index, About and Trail each load on first use. The field-guide button's visible label and accessible name were also aligned.
+
+### Three-Trail and related-object build
+
+The responsive Trail index is independently lazy-loaded (2.22 KiB raw / 1.00 KiB gzip). The generic related-object rail adds no request, image or initial editorial payload: it reuses the loaded catalog and atlas sectors. A local Lighthouse 13.4.1 production run after these additions measured:
+
+| Profile | Performance | Accessibility | Best practices | SEO | FCP | LCP | Speed Index | TBT | CLS |
+| ------- | ----------: | ------------: | -------------: | --: | --: | --: | ----------: | --: | --: |
+| Mobile  | 98 | 100 | 100 | 100 | 1.2 s | 1.2 s | 2.0 s | 140 ms | 0 |
+| Desktop | 100 | 96 | 100 | 100 | 0.3 s | 0.4 s | 0.7 s | 10 ms | 0.002 |
+
+The mobile language targets were expanded to clear the automated touch-target audit. A real-device rerun remains the release check. The initial application and renderer chunks remain 221.50 KiB and 535.29 KiB raw respectively, with optional panels split independently.

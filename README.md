@@ -33,6 +33,16 @@ Validate catalog integrity:
 npm run check:catalog
 ```
 
+Run the source quality gates:
+
+```bash
+npm run lint
+npm run test
+npm run check
+```
+
+`npm run check` runs lint, unit tests and the complete audited production build. Unit tests are intentionally scoped to `src/**/*.test.ts(x)` so browser profiles, generated reports and cached upstream files are never collected as project tests.
+
 Production:
 
 ```bash

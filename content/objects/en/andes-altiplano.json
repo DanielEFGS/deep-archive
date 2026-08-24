@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "S43-151-159",
+  "slug": "andes-altiplano-south-america",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "An oblique orbital photograph turns a vast Andean landscape into an almost abstract field of ridges and basins.",
+  "observe": ["Look for overlapping ridgelines that reveal depth.", "Notice how little in the frame provides an immediate human scale."],
+  "explanation": "This is the Altiplano of the Andes in South America, photographed from orbit. Perspective compresses distant landforms and makes elevation easier to read than absolute size.",
+  "colorMethod": "The colors come from reflected visible light recorded photographically; atmosphere, viewing angle and surface materials affect their appearance.",
+  "whyItMatters": "Planetary landscapes can look familiar at first glance. Shape, context and scale are stronger evidence than resemblance alone.",
+  "relatedNasaIds": ["PIA18771", "PIA25844"],
+  "sources": [{ "label": "NASA Image and Video Library", "url": "https://images.nasa.gov/details/S43-151-159" }],
+  "approvedBy": "DG"
+}

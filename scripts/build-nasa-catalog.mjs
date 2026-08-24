@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 import { writeDetailShards, writeHashedAsset } from "./lib/runtime-assets.mjs";
+import { classifyCatalogSubject } from "./lib/category-rules.mjs";
 
 const ROOT = process.cwd();
 const PUBLIC = path.join(ROOT, "public", "datasets", "nasa");
@@ -99,43 +100,8 @@ function isEditorialCandidate(data) {
 }
 
 function refineCategory(data, fallbackCategory) {
-  if (fallbackCategory !== "DEEP SPACE") return fallbackCategory;
-
-  const text = [
-    data.title,
-    data.description,
-    data.center,
-    ...(data.keywords ?? []),
-  ]
-    .map(clean)
-    .join(" ")
-    .toLowerCase();
-
-  // Broad NASA searches regularly return operational photography alongside
-  // astronomical observations. Classify the depicted subject, not the query
-  // that happened to discover the record.
-  if (
-    /\b(earth observations?|earth from space|andes|altiplano|arctic|antarctic|greenland|iceland|hurricane|wildfire|forest fire|deforestation)\b/.test(
-      text,
-    )
-  )
-    return "EARTH";
-
-  if (
-    /\b(ksc|jsc|ames research center|armstrong flight research center|crewmen?|crewmembers?|astronaut training|field trip|simulator|prototype|test campaign|launch vehicle|pegasus xl|aircraft|hangar|technician|science team members?)\b/.test(
-      text,
-    )
-  )
-    return "MISSIONS";
-
-  if (
-    /\b(mars|martian|jupiter|saturn|ganymede|mercury|venus|pluto|asteroid|comet|lunar|moon|crater dunes?|roving vehicle)\b/.test(
-      text,
-    )
-  )
-    return "SOLAR SYSTEM";
-
-  return fallbackCategory;
+  // Classify the depicted subject, not the broad search that discovered it.
+  return classifyCatalogSubject(data, fallbackCategory);
 }
 
 function slugify(value, fallback) {

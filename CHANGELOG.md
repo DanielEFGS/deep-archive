@@ -13,6 +13,9 @@
 
 ### Learning and localization
 
+- added two bilingual source-checked Trails, "Reading a Nebula" and "Earth or Another World?", plus a responsive Trail index;
+- added compact related-object navigation below detail credits using category, mission, telescope and keyword affinity;
+
 - added the first 12-step editorial Trail, “How Space Gets Its Colors,” with shareable step URLs;
 - added fixed editorial observation areas, sequenced visual-guide signals and collapsible observation/context modes;
 - added complete English and Spanish UI coverage plus localized Trail and editorial records; NASA source metadata remains unchanged;
@@ -34,6 +37,10 @@
 - improved Index coverage so all production records remain discoverable outside the canvas.
 
 ### Quality, safety and data
+
+- reorganized the React composition root around catalog/detail hooks, shared fetch services, endpoint configuration, feature selectors and explicit lazy-panel boundaries;
+- added Oxlint, Vitest and a combined `npm run check` quality gate, with initial coverage for archive filtering, sector-local mapping, related-object ranking and atlas selection;
+- added a deterministic category-subject audit to production builds and corrected 64 strong catalog conflicts automatically;
 
 - refined automated NASA categorization so terrestrial observation, mission operations and Solar System records discovered by broad astronomy queries no longer leak into Deep Space;
 - ensured a newly mounted atlas sector receives the active category/search visibility mask immediately, preserving filters across sector changes;

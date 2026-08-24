@@ -57,3 +57,18 @@ export type EditorialTrail = {
   steps: TrailStep[];
   approvedBy?: "DG";
 };
+
+export type EditorialTrailSummary = Pick<
+  EditorialTrail,
+  "slug" | "locale" | "status" | "title" | "dek" | "estimatedMinutes"
+> & {
+  stepCount: number;
+  url: string;
+};
+
+export type EditorialManifest = {
+  schemaVersion: 1;
+  generatedAt: string;
+  locales: string[];
+  trails: EditorialTrailSummary[];
+};

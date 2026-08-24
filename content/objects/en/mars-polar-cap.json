@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA18771",
+  "slug": "at-the-edge-of-a-polar-cap",
+  "locale": "en",
+  "status": "source-checked",
+  "introduction": "At Mars’s north polar edge, layered terrain and frost create boundaries that can resemble terrestrial geology.",
+  "observe": ["Trace the sharp boundary between light and dark terrain.", "Compare broad layers with the finer surface texture."],
+  "explanation": "Mars Reconnaissance Orbiter recorded a chasm at the north polar cap edge, where strong downslope winds help carry sediment toward the Olympia Undae dune field.",
+  "colorMethod": "This spacecraft image is processed to make surface structure legible; color should be read as imaging data, not as an unaided-eye view from the ground.",
+  "whyItMatters": "Landforms alone do not identify a world. Instrument, location and scale turn visual similarity into evidence.",
+  "relatedNasaIds": ["S43-151-159", "PIA25844"],
+  "sources": [{ "label": "NASA Image and Video Library", "url": "https://images.nasa.gov/details/PIA18771" }],
+  "approvedBy": "DG"
+}
