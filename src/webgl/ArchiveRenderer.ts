@@ -524,8 +524,8 @@ export class ArchiveRenderer {
 
     const nextColumns = this.chooseGrid(width);
     const nextRows = Math.ceil(this.itemCount / nextColumns);
-    const nextFieldTop = width < 640 ? 92 : width < 1050 ? 104 : 92;
-    const nextFieldBottom = width < 640 ? 48 : 52;
+    const nextFieldTop = width < 700 ? 132 : width < 1050 ? 112 : 92;
+    const nextFieldBottom = width < 700 ? 58 : 52;
     if (
       nextColumns !== this.displayColumns ||
       nextRows !== this.displayRows ||
