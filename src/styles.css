@@ -101,6 +101,22 @@ canvas:focus-visible {
   background: rgba(5, 8, 13, 0.86);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.48);
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 160ms ease,
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear;
+}
+.sector-nav.is-touch-exploring {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(12px, -50%);
+  transition:
+    opacity 120ms ease,
+    transform 160ms ease,
+    visibility 0s linear 160ms;
 }
 .sector-nav button {
   display: grid;

@@ -90,6 +90,7 @@ export default function App() {
   const [detailLoading, setDetailLoading] = useState(false);
   const [detailError, setDetailError] = useState(false);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [touchExploring, setTouchExploring] = useState(false);
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const [infoOpen, setInfoOpen] = useState(false);
@@ -602,6 +603,7 @@ export default function App() {
             onDiagnostics={setDiagnostics}
             diagnosticsEnabled={import.meta.env.DEV && diagnosticsOpen}
             onSectorChange={sectors.length > 1 ? changeSector : undefined}
+            onTouchExploringChange={setTouchExploring}
           />
         )}
 
@@ -622,7 +624,11 @@ export default function App() {
           !infoOpen &&
           !indexOpen &&
           !trailOpen && (
-            <nav className="sector-nav" aria-label={ui[locale].archiveSectors}>
+            <nav
+              className={`sector-nav ${touchExploring ? "is-touch-exploring" : ""}`}
+              aria-label={ui[locale].archiveSectors}
+              aria-hidden={touchExploring || undefined}
+            >
               <button
                 type="button"
                 onClick={() => changeSector(-1)}

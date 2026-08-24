@@ -24,6 +24,7 @@
 - applied the same uninterrupted resolving state to Trail images so their atlas previews cannot flash before detail metadata arrives;
 - added a shader-driven exposure while switching atlas sectors: the real 500 WebGL tiles now resolve in a restrained pseudo-random sequence that stays registered to the final mosaic at every viewport size;
 - aligned the complete footer row—DG signature, GitHub/LinkedIn links and independence notice—on one vertical center and normalized line box;
+- made the mobile sector controls retreat while a touch exploration gesture is active, then return smoothly on release; direct taps on the controls remain available;
 - refined the gallery into a tile-snapped Archive Aperture interaction with aspect-preserving focus, eased transitions and touch preview placement;
 - added touch drag-to-focus and release-to-open behavior with pointer capture and duplicate-click suppression;
 - rebuilt detail and Trail layouts for mobile portrait/landscape, persistent navigation, compact titles/numbers and accessible close controls;

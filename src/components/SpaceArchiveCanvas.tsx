@@ -19,6 +19,7 @@ type Props = {
   onDiagnostics: (diagnostics: RenderDiagnostics) => void;
   diagnosticsEnabled: boolean;
   onSectorChange?: (direction: -1 | 1) => void;
+  onTouchExploringChange?: (active: boolean) => void;
 };
 
 export function SpaceArchiveCanvas({
@@ -33,6 +34,7 @@ export function SpaceArchiveCanvas({
   onDiagnostics,
   diagnosticsEnabled,
   onSectorChange,
+  onTouchExploringChange,
 }: Props) {
   const { locale } = useI18n();
   const es = locale === "es";
@@ -47,6 +49,7 @@ export function SpaceArchiveCanvas({
     onQualityChange,
     onError,
     onSectorChange,
+    onTouchExploringChange,
   });
   const [failed, setFailed] = useState(false);
 
@@ -57,6 +60,7 @@ export function SpaceArchiveCanvas({
     onQualityChange,
     onError,
     onSectorChange,
+    onTouchExploringChange,
   };
 
   useEffect(() => {
@@ -143,6 +147,7 @@ export function SpaceArchiveCanvas({
       const onPointerDown = (event: PointerEvent) => {
         if (event.pointerType !== "touch") return;
         activeTouchPointerId = event.pointerId;
+        callbacksRef.current.onTouchExploringChange?.(true);
         canvas.setPointerCapture(event.pointerId);
         keyboardIndexRef.current = null;
         activeRenderer.setPointer(event.clientX, event.clientY);
@@ -169,6 +174,7 @@ export function SpaceArchiveCanvas({
         if (canvas.hasPointerCapture(event.pointerId))
           canvas.releasePointerCapture(event.pointerId);
         activeTouchPointerId = null;
+        callbacksRef.current.onTouchExploringChange?.(false);
         activeRenderer.clearPointer();
         setHover(null);
 
@@ -274,6 +280,8 @@ export function SpaceArchiveCanvas({
       canvas.addEventListener("webglcontextlost", onContextLost);
 
       removeListeners = () => {
+        if (activeTouchPointerId != null)
+          callbacksRef.current.onTouchExploringChange?.(false);
         if (selectionTimer != null) window.clearTimeout(selectionTimer);
         canvas.removeEventListener("pointerdown", onPointerDown);
         canvas.removeEventListener("pointermove", onPointerMove);
