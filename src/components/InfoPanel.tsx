@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import type { CatalogPayload, RenderQuality } from '../types/catalog';
 import { useDialogFocus } from '../hooks/useDialogFocus';
+import { creatorLinks } from '../config/site';
 
 type Props = {
   catalog: CatalogPayload;
@@ -56,6 +57,13 @@ export function InfoPanel({ catalog, quality, onClose }: Props) {
             </a>
           </article>
         </div>
+
+        {creatorLinks.length > 0 && (
+          <nav className="info-panel__creator-links" aria-label="Creator links">
+            <strong>DG</strong>
+            {creatorLinks.map((link) => <a key={link.label} href={link.href} target="_blank" rel="me noreferrer">{link.label} ↗</a>)}
+          </nav>
+        )}
 
         <div className="info-panel__footer">
           <span>REACT · THREE.JS · GLSL · STATIC DELIVERY</span>
