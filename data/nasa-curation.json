@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "description": "Editorial overrides keyed by NASA ID. Unknown assets remain eligible for automated pilot selection.",
+  "assets": {
+    "webb_telescope": { "include": false, "note": "Illustration rather than astronomical observation." },
+    "201110260001HQ": { "include": false, "note": "Administrative event photograph." },
+    "GSFC_20171208_Archive_e000156": { "include": false, "note": "Clean-room transport documentation." },
+    "NHQ202207120012": { "include": false, "note": "Presentation audience rather than the released observation." },
+    "NHQ202207120010": { "include": false, "note": "Presentation photograph rather than the released observation." },
+    "NHQ202207120021": { "include": false, "note": "Presentation photograph rather than the released observation." },
+    "GSFC_20171208_Archive_e001493": { "include": false, "note": "Instrument installation documentation." },
+    "PIA13438": { "include": false, "note": "Technical explanatory graphic." },
+    "ARC-1977-AC77-0849": { "include": false, "note": "Technical diagram." },
+    "ARC-1977-A77-0849": { "include": false, "note": "Near-duplicate technical diagram." },
+    "NHQ202204200002": { "include": false, "note": "Crew preflight photography." },
+    "ARC-1974-AC73-9344": { "include": false, "note": "Technical diagram." },
+    "GRC-1979-C-02339": { "include": false, "note": "Administrative group photograph." },
+    "PIA12228": { "include": false, "note": "Technical explanatory graphic rather than a primary observation." },
+    "PIA12229": { "include": false, "note": "Technical mineral map." },
+    "PIA11748": { "include": false, "note": "Technical 3-D visualization." },
+    "jsc2026e002975": { "include": false, "note": "Crew portrait." },
+    "jsc2026e002964": { "include": false, "note": "Crew portrait." },
+    "carina_nebula": { "include": true, "featured": true, "category": "NEBULAE", "shortTitle": "Carina Nebula", "focalPoint": [0.52, 0.48] },
+    "southern_ring_nebula": { "include": true, "featured": true, "category": "NEBULAE", "shortTitle": "Southern Ring Nebula", "focalPoint": [0.5, 0.5] },
+    "GSFC_20171208_Archive_e001262": { "include": true, "featured": true, "category": "GALAXIES", "shortTitle": "M83", "focalPoint": [0.5, 0.5] },
+    "PIA04220": { "include": true, "featured": true, "category": "NEBULAE", "shortTitle": "Trifid Nebula", "focalPoint": [0.48, 0.46] }
+  }
+}

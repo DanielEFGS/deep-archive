@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.cache/
+.DS_Store
+*.log
+*.tsbuildinfo
+.impeccable/
+.env
+.env.*
+!.env.example
