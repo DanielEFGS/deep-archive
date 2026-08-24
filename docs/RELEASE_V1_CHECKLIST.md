@@ -10,7 +10,7 @@
 - [x] Netlify configuration selects Node 22 and the NASA dataset.
 - [x] SPA fallback and immutable asset caching are configured.
 - [x] Base SEO, robots, favicon, social metadata and JSON-LD exist.
-- [ ] Git repository initialized and remote created.
+- [x] Git repository initialized and private remote created: `DanielEFGS/deep-archive`.
 - [ ] Production domain selected.
 - [ ] Canonical and absolute social URLs configured.
 - [ ] Production social preview converted to PNG/JPG and tested.
