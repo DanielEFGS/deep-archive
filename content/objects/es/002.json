@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA25164",
+  "slug": "small-magellanic-cloud-imaged-by-herschel-planck-iras-cobe",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "Herschel resolvió polvo fino pero perdió parte de la emisión difusa; Planck, IRAS y COBE ayudan a completar la distribución.",
+  "observe": [
+    "Ubica “Distribución de polvo recuperada” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Distribución de polvo recuperada",
+        "description": "Amplias estructuras rojas, verdes y azules combinan gas, polvo frío y polvo más cálido en la galaxia enana.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-02",
+          "C-02",
+          "D-03",
+          "E-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "Herschel resolvió polvo fino pero perdió parte de la emisión difusa; Planck, IRAS y COBE ayudan a completar la distribución.",
+  "colorMethod": "Rojo indica hidrógeno, verde polvo frío y azul polvo más cálido. Son capas físicas asignadas.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA25164",
+      "url": "https://images.nasa.gov/details/PIA25164"
+    }
+  ]
+}

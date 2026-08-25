@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "slug": "worlds-marked-by-impact",
+  "locale": "en",
+  "status": "draft",
+  "title": "Worlds Marked by Impact",
+  "dek": "Six surfaces show how impacts persist, erode and become difficult to recognize.",
+  "learningObjective": "Compare impact signatures across rock, ice, lighting conditions and later surface change.",
+  "estimatedMinutes": 8,
+  "steps": [
+    {
+      "nasaId": "PIA17409",
+      "chapter": "A crater that resembles a nebula",
+      "prompt": "Which radial features reveal an impact rather than a cloud?"
+    },
+    {
+      "nasaId": "PIA23072",
+      "chapter": "A crater becomes a landscape",
+      "prompt": "How have fill, erosion and wind rewritten the crater floor?"
+    },
+    {
+      "nasaId": "PIA21038",
+      "chapter": "Ice changes the dunes",
+      "prompt": "Which bright and dark textures belong to seasonal change?"
+    },
+    {
+      "nasaId": "PIA13496",
+      "chapter": "A basin larger than the frame",
+      "prompt": "What lets you read an impact when its full circle is not visible?"
+    },
+    {
+      "nasaId": "PIA13532",
+      "chapter": "A fractured rim in relief",
+      "prompt": "Which long ridge preserves the geometry of the impact?"
+    },
+    {
+      "nasaId": "PIA02561",
+      "chapter": "An impact scar on ice",
+      "prompt": "Why does a mapped color swath make this scar easier to study?"
+    }
+  ]
+}

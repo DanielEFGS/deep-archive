@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e001327",
+  "slug": "nasa-hubble-sees-sparring-antennae-galaxies",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "The Antennae began as separate spirals. Their nuclei and shared debris reveal an ongoing gravitational encounter.",
+  "observe": [
+    "Locate “Interacting nuclei” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Interacting nuclei",
+        "description": "Two concentrations sit inside a shared field of gas, star-forming knots and disturbed structure.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-02",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "The Antennae began as separate spirals. Their nuclei and shared debris reveal an ongoing gravitational encounter.",
+  "colorMethod": "Pink-red gas and blue star-forming regions are a processed color view used to distinguish components of the interaction.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "GSFC_20171208_Archive_e000504",
+    "GSFC_20171208_Archive_e000154",
+    "GSFC_20171208_Archive_e000158"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e001327",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001327"
+    }
+  ]
+}

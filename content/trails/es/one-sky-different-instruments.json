@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "slug": "one-sky-different-instruments",
+  "locale": "es",
+  "status": "draft",
+  "title": "Un cielo, distintos instrumentos",
+  "dek": "Ocho composiciones muestran cómo cada observatorio aporta una medición diferente.",
+  "learningObjective": "Leer colores, insertos y capas como evidencia específica de instrumentos, no como una única vista literal.",
+  "estimatedMinutes": 11,
+  "steps": [
+    {
+      "nasaId": "PIA09579",
+      "chapter": "Una galaxia ensamblada en varias longitudes de onda",
+      "prompt": "¿Qué estructuras se distinguen al unir datos ultravioletas, visibles e infrarrojos?"
+    },
+    {
+      "nasaId": "PIA20057",
+      "chapter": "Los rayos X exponen un núcleo oculto",
+      "prompt": "¿Dónde aparece la señal de alta energía dentro de la galaxia visible?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e001370",
+      "chapter": "Una galaxia pequeña en un campo grande",
+      "prompt": "¿Cómo cambian una flecha y los rayos X aquello que consideramos el sujeto?"
+    },
+    {
+      "nasaId": "PIA21088",
+      "chapter": "Antes y después en rayos X",
+      "prompt": "¿Qué cambia entre los dos pequeños insertos de rayos X?"
+    },
+    {
+      "nasaId": "PIA10204",
+      "chapter": "Cuatro instrumentos, brazos anómalos",
+      "prompt": "¿Puedes separar estructuras ópticas, de radio, rayos X e infrarrojas?"
+    },
+    {
+      "nasaId": "PIA03540",
+      "chapter": "El hidrógeno se extiende más allá de la luz estelar",
+      "prompt": "¿Qué estructura coloreada llega más lejos de las galaxias?"
+    },
+    {
+      "nasaId": "PIA25164",
+      "chapter": "Recuperar el polvo difuso",
+      "prompt": "¿Qué recupera la combinación de observatorios alrededor de la Pequeña Nube de Magallanes?"
+    },
+    {
+      "nasaId": "PIA25163",
+      "chapter": "Un mapa más completo de Andrómeda",
+      "prompt": "¿Cómo trazan el gas y el polvo una galaxia de forma distinta a las estrellas visibles?"
+    }
+  ]
+}

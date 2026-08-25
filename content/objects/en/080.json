@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA20057",
+  "slug": "nustar-view-of-galaxy-ngc-1068",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "High-energy X-rays penetrate material obscuring the active supermassive black hole in NGC 1068.",
+  "observe": [
+    "Locate “High-energy core” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "High-energy core",
+        "description": "The compact magenta signal marks NuSTAR X-rays at the center of the visible galaxy.",
+        "kind": "processed-signal",
+        "cells": [
+          "C-03",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "High-energy X-rays penetrate material obscuring the active supermassive black hole in NGC 1068.",
+  "colorMethod": "Magenta is assigned to NuSTAR X-rays over visible Hubble and Sloan data; it is an energy layer, not visible pink light.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "GSFC_20171208_Archive_e001370",
+    "PIA21088"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA20057",
+      "url": "https://images.nasa.gov/details/PIA20057"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e001370",
+  "slug": "hubble-and-chandra-find-evidence-for-densest-galaxy-in-nearby-universe",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "The tiny subject is an ultra-compact dwarf galaxy. Hubble resolves starlight while Chandra adds hot gas and compact X-ray sources.",
+  "observe": [
+    "Locate “Marked compact galaxy” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Marked compact galaxy",
+        "description": "The source marker isolates M60-UCD1 within a much larger field.",
+        "kind": "editorial-guide",
+        "cells": [
+          "E-02",
+          "E-03"
+        ]
+      }
+    ]
+  },
+  "explanation": "The tiny subject is an ultra-compact dwarf galaxy. Hubble resolves starlight while Chandra adds hot gas and compact X-ray sources.",
+  "colorMethod": "Pink represents Chandra X-rays; red, green and blue come from Hubble. The marker is editorial orientation, not measured emission.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "PIA21088"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e001370",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001370"
+    }
+  ]
+}

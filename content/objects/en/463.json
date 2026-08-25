@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA13496",
+  "slug": "the-moon-largest-impact-basin",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "The Moon's largest impact basin extends beyond a simple circular frame. Relief and lighting provide the local clues.",
+  "observe": [
+    "Locate “Basin rim and shadow” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Basin rim and shadow",
+        "description": "Illuminated relief beside deep shadow makes part of an enormous impact boundary legible.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-03",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "The Moon's largest impact basin extends beyond a simple circular frame. Relief and lighting provide the local clues.",
+  "colorMethod": "This grayscale view emphasizes topography through illumination; shadow is missing light, not missing terrain.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA23072",
+    "PIA21038"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA13496",
+      "url": "https://images.nasa.gov/details/PIA13496"
+    }
+  ]
+}

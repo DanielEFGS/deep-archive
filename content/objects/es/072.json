@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e001370",
+  "slug": "hubble-and-chandra-find-evidence-for-densest-galaxy-in-nearby-universe",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "El diminuto sujeto es una galaxia enana ultracompacta. Hubble resuelve luz estelar y Chandra añade gas caliente y fuentes compactas de rayos X.",
+  "observe": [
+    "Ubica “Galaxia compacta señalada” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Galaxia compacta señalada",
+        "description": "El marcador aísla M60-UCD1 dentro de un campo mucho mayor.",
+        "kind": "editorial-guide",
+        "cells": [
+          "E-02",
+          "E-03"
+        ]
+      }
+    ]
+  },
+  "explanation": "El diminuto sujeto es una galaxia enana ultracompacta. Hubble resuelve luz estelar y Chandra añade gas caliente y fuentes compactas de rayos X.",
+  "colorMethod": "El rosa representa rayos X de Chandra; rojo, verde y azul provienen de Hubble. El marcador orienta, no es emisión medida.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "PIA21088"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e001370",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001370"
+    }
+  ]
+}

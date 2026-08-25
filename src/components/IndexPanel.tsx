@@ -78,18 +78,11 @@ export function IndexPanel({ items, atlases, onSelect, onClose }: Props) {
         tabIndex={-1}
         onMouseDown={(event) => event.stopPropagation()}
       >
-        <button className="panel-close" type="button" onClick={onClose}>
-          ESC / {es ? "CERRAR" : "CLOSE"}
-        </button>
-        <header className="index-panel__header">
+        <header className="index-panel__chrome navigation-modal__header">
+        <div className="index-panel__header">
           <h2 id="index-title">
             {es ? "Índice del archivo" : "Archive index"}
           </h2>
-          <p>
-            {es
-              ? `Explora los ${items.length} registros mediante el atlas visual. Busca y abre un objeto.`
-              : `Browse all ${items.length} records through the shared image atlas. Search, then open an object.`}
-          </p>
           <label>
             <span>{es ? "Buscar registros" : "Search records"}</span>
             <input
@@ -99,7 +92,14 @@ export function IndexPanel({ items, atlases, onSelect, onClose }: Props) {
               placeholder={es ? "Objeto, año, misión" : "Object, year, mission"}
             />
           </label>
+        </div>
+        <button className="navigation-modal__close" type="button" onClick={onClose} aria-label={es ? "Cerrar índice" : "Close index"}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        </button>
         </header>
+        <div className="index-panel__body">
         <p className="index-panel__status" aria-live="polite">
           {matches.length
             ? `${matches.length} ${es ? "registros · página" : "records · page"} ${page + 1} ${es ? "de" : "of"} ${pageCount}`
@@ -163,6 +163,7 @@ export function IndexPanel({ items, atlases, onSelect, onClose }: Props) {
             </button>
           </nav>
         )}
+        </div>
       </section>
     </div>
   );

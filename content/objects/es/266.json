@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA17837",
+  "slug": "pushing-the-limits-of-the-observable-universe",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "Un cúmulo llena el encuadre y el inserto dirige la atención a una candidata extremadamente distante. La anotación orienta, no prueba por sí sola.",
+  "observe": [
+    "Ubica “Candidata distante ampliada” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Candidata distante ampliada",
+        "description": "El recuadro ampliado ubica Abell2744_Y1 dentro del campo mucho mayor del cúmulo.",
+        "kind": "editorial-guide",
+        "cells": [
+          "D-02",
+          "E-02",
+          "D-03",
+          "E-03"
+        ]
+      }
+    ]
+  },
+  "explanation": "Un cúmulo llena el encuadre y el inserto dirige la atención a una candidata extremadamente distante. La anotación orienta, no prueba por sí sola.",
+  "colorMethod": "Filtros de Hubble se combinan en color procesado; la ampliación conserva contexto alrededor de una fuente demasiado pequeña para inspeccionarla sin ayuda.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA23123",
+    "PIA12110",
+    "astronomers-set-a-new-galaxy-distance-record_17389972462_o"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA17837",
+      "url": "https://images.nasa.gov/details/PIA17837"
+    }
+  ]
+}

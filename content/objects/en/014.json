@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e000154",
+  "slug": "hubble-spotlight-on-irregular-galaxy",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "IC 3583 shows that an irregular outline can contain internal organization and signs of gravitational disturbance.",
+  "observe": [
+    "Locate “Irregular stellar body” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Irregular stellar body",
+        "description": "Blue knots trace an uneven body with no clean spiral outline, while a central bar is still present.",
+        "kind": "visible-feature",
+        "cells": [
+          "B-02",
+          "C-03",
+          "D-03",
+          "E-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "IC 3583 shows that an irregular outline can contain internal organization and signs of gravitational disturbance.",
+  "colorMethod": "Blue emphasizes bright young stellar populations in the processed Hubble image; it is not a clock for the whole galaxy.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "GSFC_20171208_Archive_e000504",
+    "GSFC_20171208_Archive_e000158",
+    "GSFC_20171208_Archive_e000492"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e000154",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000154"
+    }
+  ]
+}

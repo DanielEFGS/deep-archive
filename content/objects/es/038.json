@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e001277",
+  "slug": "hubble-eyes-galaxy-as-flat-as-a-pancake",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "ESO 373-8 es una espiral vista de canto. La orientación, no otra clase intrínseca, la convierte en una franja estrecha.",
+  "observe": [
+    "Ubica “Disco visto de canto” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Disco visto de canto",
+        "description": "La banda luminosa y fina es un disco galáctico aplanado visto desde un costado.",
+        "kind": "visible-feature",
+        "cells": [
+          "B-02",
+          "C-03",
+          "D-03",
+          "E-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "ESO 373-8 es una espiral vista de canto. La orientación, no otra clase intrínseca, la convierte en una franja estrecha.",
+  "colorMethod": "El brillo y el contraste revelan el plano del disco; la forma aparente depende fuertemente del punto de vista.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "GSFC_20171208_Archive_e000504",
+    "GSFC_20171208_Archive_e000154",
+    "GSFC_20171208_Archive_e000158"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e001277",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001277"
+    }
+  ]
+}

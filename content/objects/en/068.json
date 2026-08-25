@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "astronomers-set-a-new-galaxy-distance-record_17389972462_o",
+  "slug": "astronomers-set-a-new-galaxy-distance-record",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "Its light left more than 13 billion years ago. Spectroscopic redshift supplies the distance evidence; the inset only locates the source.",
+  "observe": [
+    "Locate “Spectroscopically confirmed galaxy” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Spectroscopically confirmed galaxy",
+        "description": "The inset isolates the tiny galaxy whose redshift was measured with the Keck Observatory.",
+        "kind": "editorial-guide",
+        "cells": [
+          "E-02",
+          "F-02"
+        ]
+      }
+    ]
+  },
+  "explanation": "Its light left more than 13 billion years ago. Spectroscopic redshift supplies the distance evidence; the inset only locates the source.",
+  "colorMethod": "The near-infrared inset was colored blue to suggest young stars. It is an interpretive palette, not directly seen color.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA23123",
+    "PIA12110",
+    "PIA17837"
+  ],
+  "sources": [
+    {
+      "label": "NASA — astronomers-set-a-new-galaxy-distance-record_17389972462_o",
+      "url": "https://images.nasa.gov/details/astronomers-set-a-new-galaxy-distance-record_17389972462_o"
+    }
+  ]
+}

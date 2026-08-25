@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA13496",
+  "slug": "the-moon-largest-impact-basin",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "La mayor cuenca de impacto lunar supera un encuadre circular simple. El relieve y la iluminación aportan las pistas locales.",
+  "observe": [
+    "Ubica “Borde de cuenca y sombra” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Borde de cuenca y sombra",
+        "description": "El relieve iluminado junto a una sombra profunda vuelve legible parte de un enorme límite de impacto.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-03",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "La mayor cuenca de impacto lunar supera un encuadre circular simple. El relieve y la iluminación aportan las pistas locales.",
+  "colorMethod": "Esta vista en grises enfatiza topografía mediante iluminación; la sombra es ausencia de luz, no de terreno.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA23072",
+    "PIA21038"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA13496",
+      "url": "https://images.nasa.gov/details/PIA13496"
+    }
+  ]
+}

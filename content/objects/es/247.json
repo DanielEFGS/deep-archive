@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA03540",
+  "slug": "galactic-halos-of-hydrogen",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "El hidrógeno frío rodea las dos galaxias compañeras sobre un área mayor que sus brazos estelares brillantes en UV.",
+  "observe": [
+    "Ubica “Halo extendido de hidrógeno” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Halo extendido de hidrógeno",
+        "description": "La envoltura morada de gas llega más lejos que las estructuras ultravioletas azules compactas.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-01",
+          "C-02",
+          "D-03",
+          "C-04",
+          "D-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "El hidrógeno frío rodea las dos galaxias compañeras sobre un área mayor que sus brazos estelares brillantes en UV.",
+  "colorMethod": "Morado cartografía hidrógeno frío y azul emisión ultravioleta de GALEX; se comparan extensiones, no color visible.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA03540",
+      "url": "https://images.nasa.gov/details/PIA03540"
+    }
+  ]
+}

@@ -31,13 +31,18 @@ export function InfoPanel({ catalog, quality, onClose }: Props) {
         tabIndex={-1}
         onMouseDown={(event) => event.stopPropagation()}
       >
+        <div className="info-panel__chrome">
         <button
           ref={closeRef}
           className="panel-close"
           type="button"
           onClick={onClose}
+          aria-label={es ? "Cerrar información" : "Close information"}
         >
-          ESC / {es ? "CERRAR" : "CLOSE"}
+          <span className="panel-close__label">ESC / {es ? "CERRAR" : "CLOSE"}</span>
+          <svg className="panel-close__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
         </button>
 
         <div className="info-panel__heading">
@@ -48,7 +53,9 @@ export function InfoPanel({ catalog, quality, onClose }: Props) {
               : `${catalog.items.length || 1000} records, held in one continuous field. Move through the archive as an image first; open a frame when you want its name, history and source.`}
           </p>
         </div>
+        </div>
 
+        <div className="info-panel__body">
         <div className="info-panel__grid">
           <article>
             <h3 className="info-label">
@@ -148,6 +155,7 @@ export function InfoPanel({ catalog, quality, onClose }: Props) {
               ? "COMPILAR UNA VEZ · CACHEAR · CARGAR DETALLES A DEMANDA"
               : "BUILD ONCE · CACHE HARD · LOAD DETAIL ON DEMAND"}
           </span>
+        </div>
         </div>
       </section>
     </div>

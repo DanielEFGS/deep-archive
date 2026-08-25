@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "slug": "looking-back-in-time",
+  "locale": "en",
+  "status": "draft",
+  "title": "Looking Back in Time",
+  "dek": "Six fields show how distance, redshift and gravitational lenses turn images into records of earlier cosmic time.",
+  "learningObjective": "Recognize that looking farther away also means receiving older light, often with the help of magnification and long exposures.",
+  "estimatedMinutes": 8,
+  "steps": [
+    {
+      "nasaId": "PIA23123",
+      "chapter": "A field filled with distant galaxies",
+      "prompt": "Which marked sources would be easy to overlook without a long exposure?"
+    },
+    {
+      "nasaId": "PIA12110",
+      "chapter": "Depth comes from exposure",
+      "prompt": "How does a crowded field replace the idea of empty sky?"
+    },
+    {
+      "nasaId": "astronomers-set-a-new-galaxy-distance-record_17389972462_o",
+      "chapter": "Redshift measures distance",
+      "prompt": "Why is the tiny inset scientifically larger than it looks?"
+    },
+    {
+      "nasaId": "PIA17837",
+      "chapter": "A candidate at the observable limit",
+      "prompt": "How does the zoomed region guide attention inside a galaxy cluster?"
+    },
+    {
+      "nasaId": "hubble-spies-big-bang-frontiers_22202541749_o",
+      "chapter": "A cluster becomes a lens",
+      "prompt": "Which stretched shapes suggest that gravity has bent background light?"
+    },
+    {
+      "nasaId": "potw1903a",
+      "chapter": "Curved light from the past",
+      "prompt": "Can you distinguish the foreground lenses from the narrow background arcs?"
+    }
+  ]
+}

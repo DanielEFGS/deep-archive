@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "slug": "galaxies-shape-is-not-age",
+  "locale": "en",
+  "status": "draft",
+  "title": "Galaxies: Shape Is Not Age",
+  "dek": "Six galaxies show why a silhouette alone cannot tell a galaxy's history.",
+  "learningObjective": "Distinguish visible morphology from the physical history inferred from structure, stars and interaction.",
+  "estimatedMinutes": 8,
+  "steps": [
+    {
+      "nasaId": "GSFC_20171208_Archive_e000504",
+      "chapter": "A smooth outline can hide a disk",
+      "prompt": "What interrupts the idea of a featureless elliptical galaxy?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e000154",
+      "chapter": "Irregular does not mean empty",
+      "prompt": "Can you find structure inside an apparently shapeless galaxy?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e000158",
+      "chapter": "A spiral made of patches",
+      "prompt": "Where do the arms become legible through young stars?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e000492",
+      "chapter": "A shape in transition",
+      "prompt": "Which features suggest that this is not one settled galaxy?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e001327",
+      "chapter": "Two galaxies in one frame",
+      "prompt": "Can you separate the two nuclei from the shared debris?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e001277",
+      "chapter": "A disk seen edge-on",
+      "prompt": "How can viewing angle turn a spiral into a thin line?"
+    }
+  ]
+}

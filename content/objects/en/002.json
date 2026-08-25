@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA25164",
+  "slug": "small-magellanic-cloud-imaged-by-herschel-planck-iras-cobe",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "Herschel resolved fine dust but missed some diffuse emission; Planck, IRAS and COBE help restore a more complete distribution.",
+  "observe": [
+    "Locate “Recovered dust distribution” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Recovered dust distribution",
+        "description": "Broad red, green and blue structures combine gas, cold dust and warmer dust across the dwarf galaxy.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-02",
+          "C-02",
+          "D-03",
+          "E-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "Herschel resolved fine dust but missed some diffuse emission; Planck, IRAS and COBE help restore a more complete distribution.",
+  "colorMethod": "Red indicates hydrogen gas, green cold dust and blue warmer dust. These are assigned physical layers.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA25164",
+      "url": "https://images.nasa.gov/details/PIA25164"
+    }
+  ]
+}

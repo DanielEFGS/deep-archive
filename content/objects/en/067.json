@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA23123",
+  "slug": "a-field-of-galaxies-seen-by-spitzer-and-hubble",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "A deep field accumulates light to reveal objects too faint for a brief exposure. Distance is inferred from measurements, not apparent size alone.",
+  "observe": [
+    "Locate “Faint distant galaxies” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Faint distant galaxies",
+        "description": "NASA's marked sources are small, faint galaxies recovered through long-duration Spitzer observations.",
+        "kind": "editorial-guide",
+        "cells": [
+          "B-02",
+          "D-02",
+          "F-03",
+          "C-04",
+          "E-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "A deep field accumulates light to reveal objects too faint for a brief exposure. Distance is inferred from measurements, not apparent size alone.",
+  "colorMethod": "Spitzer infrared and Hubble data are combined; red circles are editorial markers, not celestial emission.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA12110",
+    "astronomers-set-a-new-galaxy-distance-record_17389972462_o",
+    "PIA17837"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA23123",
+      "url": "https://images.nasa.gov/details/PIA23123"
+    }
+  ]
+}

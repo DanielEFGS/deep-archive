@@ -43,8 +43,13 @@ export function DetailPanel({
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
   const [imageAttempt, setImageAttempt] = useState(0);
+  const [descriptionExpanded, setDescriptionExpanded] = useState(false);
+  const [metadataExpanded, setMetadataExpanded] = useState(false);
+  const [imageOnly, setImageOnly] = useState(false);
+  const [viewSwitching, setViewSwitching] = useState(false);
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
+  const viewSwitchTimeoutRef = useRef<number | null>(null);
   useDialogFocus(panelRef, onClose, closeRef);
   const fullImageUrl = safeExternalUrl(item.fullImageUrl);
   const sourceUrl = safeExternalUrl(item.sourceUrl);
@@ -55,6 +60,14 @@ export function DetailPanel({
     setImageLoaded(false);
     setImageFailed(false);
     setImageAttempt(0);
+    setDescriptionExpanded(false);
+    setMetadataExpanded(false);
+    setImageOnly(false);
+    setViewSwitching(false);
+    if (viewSwitchTimeoutRef.current !== null) {
+      window.clearTimeout(viewSwitchTimeoutRef.current);
+      viewSwitchTimeoutRef.current = null;
+    }
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") onNavigate(-1);
       if (event.key === "ArrowRight") onNavigate(1);
@@ -62,8 +75,22 @@ export function DetailPanel({
     window.addEventListener("keydown", onKeyDown);
     return () => {
       window.removeEventListener("keydown", onKeyDown);
+      if (viewSwitchTimeoutRef.current !== null)
+        window.clearTimeout(viewSwitchTimeoutRef.current);
     };
   }, [item.id, onNavigate]);
+
+  const toggleImageOnly = () => {
+    if (viewSwitching) return;
+    setViewSwitching(true);
+    viewSwitchTimeoutRef.current = window.setTimeout(() => {
+      setImageOnly((current) => !current);
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => setViewSwitching(false)),
+      );
+      viewSwitchTimeoutRef.current = null;
+    }, 150);
+  };
 
   const previewStyle = {
     backgroundImage: `url(${atlas.url})`,
@@ -74,7 +101,7 @@ export function DetailPanel({
   return (
     <div
       ref={panelRef}
-      className="detail-backdrop"
+      className={`detail-backdrop ${imageOnly ? "is-image-only" : ""}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="detail-title"
@@ -83,17 +110,20 @@ export function DetailPanel({
       onMouseDown={onClose}
     >
       <article
-        className="detail-panel"
+        className={`detail-panel ${imageOnly ? "is-image-only" : ""} ${viewSwitching ? "is-view-switching" : ""}`}
         onMouseDown={(event) => event.stopPropagation()}
       >
         <button
           ref={closeRef}
-          className="detail-panel__close"
+          className="panel-close detail-panel__close"
           type="button"
           onClick={onClose}
           aria-label={es ? "Cerrar detalles" : "Close details"}
         >
-          ESC / {es ? "CERRAR" : "CLOSE"}
+          <span className="panel-close__label">ESC / {es ? "CERRAR" : "CLOSE"}</span>
+          <svg className="panel-close__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
         </button>
 
         <div
@@ -156,29 +186,90 @@ export function DetailPanel({
           <span className="detail-panel__number">
             {String(item.id).padStart(3, "0")}
           </span>
+          <div className="detail-view-controls">
+            <button
+              type="button"
+              disabled={viewSwitching}
+              aria-pressed={imageOnly}
+              aria-label={
+                imageOnly
+                  ? es
+                    ? "Restaurar detalles"
+                    : "Restore details"
+                  : es
+                    ? "Ver imagen en pantalla completa"
+                    : "View image full screen"
+              }
+              data-tooltip={
+                imageOnly
+                  ? es
+                    ? "MOSTRAR DETALLES"
+                    : "SHOW DETAILS"
+                  : es
+                    ? "SOLO IMAGEN"
+                    : "IMAGE ONLY"
+              }
+              onClick={toggleImageOnly}
+            >
+              {imageOnly ? (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
 
-        <div key={`content-${item.id}`} className="detail-panel__content">
-          <div className="detail-panel__eyebrow">
-            {categoryLabel(item.category, locale)}
+        <div
+          key={`content-${item.id}`}
+          className="detail-panel__content"
+          aria-hidden={imageOnly || undefined}
+          inert={imageOnly}
+        >
+          <header className="detail-panel__content-header">
+            <div className="detail-panel__eyebrow">
+              {categoryLabel(item.category, locale)}
+            </div>
+            <h1 id="detail-title">{item.title}</h1>
+            {item.subtitle && (
+              <p className="detail-panel__subtitle">{item.subtitle}</p>
+            )}
+          </header>
+          <div className="detail-panel__content-body">
+          <div className={`detail-description-block ${descriptionExpanded ? "is-expanded" : ""}`}>
+            {es && item.description && (
+              <span className="detail-description-block__source">DESCRIPCIÓN ORIGINAL · EN</span>
+            )}
+            <p
+              id="detail-description"
+              className={`detail-panel__description ${metadataLoading ? "is-loading" : ""}`}
+            >
+              {item.description ??
+                (metadataLoading
+                  ? es
+                    ? "Cargando metadatos del objeto…"
+                    : "Loading object metadata…"
+                  : es
+                    ? "Sin descripción disponible."
+                    : "No description supplied.")}
+            </p>
+            {(item.description?.length ?? 0) > 180 && (
+              <button
+                className="detail-description-block__toggle"
+                type="button"
+                aria-expanded={descriptionExpanded}
+                onClick={() => setDescriptionExpanded((expanded) => !expanded)}
+              >
+                {descriptionExpanded
+                  ? es ? "MOSTRAR MENOS ↑" : "SHOW LESS ↑"
+                  : es ? "MOSTRAR MÁS ↓" : "SHOW MORE ↓"}
+              </button>
+            )}
           </div>
-          <h1 id="detail-title">{item.title}</h1>
-          {item.subtitle && (
-            <p className="detail-panel__subtitle">{item.subtitle}</p>
-          )}
-          <p
-            id="detail-description"
-            className={`detail-panel__description ${metadataLoading ? "is-loading" : ""}`}
-          >
-            {item.description ??
-              (metadataLoading
-                ? es
-                  ? "Cargando metadatos del objeto…"
-                  : "Loading object metadata…"
-                : es
-                  ? "Sin descripción disponible."
-                  : "No description supplied.")}
-          </p>
           {metadataError && (
             <p className="detail-panel__error" role="status">
               {es
@@ -190,6 +281,16 @@ export function DetailPanel({
             </p>
           )}
 
+          <section className={`detail-technical ${metadataExpanded ? "is-expanded" : ""}`}>
+            <button
+              className="detail-technical__toggle"
+              type="button"
+              aria-expanded={metadataExpanded}
+              onClick={() => setMetadataExpanded((expanded) => !expanded)}
+            >
+              <span>{es ? "DATOS TÉCNICOS" : "TECHNICAL DATA"}</span>
+              <span aria-hidden="true">{metadataExpanded ? "−" : "+"}</span>
+            </button>
           <dl className="metadata-grid">
             {item.date && (
               <>
@@ -215,12 +316,6 @@ export function DetailPanel({
                 <dd>{item.instrument}</dd>
               </>
             )}
-            {item.center && (
-              <>
-                <dt>{es ? "Centro" : "Center"}</dt>
-                <dd>{item.center}</dd>
-              </>
-            )}
             {item.photographer && (
               <>
                 <dt>{es ? "Autoría" : "Creator"}</dt>
@@ -233,13 +328,25 @@ export function DetailPanel({
                 <dd>{item.nasaId}</dd>
               </>
             )}
-            {item.credit && (
-              <>
-                <dt>{es ? "Crédito" : "Credit"}</dt>
-                <dd>{item.credit}</dd>
-              </>
-            )}
           </dl>
+          </section>
+
+          {(item.center || item.credit) && (
+            <dl className="detail-attribution">
+              {item.center && (
+                <>
+                  <dt>{es ? "INSTITUCIÓN" : "INSTITUTION"}</dt>
+                  <dd>{item.center}</dd>
+                </>
+              )}
+              {item.credit && (
+                <>
+                  <dt>{es ? "CRÉDITO" : "CREDIT"}</dt>
+                  <dd>{item.credit}</dd>
+                </>
+              )}
+            </dl>
+          )}
 
           {sourceUrl && (
             <a
@@ -285,6 +392,7 @@ export function DetailPanel({
               </div>
             </section>
           )}
+          </div>
         </div>
       </article>
       <nav

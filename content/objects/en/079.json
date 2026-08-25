@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA12110",
+  "slug": "hubble-deep-field-image-unveils-myriad-galaxies-back-to-the-beginning-of-time",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "The Hubble Deep Field replaced a seemingly empty patch of sky with hundreds of galaxies at many distances and stages.",
+  "observe": [
+    "Locate “Galaxies across the field” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Galaxies across the field",
+        "description": "Nearly every extended speck is a galaxy recorded in a very deep Hubble exposure.",
+        "kind": "visible-feature",
+        "cells": [
+          "B-02",
+          "C-03",
+          "D-03",
+          "E-04",
+          "C-05",
+          "D-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "The Hubble Deep Field replaced a seemingly empty patch of sky with hundreds of galaxies at many distances and stages.",
+  "colorMethod": "The processed Hubble color helps distinguish sources; it does not by itself provide their age or distance.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA23123",
+    "astronomers-set-a-new-galaxy-distance-record_17389972462_o",
+    "PIA17837"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA12110",
+      "url": "https://images.nasa.gov/details/PIA12110"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e001327",
+  "slug": "nasa-hubble-sees-sparring-antennae-galaxies",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "Las Antenas comenzaron como espirales separadas. Sus núcleos y restos compartidos revelan un encuentro gravitacional en curso.",
+  "observe": [
+    "Ubica “Núcleos en interacción” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Núcleos en interacción",
+        "description": "Dos concentraciones aparecen dentro de un campo compartido de gas, nudos de formación estelar y estructura perturbada.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-02",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "Las Antenas comenzaron como espirales separadas. Sus núcleos y restos compartidos revelan un encuentro gravitacional en curso.",
+  "colorMethod": "El gas rosado-rojo y las regiones azules de formación estelar son colores procesados para distinguir componentes de la interacción.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "GSFC_20171208_Archive_e000504",
+    "GSFC_20171208_Archive_e000154",
+    "GSFC_20171208_Archive_e000158"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e001327",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001327"
+    }
+  ]
+}

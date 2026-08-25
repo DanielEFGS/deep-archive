@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA09579",
+  "slug": "m81-galaxy-is-pretty-in-pink",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "M81 becomes a comparative map: young stars, older starlight and dust do not contribute identically at every wavelength.",
+  "observe": [
+    "Locate “Multiwavelength spiral” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Multiwavelength spiral",
+        "description": "The shared spiral contains structures contributed by ultraviolet, visible and infrared observations.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-02",
+          "C-02",
+          "D-03",
+          "E-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "M81 becomes a comparative map: young stars, older starlight and dust do not contribute identically at every wavelength.",
+  "colorMethod": "This is a composite from GALEX, Hubble and Spitzer. Its colors organize wavelength data rather than reproduce one view.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370",
+    "PIA21088"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA09579",
+      "url": "https://images.nasa.gov/details/PIA09579"
+    }
+  ]
+}

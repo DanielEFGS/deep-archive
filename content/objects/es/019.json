@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e000492",
+  "slug": "hubble-views-two-galaxies-merging",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "NGC 6052 son dos galaxias en fusión. Su forma caótica registra un proceso, no un tipo estable de galaxia.",
+  "observe": [
+    "Ubica “Núcleo de fusión perturbado” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Núcleo de fusión perturbado",
+        "description": "El centro brillante y los nudos desplazados no forman un único disco estable y simétrico.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-03",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "NGC 6052 son dos galaxias en fusión. Su forma caótica registra un proceso, no un tipo estable de galaxia.",
+  "colorMethod": "El color de Hubble separa estructuras luminosas de la colisión; aquí la geometría es la evidencia principal.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "GSFC_20171208_Archive_e000504",
+    "GSFC_20171208_Archive_e000154",
+    "GSFC_20171208_Archive_e000158"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e000492",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000492"
+    }
+  ]
+}

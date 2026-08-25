@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA25163",
+  "slug": "andromeda-galaxy-imaged-by-herschel-planck-iras-cobe",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "Multiple observatories recover both fine and diffuse emission, producing a fuller map than Herschel alone.",
+  "observe": [
+    "Locate “Gas and dust disk” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Gas and dust disk",
+        "description": "The elongated structure combines hydrogen, cold dust and warmer dust across Andromeda.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-02",
+          "C-02",
+          "D-03",
+          "E-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "Multiple observatories recover both fine and diffuse emission, producing a fuller map than Herschel alone.",
+  "colorMethod": "Red indicates hydrogen gas, green cold dust and blue warmer dust; the palette encodes components rather than visible appearance.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA25163",
+      "url": "https://images.nasa.gov/details/PIA25163"
+    }
+  ]
+}

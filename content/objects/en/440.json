@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA23072",
+  "slug": "rabe-crater-dunes",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "Rabe Crater is not a pristine bowl. Fill, erosion and wind-blown material produced pits and dunes inside it.",
+  "observe": [
+    "Locate “Dune-filled crater floor” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Dune-filled crater floor",
+        "description": "Dark dune textures occupy pits in a floor altered long after the original impact.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-04",
+          "D-04",
+          "C-05",
+          "D-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "Rabe Crater is not a pristine bowl. Fill, erosion and wind-blown material produced pits and dunes inside it.",
+  "colorMethod": "This visible-light orbital image depends on illumination and contrast to reveal relief and wind-shaped texture.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA21038",
+    "PIA13496"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA23072",
+      "url": "https://images.nasa.gov/details/PIA23072"
+    }
+  ]
+}

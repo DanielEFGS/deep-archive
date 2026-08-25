@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e000158",
+  "slug": "hubble-spies-spiral-galaxy",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "NGC 3274 es una espiral cuya estructura emerge de múltiples zonas de formación estelar, no de un contorno de diagrama.",
+  "observe": [
+    "Ubica “Estructura espiral fragmentada” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Estructura espiral fragmentada",
+        "description": "Nudos brillantes y segmentos discontinuos permiten leer la espiral sin formar dos curvas perfectas.",
+        "kind": "visible-feature",
+        "cells": [
+          "B-02",
+          "C-03",
+          "D-03",
+          "E-04",
+          "C-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "NGC 3274 es una espiral cuya estructura emerge de múltiples zonas de formación estelar, no de un contorno de diagrama.",
+  "colorMethod": "Se combinaron cinco filtros ultravioletas, visibles e infrarrojos; el color codifica una vista más amplia que la del ojo.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "GSFC_20171208_Archive_e000504",
+    "GSFC_20171208_Archive_e000154",
+    "GSFC_20171208_Archive_e000492"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e000158",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000158"
+    }
+  ]
+}

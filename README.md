@@ -116,6 +116,17 @@ By default, the detail view resolves a NASA `~medium`, `~large` or original asse
 - keyboard: focus the canvas, use arrow keys/Home/End, then Enter or Space;
 - Escape closes panels or clears keyboard focus.
 
+## Responsive behavior
+
+- Desktop keeps the full archive navigation and two-column Detail layout.
+- Touch and compact viewports use a reduced DEEP header with on-demand search and an accessible navigation drawer.
+- Long NASA descriptions open at five lines on desktop and four on mobile, with an explicit expand/collapse control; technical metadata is collapsible on mobile while credit and source remain outside it.
+- Related objects become a native horizontal, scroll-snapping rail on mobile.
+- Trail Focus Mode removes nonessential UI and uses the available viewport. On portrait touch devices it requests fullscreen and landscape orientation after the user's gesture; unsupported or rejected orientation locks fall back to a non-blocking rotate hint.
+- Fullscreen controls and fixed navigation respect dynamic viewport units and safe-area insets.
+
+See `docs/RESPONSIVE.md` for the local implementation and QA notes.
+
 ## Media policy
 
 DEEP / 1000 is an independent educational and non-commercial visual study. Production imagery/metadata should be sourced from publicly accessible NASA resources while preserving each item's supplied credit and original source. NASA-hosted third-party material may have separate rights; generated catalogs must therefore be reviewed before publication.

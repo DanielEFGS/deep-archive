@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA21088",
+  "slug": "supernova-sn-2014c-optical-and-x-ray",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "A visible-light galaxy locates the event; Chandra's two small views isolate the change in X-ray emission.",
+  "observe": [
+    "Locate “X-ray before-and-after insets” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "X-ray before-and-after insets",
+        "description": "The paired insets compare the same region before and after supernova SN 2014C.",
+        "kind": "processed-signal",
+        "cells": [
+          "E-02",
+          "F-02",
+          "E-03",
+          "F-03"
+        ]
+      }
+    ]
+  },
+  "explanation": "A visible-light galaxy locates the event; Chandra's two small views isolate the change in X-ray emission.",
+  "colorMethod": "Red, green and blue in the insets encode low, medium and high-energy X-rays, not natural color.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA21088",
+      "url": "https://images.nasa.gov/details/PIA21088"
+    }
+  ]
+}

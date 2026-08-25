@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "astronomers-set-a-new-galaxy-distance-record_17389972462_o",
+  "slug": "astronomers-set-a-new-galaxy-distance-record",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "Su luz partió hace más de 13 mil millones de años. El corrimiento al rojo aporta la distancia; el inserto solo ubica la fuente.",
+  "observe": [
+    "Ubica “Galaxia confirmada por espectroscopía” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Galaxia confirmada por espectroscopía",
+        "description": "El inserto aísla la diminuta galaxia cuyo corrimiento al rojo fue medido con el observatorio Keck.",
+        "kind": "editorial-guide",
+        "cells": [
+          "E-02",
+          "F-02"
+        ]
+      }
+    ]
+  },
+  "explanation": "Su luz partió hace más de 13 mil millones de años. El corrimiento al rojo aporta la distancia; el inserto solo ubica la fuente.",
+  "colorMethod": "El inserto infrarrojo cercano fue coloreado azul para sugerir estrellas jóvenes. Es una paleta interpretativa, no color observado directamente.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA23123",
+    "PIA12110",
+    "PIA17837"
+  ],
+  "sources": [
+    {
+      "label": "NASA — astronomers-set-a-new-galaxy-distance-record_17389972462_o",
+      "url": "https://images.nasa.gov/details/astronomers-set-a-new-galaxy-distance-record_17389972462_o"
+    }
+  ]
+}

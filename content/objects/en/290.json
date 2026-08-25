@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "potw1903a",
+  "slug": "peering-into-the-past",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "Foreground mass bends spacetime and redirects background light. The arcs let Hubble study sources that would otherwise appear too faint or small.",
+  "observe": [
+    "Locate “Narrow gravitational arcs” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Narrow gravitational arcs",
+        "description": "Thin curved streaks around the two dominant elliptical galaxies are magnified images of more distant galaxies.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-02",
+          "D-02",
+          "B-03",
+          "E-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "Foreground mass bends spacetime and redirects background light. The arcs let Hubble study sources that would otherwise appear too faint or small.",
+  "colorMethod": "The visible colors help separate objects; the physically meaningful cue is the repeated curved geometry around the lenses.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA23123",
+    "PIA12110",
+    "astronomers-set-a-new-galaxy-distance-record_17389972462_o"
+  ],
+  "sources": [
+    {
+      "label": "NASA — potw1903a",
+      "url": "https://images.nasa.gov/details/potw1903a"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA02561",
+  "slug": "europa-impact-crater",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "El cráter, de tamaño urbano, es difícil de leer como un cuenco familiar sobre una superficie helada y modificada. La franja aporta contexto sin convertir cada color en un rasgo distinto.",
+  "observe": [
+    "Ubica “Franja en falso color de Galileo” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Franja en falso color de Galileo",
+        "description": "La franja de medición coloreada delimita el área donde se estudió la cicatriz de impacto de Europa.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-02",
+          "C-02",
+          "D-03",
+          "E-03"
+        ]
+      }
+    ]
+  },
+  "explanation": "El cráter, de tamaño urbano, es difícil de leer como un cuenco familiar sobre una superficie helada y modificada. La franja aporta contexto sin convertir cada color en un rasgo distinto.",
+  "colorMethod": "Los colores se asignaron a mediciones de Galileo para revelar diferencias de composición o superficie; no son la apariencia de Europa al ojo.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA23072",
+    "PIA21038"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA02561",
+      "url": "https://images.nasa.gov/details/PIA02561"
+    }
+  ]
+}

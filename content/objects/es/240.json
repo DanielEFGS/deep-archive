@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA21088",
+  "slug": "supernova-sn-2014c-optical-and-x-ray",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "Una galaxia en luz visible ubica el evento; las dos vistas pequeñas de Chandra aíslan el cambio en rayos X.",
+  "observe": [
+    "Ubica “Insertos de rayos X antes y después” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Insertos de rayos X antes y después",
+        "description": "Los insertos comparan la misma región antes y después de la supernova SN 2014C.",
+        "kind": "processed-signal",
+        "cells": [
+          "E-02",
+          "F-02",
+          "E-03",
+          "F-03"
+        ]
+      }
+    ]
+  },
+  "explanation": "Una galaxia en luz visible ubica el evento; las dos vistas pequeñas de Chandra aíslan el cambio en rayos X.",
+  "colorMethod": "Rojo, verde y azul en los insertos codifican rayos X de baja, media y alta energía, no color natural.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA21088",
+      "url": "https://images.nasa.gov/details/PIA21088"
+    }
+  ]
+}

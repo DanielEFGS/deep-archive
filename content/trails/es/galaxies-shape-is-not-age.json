@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "slug": "galaxies-shape-is-not-age",
+  "locale": "es",
+  "status": "draft",
+  "title": "Galaxias: la forma no es la edad",
+  "dek": "Seis galaxias muestran por qué una silueta no basta para contar su historia.",
+  "learningObjective": "Distinguir la morfología visible de la historia física inferida a partir de estructura, estrellas e interacción.",
+  "estimatedMinutes": 8,
+  "steps": [
+    {
+      "nasaId": "GSFC_20171208_Archive_e000504",
+      "chapter": "Un contorno suave puede ocultar un disco",
+      "prompt": "¿Qué rompe la idea de una galaxia elíptica sin estructura?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e000154",
+      "chapter": "Irregular no significa vacía",
+      "prompt": "¿Puedes encontrar estructura dentro de una galaxia aparentemente amorfa?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e000158",
+      "chapter": "Una espiral hecha de parches",
+      "prompt": "¿Dónde se vuelven legibles los brazos mediante estrellas jóvenes?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e000492",
+      "chapter": "Una forma en transición",
+      "prompt": "¿Qué rasgos sugieren que no es una galaxia estable?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e001327",
+      "chapter": "Dos galaxias en un encuadre",
+      "prompt": "¿Puedes separar los dos núcleos de los restos compartidos?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e001277",
+      "chapter": "Un disco visto de canto",
+      "prompt": "¿Cómo puede el ángulo de visión convertir una espiral en una línea fina?"
+    }
+  ]
+}

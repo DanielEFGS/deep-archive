@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "hubble-spies-big-bang-frontiers_22202541749_o",
+  "slug": "hubble-frontier-fields-view-of-macsj0717-5-3745",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "MACS J0717 bends and magnifies light from more distant background objects, turning the cluster into a natural telescope.",
+  "observe": [
+    "Locate “Lensed background structures” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Lensed background structures",
+        "description": "Small stretched and curved shapes around the massive cluster are candidate signatures of gravitational lensing.",
+        "kind": "visible-feature",
+        "cells": [
+          "B-02",
+          "C-03",
+          "D-03",
+          "E-04",
+          "C-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "MACS J0717 bends and magnifies light from more distant background objects, turning the cluster into a natural telescope.",
+  "colorMethod": "Hubble's processed color separates sources, but lensing is read primarily from distorted geometry and confirmed through analysis.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA23123",
+    "PIA12110",
+    "astronomers-set-a-new-galaxy-distance-record_17389972462_o"
+  ],
+  "sources": [
+    {
+      "label": "NASA — hubble-spies-big-bang-frontiers_22202541749_o",
+      "url": "https://images.nasa.gov/details/hubble-spies-big-bang-frontiers_22202541749_o"
+    }
+  ]
+}

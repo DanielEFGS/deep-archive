@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA03540",
+  "slug": "galactic-halos-of-hydrogen",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "Cool hydrogen surrounds the two companion galaxies over a larger area than their UV-bright stellar arms.",
+  "observe": [
+    "Locate “Extended hydrogen halo” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Extended hydrogen halo",
+        "description": "The purple gas cocoon reaches beyond the compact blue ultraviolet structures.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-01",
+          "C-02",
+          "D-03",
+          "C-04",
+          "D-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "Cool hydrogen surrounds the two companion galaxies over a larger area than their UV-bright stellar arms.",
+  "colorMethod": "Purple maps cool hydrogen gas and blue maps GALEX ultraviolet emission; their extents can be compared but not read as visible color.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA03540",
+      "url": "https://images.nasa.gov/details/PIA03540"
+    }
+  ]
+}

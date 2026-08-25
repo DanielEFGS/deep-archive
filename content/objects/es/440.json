@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA23072",
+  "slug": "rabe-crater-dunes",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "Rabe no es un cuenco intacto. El relleno, la erosión y material transportado por viento produjeron depresiones y dunas.",
+  "observe": [
+    "Ubica “Suelo del cráter con dunas” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Suelo del cráter con dunas",
+        "description": "Texturas oscuras de dunas ocupan depresiones en un suelo alterado mucho después del impacto.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-04",
+          "D-04",
+          "C-05",
+          "D-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "Rabe no es un cuenco intacto. El relleno, la erosión y material transportado por viento produjeron depresiones y dunas.",
+  "colorMethod": "Esta imagen orbital visible depende de iluminación y contraste para revelar relieve y textura modelada por el viento.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA21038",
+    "PIA13496"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA23072",
+      "url": "https://images.nasa.gov/details/PIA23072"
+    }
+  ]
+}

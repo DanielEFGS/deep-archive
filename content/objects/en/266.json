@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA17837",
+  "slug": "pushing-the-limits-of-the-observable-universe",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "A galaxy cluster fills the frame, while the inset directs attention to one extremely distant candidate. The annotation is navigation, not proof by itself.",
+  "observe": [
+    "Locate “Zoomed distant candidate” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Zoomed distant candidate",
+        "description": "The magnified box locates Abell2744_Y1 inside the much larger cluster field.",
+        "kind": "editorial-guide",
+        "cells": [
+          "D-02",
+          "E-02",
+          "D-03",
+          "E-03"
+        ]
+      }
+    ]
+  },
+  "explanation": "A galaxy cluster fills the frame, while the inset directs attention to one extremely distant candidate. The annotation is navigation, not proof by itself.",
+  "colorMethod": "Hubble filters are combined into a processed color image; the zoom preserves context around a source too small to inspect unaided.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA23123",
+    "PIA12110",
+    "astronomers-set-a-new-galaxy-distance-record_17389972462_o"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA17837",
+      "url": "https://images.nasa.gov/details/PIA17837"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA09579",
+  "slug": "m81-galaxy-is-pretty-in-pink",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "M81 se convierte en un mapa comparativo: estrellas jóvenes, luz estelar antigua y polvo no contribuyen igual en cada longitud de onda.",
+  "observe": [
+    "Ubica “Espiral multiespectral” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Espiral multiespectral",
+        "description": "La espiral compartida contiene estructuras aportadas por observaciones ultravioletas, visibles e infrarrojas.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-02",
+          "C-02",
+          "D-03",
+          "E-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "M81 se convierte en un mapa comparativo: estrellas jóvenes, luz estelar antigua y polvo no contribuyen igual en cada longitud de onda.",
+  "colorMethod": "Es una composición de GALEX, Hubble y Spitzer. Sus colores organizan datos de longitudes de onda, no reproducen una sola vista.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370",
+    "PIA21088"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA09579",
+      "url": "https://images.nasa.gov/details/PIA09579"
+    }
+  ]
+}

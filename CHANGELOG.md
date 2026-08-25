@@ -23,6 +23,29 @@
 
 ### Interaction and responsive behavior
 
+- replaced the generic Trail introduction bars with three route-specific instrument diagrams for wavelength mapping, nebula structure and planetary evidence;
+- restored Trail signal descriptions to the image-stage corner and returned Observation Mode to a full-bleed, intentionally cropped image without blurred gutters;
+- decoupled Visual Guide controls from cover-cropped image coordinates so the guide card and status remain anchored inside the visible stage;
+- removed blurred image backdrops from detail and Trail modals; imagery now fills the visual stage edge to edge with a clean cover crop across desktop and mobile;
+- made Observation Mode preserve the complete image and its guided sectors, with synchronized touch pinch-to-zoom up to 3x and a short mobile gesture hint;
+- softened the Trail intro signal pacing so its line drawings resolve more deliberately;
+- replaced Observation Mode's soft side fill with a coarse pixel-grid treatment that keeps letterboxing intentional without competing with the guided image;
+- added an Image Only toggle to Observation Mode: it hides all editorial overlays and switches to a full-stage cover crop, with one-action restoration of the complete guided view;
+- added a fast dip-to-black transition between guided and Image Only framing so the cover/contain swap no longer flashes;
+- extended Image Only mode to standard detail records, expanding media to the full viewport while temporarily removing metadata and archive navigation;
+- corrected Image Only's mobile grid so the photograph occupies the full viewport instead of retaining an empty content row, and aligned its restore control directly below Close;
+- aligned mixed-width Observation Mode actions to one shared right edge on desktop and mobile;
+- condensed the Trail picker into shorter editorial rows with single-line summaries and inline duration metadata, and documented the next three proposed learning paths;
+- added an immediate, accessible loading field while lazily loaded panels and menus resolve;
+- changed mobile search into an in-place toolbar state that temporarily replaces branding and navigation without increasing the header height;
+- corrected mobile overlay stacking so archive-sector pagination retreats behind the navigation drawer, tightened language grouping and removed duplicate Detail accordion dividers;
+- made the mobile Trail menu and Trail introduction true top-aligned full-viewport surfaces with shorter preview copy;
+- registered Visual Guide grids to the image's actual `object-fit: contain` rectangle across portrait, landscape and Focus Mode, while restoring full-height landscape controls and an explicit guide label;
+- redesigned compact/touch navigation around a persistent DEEP mark, on-demand search, active-filter chip and accessible drawer for categories, destinations and language;
+- added responsive NASA-description clamping (five desktop lines, four mobile), accessible expand/collapse controls and a subtle continuation fade;
+- grouped secondary mobile Detail metadata into an accordion while keeping credit and original source visible, and changed related objects to a native horizontal rail;
+- standardized mobile dialog close controls as accessible 44px SVG X buttons while retaining `ESC / CLOSE` on keyboard-oriented desktop layouts;
+- hardened Trail Focus Mode with minimal UI, safe-area positioning, best-effort fullscreen/orientation lock and a non-blocking rotate-device fallback;
 - made the detail-image resolving overlay begin on the modal's first frame and remain continuous while metadata and HD media load, removing the brief unmasked thumbnail flash;
 - applied the same uninterrupted resolving state to Trail images so their atlas previews cannot flash before detail metadata arrives;
 - added a shader-driven exposure while switching atlas sectors: the real 500 WebGL tiles now resolve in a restrained pseudo-random sequence that stays registered to the final mosaic at every viewport size;

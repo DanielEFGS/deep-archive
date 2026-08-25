@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "hubble-spies-big-bang-frontiers_22202541749_o",
+  "slug": "hubble-frontier-fields-view-of-macsj0717-5-3745",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "MACS J0717 desvía y amplifica luz de objetos más distantes, convirtiendo el cúmulo en un telescopio natural.",
+  "observe": [
+    "Ubica “Estructuras de fondo amplificadas” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Estructuras de fondo amplificadas",
+        "description": "Formas pequeñas, estiradas y curvas alrededor del cúmulo masivo son señales candidatas de lente gravitacional.",
+        "kind": "visible-feature",
+        "cells": [
+          "B-02",
+          "C-03",
+          "D-03",
+          "E-04",
+          "C-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "MACS J0717 desvía y amplifica luz de objetos más distantes, convirtiendo el cúmulo en un telescopio natural.",
+  "colorMethod": "El color procesado de Hubble separa fuentes, pero la lente se lee sobre todo en la geometría distorsionada y se confirma mediante análisis.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA23123",
+    "PIA12110",
+    "astronomers-set-a-new-galaxy-distance-record_17389972462_o"
+  ],
+  "sources": [
+    {
+      "label": "NASA — hubble-spies-big-bang-frontiers_22202541749_o",
+      "url": "https://images.nasa.gov/details/hubble-spies-big-bang-frontiers_22202541749_o"
+    }
+  ]
+}

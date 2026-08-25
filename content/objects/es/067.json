@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA23123",
+  "slug": "a-field-of-galaxies-seen-by-spitzer-and-hubble",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "Un campo profundo acumula luz para revelar objetos demasiado tenues en una exposición breve. La distancia se infiere con mediciones, no solo por tamaño aparente.",
+  "observe": [
+    "Ubica “Galaxias distantes tenues” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Galaxias distantes tenues",
+        "description": "Las fuentes marcadas por NASA son galaxias pequeñas y débiles recuperadas con observaciones prolongadas de Spitzer.",
+        "kind": "editorial-guide",
+        "cells": [
+          "B-02",
+          "D-02",
+          "F-03",
+          "C-04",
+          "E-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "Un campo profundo acumula luz para revelar objetos demasiado tenues en una exposición breve. La distancia se infiere con mediciones, no solo por tamaño aparente.",
+  "colorMethod": "Se combinan datos infrarrojos de Spitzer y de Hubble; los círculos rojos son marcadores editoriales, no emisión celeste.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA12110",
+    "astronomers-set-a-new-galaxy-distance-record_17389972462_o",
+    "PIA17837"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA23123",
+      "url": "https://images.nasa.gov/details/PIA23123"
+    }
+  ]
+}

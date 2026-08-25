@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e000504",
+  "slug": "hubble-views-a-young-elliptical-galaxy",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "NGC 3610 looks elliptical, but NASA notes an unusually bright disk: morphology preserves evidence of its formation history.",
+  "observe": [
+    "Locate “Bright inner disk” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Bright inner disk",
+        "description": "The luminous inner structure interrupts the otherwise smooth elliptical glow.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-03",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "NGC 3610 looks elliptical, but NASA notes an unusually bright disk: morphology preserves evidence of its formation history.",
+  "colorMethod": "The image combines Hubble observations; color helps separate stellar populations and structure rather than representing age directly.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "GSFC_20171208_Archive_e000154",
+    "GSFC_20171208_Archive_e000158",
+    "GSFC_20171208_Archive_e000492"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e000504",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000504"
+    }
+  ]
+}

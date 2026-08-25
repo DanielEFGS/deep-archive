@@ -43,6 +43,19 @@ import {
   TrailPanel,
 } from "./app/lazyPanels";
 
+function ModuleLoadingOverlay({ locale }: { locale: Locale }) {
+  return (
+    <div className="module-loading" role="status" aria-live="polite">
+      <div className="module-loading__field" aria-hidden="true">
+        {Array.from({ length: 12 }, (_, index) => (
+          <i key={index} style={{ animationDelay: `${-index * 0.19}s` }} />
+        ))}
+      </div>
+      <span>{locale === "es" ? "CARGANDO MÓDULO" : "LOADING MODULE"}</span>
+    </div>
+  );
+}
+
 export default function App() {
   const [locale, setLocale] = useState<Locale>(resolveInitialLocale);
   const {
@@ -614,7 +627,7 @@ export default function App() {
           </aside>
         )}
 
-        <Suspense fallback={null}>
+        <Suspense fallback={<ModuleLoadingOverlay locale={locale} />}>
           {selected && !trailOpen && !trailMenuOpen && (
             <DetailPanel
               item={selected}

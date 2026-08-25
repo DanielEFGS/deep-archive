@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e000158",
+  "slug": "hubble-spies-spiral-galaxy",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "NGC 3274 is a spiral whose structure emerges from many star-forming patches, not from a diagram-like outline.",
+  "observe": [
+    "Locate “Patchy spiral structure” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Patchy spiral structure",
+        "description": "Bright knots and broken arm segments make the spiral readable without forming two perfect curves.",
+        "kind": "visible-feature",
+        "cells": [
+          "B-02",
+          "C-03",
+          "D-03",
+          "E-04",
+          "C-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "NGC 3274 is a spiral whose structure emerges from many star-forming patches, not from a diagram-like outline.",
+  "colorMethod": "Five ultraviolet, visible and infrared filters were combined, so color encodes a broader wavelength view than the eye alone.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "GSFC_20171208_Archive_e000504",
+    "GSFC_20171208_Archive_e000154",
+    "GSFC_20171208_Archive_e000492"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e000158",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000158"
+    }
+  ]
+}

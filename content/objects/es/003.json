@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA25163",
+  "slug": "andromeda-galaxy-imaged-by-herschel-planck-iras-cobe",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "Varios observatorios recuperan emisión fina y difusa, produciendo un mapa más completo que Herschel por sí solo.",
+  "observe": [
+    "Ubica “Disco de gas y polvo” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Disco de gas y polvo",
+        "description": "La estructura alargada combina hidrógeno, polvo frío y polvo más cálido en Andrómeda.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-02",
+          "C-02",
+          "D-03",
+          "E-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "Varios observatorios recuperan emisión fina y difusa, produciendo un mapa más completo que Herschel por sí solo.",
+  "colorMethod": "Rojo indica hidrógeno, verde polvo frío y azul polvo más cálido; la paleta codifica componentes, no apariencia visible.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA25163",
+      "url": "https://images.nasa.gov/details/PIA25163"
+    }
+  ]
+}

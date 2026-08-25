@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "potw1903a",
+  "slug": "peering-into-the-past",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "La masa en primer plano curva el espacio-tiempo y redirige luz de fondo. Los arcos permiten estudiar fuentes demasiado tenues o pequeñas.",
+  "observe": [
+    "Ubica “Arcos gravitacionales estrechos” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Arcos gravitacionales estrechos",
+        "description": "Franjas delgadas y curvas alrededor de las dos galaxias elípticas dominantes son imágenes amplificadas de galaxias más distantes.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-02",
+          "D-02",
+          "B-03",
+          "E-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "La masa en primer plano curva el espacio-tiempo y redirige luz de fondo. Los arcos permiten estudiar fuentes demasiado tenues o pequeñas.",
+  "colorMethod": "Los colores visibles ayudan a separar objetos; la pista física es la geometría curva repetida alrededor de las lentes.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA23123",
+    "PIA12110",
+    "astronomers-set-a-new-galaxy-distance-record_17389972462_o"
+  ],
+  "sources": [
+    {
+      "label": "NASA — potw1903a",
+      "url": "https://images.nasa.gov/details/potw1903a"
+    }
+  ]
+}

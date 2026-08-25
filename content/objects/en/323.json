@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA17409",
+  "slug": "nebula-no-it-the-cat-eye-crater",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "The visual resemblance is misleading: this is impact topography on Mercury, read through circular and radial geometry.",
+  "observe": [
+    "Locate “Radial impact structure” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Radial impact structure",
+        "description": "A circular center and material extending outward distinguish the Cat's Eye crater from a nebula-like cloud.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-03",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "The visual resemblance is misleading: this is impact topography on Mercury, read through circular and radial geometry.",
+  "colorMethod": "Enhanced planetary color and contrast make surface materials and ejecta easier to compare; they are not a natural-color view.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA23072",
+    "PIA21038",
+    "PIA13496"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA17409",
+      "url": "https://images.nasa.gov/details/PIA17409"
+    }
+  ]
+}

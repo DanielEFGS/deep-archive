@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "slug": "looking-back-in-time",
+  "locale": "es",
+  "status": "draft",
+  "title": "Mirar hacia atrás en el tiempo",
+  "dek": "Seis campos muestran cómo distancia, corrimiento al rojo y lentes gravitacionales convierten imágenes en registros del pasado cósmico.",
+  "learningObjective": "Reconocer que mirar más lejos también significa recibir luz más antigua, a menudo con ayuda de aumentos y exposiciones prolongadas.",
+  "estimatedMinutes": 8,
+  "steps": [
+    {
+      "nasaId": "PIA23123",
+      "chapter": "Un campo lleno de galaxias distantes",
+      "prompt": "¿Qué fuentes marcadas pasarían inadvertidas sin una exposición prolongada?"
+    },
+    {
+      "nasaId": "PIA12110",
+      "chapter": "La profundidad nace de la exposición",
+      "prompt": "¿Cómo reemplaza un campo repleto la idea de un cielo vacío?"
+    },
+    {
+      "nasaId": "astronomers-set-a-new-galaxy-distance-record_17389972462_o",
+      "chapter": "El corrimiento al rojo mide distancia",
+      "prompt": "¿Por qué el pequeño inserto es científicamente mayor de lo que parece?"
+    },
+    {
+      "nasaId": "PIA17837",
+      "chapter": "Una candidata en el límite observable",
+      "prompt": "¿Cómo dirige la ampliación la atención dentro de un cúmulo de galaxias?"
+    },
+    {
+      "nasaId": "hubble-spies-big-bang-frontiers_22202541749_o",
+      "chapter": "Un cúmulo se convierte en lente",
+      "prompt": "¿Qué formas estiradas sugieren que la gravedad desvió la luz de fondo?"
+    },
+    {
+      "nasaId": "potw1903a",
+      "chapter": "Luz curva desde el pasado",
+      "prompt": "¿Puedes distinguir las lentes en primer plano de los arcos estrechos del fondo?"
+    }
+  ]
+}

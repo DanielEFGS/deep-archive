@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "slug": "one-sky-different-instruments",
+  "locale": "en",
+  "status": "draft",
+  "title": "One Sky, Different Instruments",
+  "dek": "Eight composites show how each observatory contributes a different measurement.",
+  "learningObjective": "Read color, insets and overlays as instrument-specific evidence rather than a single literal view.",
+  "estimatedMinutes": 11,
+  "steps": [
+    {
+      "nasaId": "PIA09579",
+      "chapter": "A galaxy assembled across wavelengths",
+      "prompt": "Which structures become distinct when ultraviolet, visible and infrared data meet?"
+    },
+    {
+      "nasaId": "PIA20057",
+      "chapter": "X-rays expose a hidden core",
+      "prompt": "Where does the high-energy signal sit inside the visible galaxy?"
+    },
+    {
+      "nasaId": "GSFC_20171208_Archive_e001370",
+      "chapter": "A small galaxy in a large field",
+      "prompt": "How do an arrow and X-ray data change what counts as the subject?"
+    },
+    {
+      "nasaId": "PIA21088",
+      "chapter": "Before and after in X-rays",
+      "prompt": "What changes between the two small X-ray insets?"
+    },
+    {
+      "nasaId": "PIA10204",
+      "chapter": "Four instruments, anomalous arms",
+      "prompt": "Can you separate optical, radio, X-ray and infrared structures?"
+    },
+    {
+      "nasaId": "PIA03540",
+      "chapter": "Hydrogen extends beyond starlight",
+      "prompt": "Which colored structure reaches farthest from the galaxies?"
+    },
+    {
+      "nasaId": "PIA25164",
+      "chapter": "Recovering diffuse dust",
+      "prompt": "What does combining observatories restore around the Small Magellanic Cloud?"
+    },
+    {
+      "nasaId": "PIA25163",
+      "chapter": "A fuller map of Andromeda",
+      "prompt": "How do gas and dust trace a galaxy differently from visible stars?"
+    }
+  ]
+}

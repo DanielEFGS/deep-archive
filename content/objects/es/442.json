@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA21038",
+  "slug": "frosty-alcoves-on-kaiser-crater-dunes",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "En Kaiser, la escarcha de dióxido de carbono se sublima y puede desestabilizar las crestas, ayudando a tallar canales.",
+  "observe": [
+    "Ubica “Huecos de dunas bordeados por escarcha” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Huecos de dunas bordeados por escarcha",
+        "description": "La escarcha estacional clara bordea superficies oscuras y huecos excavados en las dunas.",
+        "kind": "visible-feature",
+        "cells": [
+          "D-02",
+          "E-02",
+          "D-03",
+          "E-03",
+          "E-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "En Kaiser, la escarcha de dióxido de carbono se sublima y puede desestabilizar las crestas, ayudando a tallar canales.",
+  "colorMethod": "El contraste claro-oscuro separa escarcha estacional y arena expuesta; no debe leerse solo como tipos de roca distintos.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA23072",
+    "PIA13496"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA21038",
+      "url": "https://images.nasa.gov/details/PIA21038"
+    }
+  ]
+}

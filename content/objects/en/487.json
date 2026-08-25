@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA13532",
+  "slug": "slipher-crater-fractured-moon-in-3-d",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "Oblique 3-D relief makes fractures and elevation changes easier to follow than in a flat overhead view.",
+  "observe": [
+    "Locate “Fractured crater rim” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Fractured crater rim",
+        "description": "A long bright ridge preserves part of Slipher Crater's broken impact boundary.",
+        "kind": "visible-feature",
+        "cells": [
+          "F-01",
+          "E-02",
+          "D-03",
+          "C-04",
+          "B-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "Oblique 3-D relief makes fractures and elevation changes easier to follow than in a flat overhead view.",
+  "colorMethod": "Grayscale brightness is dominated by slope and illumination, so it describes relief more than surface color.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA23072",
+    "PIA21038"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA13532",
+      "url": "https://images.nasa.gov/details/PIA13532"
+    }
+  ]
+}

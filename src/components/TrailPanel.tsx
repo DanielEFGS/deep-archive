@@ -1,8 +1,16 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import type { CatalogItem, CatalogPayload } from "../types/catalog";
 import type { EducationalContent, EditorialTrail } from "../types/editorial";
 import { useDialogFocus } from "../hooks/useDialogFocus";
 import { ObservationGrid } from "./ObservationGrid";
+import { TrailIntroSignal } from "./TrailIntroSignal";
 import { safeExternalUrl } from "../utils/security";
 import { editorialStatusLabel, useI18n } from "../i18n";
 import { atlasPosition } from "../utils/atlas";
@@ -48,18 +56,36 @@ export function TrailPanel({
   const es = locale === "es";
   const localizedContent = content?.locale === locale ? content : null;
   const panelRef = useRef<HTMLElement | null>(null);
+  const visualRef = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const explanationRef = useRef<HTMLDivElement | null>(null);
   const orientationFullscreenRef = useRef(false);
+  const rotateHintTimeoutRef = useRef<number | null>(null);
+  const viewSwitchTimeoutRef = useRef<number | null>(null);
+  const activePointersRef = useRef(new Map<number, { x: number; y: number }>());
+  const pinchStartRef = useRef<{ distance: number; scale: number } | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [immersive, setImmersive] = useState(false);
   const [guideCollapsed, setGuideCollapsed] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
+  const [rotateHintVisible, setRotateHintVisible] = useState(false);
+  const [observationBounds, setObservationBounds] = useState<CSSProperties>();
+  const [zoomScale, setZoomScale] = useState(1);
+  const [zoomOrigin, setZoomOrigin] = useState({ x: 0, y: 0 });
+  const [zoomHintVisible, setZoomHintVisible] = useState(false);
+  const [visualGuidesVisible, setVisualGuidesVisible] = useState(true);
+  const [viewSwitching, setViewSwitching] = useState(false);
   useDialogFocus(panelRef, onClose, closeRef);
 
   const releaseForcedLandscape = () => {
+    if (rotateHintTimeoutRef.current !== null) {
+      window.clearTimeout(rotateHintTimeoutRef.current);
+      rotateHintTimeoutRef.current = null;
+    }
+    setRotateHintVisible(false);
     const orientation = screen.orientation as LockableOrientation | undefined;
     orientation?.unlock?.();
     if (
@@ -72,6 +98,10 @@ export function TrailPanel({
 
   useEffect(
     () => () => {
+      if (rotateHintTimeoutRef.current !== null)
+        window.clearTimeout(rotateHintTimeoutRef.current);
+      if (viewSwitchTimeoutRef.current !== null)
+        window.clearTimeout(viewSwitchTimeoutRef.current);
       const orientation = screen.orientation as LockableOrientation | undefined;
       orientation?.unlock?.();
       if (
@@ -84,13 +114,65 @@ export function TrailPanel({
   );
 
   useEffect(() => {
+    if (rotateHintTimeoutRef.current !== null) {
+      window.clearTimeout(rotateHintTimeoutRef.current);
+      rotateHintTimeoutRef.current = null;
+    }
     setRevealed(false);
     setImmersive(false);
     setGuideCollapsed(false);
     setImageLoaded(false);
     setImageFailed(false);
     setLinkCopied(false);
+    setRotateHintVisible(false);
+    setObservationBounds(undefined);
+    setZoomScale(1);
+    setZoomHintVisible(false);
+    setVisualGuidesVisible(true);
+    setViewSwitching(false);
+    if (viewSwitchTimeoutRef.current !== null) {
+      window.clearTimeout(viewSwitchTimeoutRef.current);
+      viewSwitchTimeoutRef.current = null;
+    }
+    activePointersRef.current.clear();
+    pinchStartRef.current = null;
   }, [item?.id]);
+
+  const updateObservationBounds = useCallback(() => {
+    const visual = visualRef.current;
+    const image = imageRef.current;
+    if (!visual || !image?.naturalWidth || !image.naturalHeight) return;
+    const containerWidth = visual.clientWidth;
+    const containerHeight = visual.clientHeight;
+    const scale = guideCollapsed && visualGuidesVisible
+      ? Math.min(
+          containerWidth / image.naturalWidth,
+          containerHeight / image.naturalHeight,
+        )
+      : Math.max(
+          containerWidth / image.naturalWidth,
+          containerHeight / image.naturalHeight,
+        );
+    const width = image.naturalWidth * scale;
+    const height = image.naturalHeight * scale;
+    setObservationBounds({
+      left: (containerWidth - width) / 2,
+      top: (containerHeight - height) / 2,
+      width,
+      height,
+      right: "auto",
+      bottom: "auto",
+    });
+  }, [guideCollapsed, visualGuidesVisible]);
+
+  useEffect(() => {
+    const visual = visualRef.current;
+    if (!visual) return;
+    const observer = new ResizeObserver(updateObservationBounds);
+    observer.observe(visual);
+    updateObservationBounds();
+    return () => observer.disconnect();
+  }, [item?.id, updateObservationBounds]);
 
   useEffect(() => {
     if (!started || !trail) return;
@@ -102,6 +184,12 @@ export function TrailPanel({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [onNavigate, started, step, trail]);
+
+  useEffect(() => {
+    if (!zoomHintVisible) return;
+    const timeout = window.setTimeout(() => setZoomHintVisible(false), 2600);
+    return () => window.clearTimeout(timeout);
+  }, [zoomHintVisible]);
 
   const copyLink = async () => {
     try {
@@ -128,15 +216,7 @@ export function TrailPanel({
     });
   };
 
-  const toggleGuide = () => {
-    const nextCollapsed = !guideCollapsed;
-    setGuideCollapsed(nextCollapsed);
-
-    if (!nextCollapsed) {
-      releaseForcedLandscape();
-      return;
-    }
-
+  const requestObservationLandscape = () => {
     const portraitTouch =
       window.matchMedia("(orientation: portrait)").matches &&
       window.matchMedia("(pointer: coarse)").matches;
@@ -151,12 +231,98 @@ export function TrailPanel({
         const orientation = screen.orientation as
           | LockableOrientation
           | undefined;
-        await orientation?.lock?.("landscape");
+        if (!orientation?.lock) throw new Error("Orientation lock unavailable");
+        await orientation.lock("landscape");
       } catch {
         // Orientation locking is a progressive enhancement and is not
         // supported by every mobile browser.
+        setRotateHintVisible(true);
+        if (rotateHintTimeoutRef.current !== null)
+          window.clearTimeout(rotateHintTimeoutRef.current);
+        rotateHintTimeoutRef.current = window.setTimeout(() => {
+          setRotateHintVisible(false);
+          rotateHintTimeoutRef.current = null;
+        }, 3200);
       }
     })();
+  };
+
+  const enterObservationMode = () => {
+    setImmersive(true);
+    setGuideCollapsed(true);
+    setZoomScale(1);
+    setVisualGuidesVisible(true);
+    setZoomHintVisible(window.matchMedia("(pointer: coarse)").matches);
+    requestObservationLandscape();
+  };
+
+  const showGuide = () => {
+    releaseForcedLandscape();
+    setImmersive(false);
+    setGuideCollapsed(false);
+    setZoomScale(1);
+    setZoomHintVisible(false);
+    requestAnimationFrame(() => {
+      panelRef.current
+        ?.querySelector<HTMLElement>(".trail-enter-observe")
+        ?.focus();
+    });
+  };
+
+  const toggleVisualGuides = () => {
+    if (viewSwitching) return;
+    setViewSwitching(true);
+    setZoomScale(1);
+    setZoomHintVisible(false);
+    viewSwitchTimeoutRef.current = window.setTimeout(() => {
+      setVisualGuidesVisible((visible) => !visible);
+      requestAnimationFrame(() => {
+        updateObservationBounds();
+        requestAnimationFrame(() => setViewSwitching(false));
+      });
+      viewSwitchTimeoutRef.current = null;
+    }, 150);
+  };
+
+  const pointerPosition = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+  };
+
+  const onVisualPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!immersive || event.pointerType !== "touch") return;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    activePointersRef.current.set(event.pointerId, pointerPosition(event));
+    if (activePointersRef.current.size === 2) {
+      const [first, second] = [...activePointersRef.current.values()];
+      pinchStartRef.current = {
+        distance: Math.hypot(second.x - first.x, second.y - first.y),
+        scale: zoomScale,
+      };
+      setZoomOrigin({
+        x: (first.x + second.x) / 2,
+        y: (first.y + second.y) / 2,
+      });
+      setZoomHintVisible(false);
+    }
+  };
+
+  const onVisualPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!immersive || !activePointersRef.current.has(event.pointerId)) return;
+    activePointersRef.current.set(event.pointerId, pointerPosition(event));
+    if (activePointersRef.current.size !== 2 || !pinchStartRef.current) return;
+    const [first, second] = [...activePointersRef.current.values()];
+    const distance = Math.hypot(second.x - first.x, second.y - first.y);
+    const nextScale = Math.min(
+      3,
+      Math.max(1, pinchStartRef.current.scale * (distance / pinchStartRef.current.distance)),
+    );
+    setZoomScale(nextScale);
+  };
+
+  const onVisualPointerEnd = (event: ReactPointerEvent<HTMLDivElement>) => {
+    activePointersRef.current.delete(event.pointerId);
+    if (activePointersRef.current.size < 2) pinchStartRef.current = null;
   };
 
   const previewStyle = item
@@ -184,7 +350,7 @@ export function TrailPanel({
     >
       <section
         ref={panelRef}
-        className={`trail-panel ${started ? "is-started" : "is-intro"} ${revealed ? "is-revealed" : ""} ${immersive ? "is-immersive" : ""} ${guideCollapsed ? "is-guide-collapsed" : ""}`}
+        className={`trail-panel ${started ? "is-started" : "is-intro"} ${revealed ? "is-revealed" : ""} ${immersive ? "is-immersive" : ""} ${guideCollapsed ? "is-guide-collapsed" : ""} ${immersive && !visualGuidesVisible ? "is-guides-hidden" : ""}`}
         tabIndex={-1}
         onMouseDown={(event) => event.stopPropagation()}
       >
@@ -232,13 +398,8 @@ export function TrailPanel({
 
         {trail && !started && (
           <div className="trail-intro">
-            <div className="trail-intro__signal" aria-hidden="true">
-              {trail.steps.map((trailStep, index) => (
-                <i
-                  key={trailStep.catalogId}
-                  style={{ "--trail-index": index } as CSSProperties}
-                />
-              ))}
+            <div className="trail-intro__signal">
+              <TrailIntroSignal slug={trail.slug} locale={locale} />
             </div>
             <div className="trail-intro__copy">
               <h1 id="trail-title">{trail.title}</h1>
@@ -276,9 +437,14 @@ export function TrailPanel({
         {trail && started && item && (
           <>
             <div
-              className={`trail-visual ${imageResolving ? "is-resolving" : ""}`}
+              ref={visualRef}
+              className={`trail-visual ${imageResolving ? "is-resolving" : ""} ${viewSwitching ? "is-view-switching" : ""}`}
               style={previewStyle}
               aria-busy={imageResolving}
+              onPointerDown={onVisualPointerDown}
+              onPointerMove={onVisualPointerMove}
+              onPointerUp={onVisualPointerEnd}
+              onPointerCancel={onVisualPointerEnd}
             >
               {imageResolving && (
                 <span className="trail-visual__pixel-preview" aria-hidden="true" />
@@ -300,11 +466,19 @@ export function TrailPanel({
               )}
               {fullImageUrl && !imageFailed && (
                 <img
+                  ref={imageRef}
                   className={imageLoaded ? "is-loaded" : ""}
                   src={fullImageUrl}
                   alt={item.title}
                   decoding="async"
-                  onLoad={() => setImageLoaded(true)}
+                  style={{
+                    transform: `scale(${zoomScale})`,
+                    transformOrigin: `${zoomOrigin.x}px ${zoomOrigin.y}px`,
+                  }}
+                  onLoad={() => {
+                    setImageLoaded(true);
+                    requestAnimationFrame(updateObservationBounds);
+                  }}
                   onError={() => setImageFailed(true)}
                 />
               )}
@@ -313,15 +487,23 @@ export function TrailPanel({
                   {es ? "PREPARANDO IMAGEN" : "PREPARING IMAGE"}
                 </span>
               )}
-              {localizedContent?.observationMap &&
+              {visualGuidesVisible && localizedContent?.observationMap &&
                 (imageLoaded || imageFailed) && (
                   <ObservationGrid
                     key={`${item.id}-${immersive ? "observe" : "browse"}`}
                     map={localizedContent.observationMap}
                     itemId={item.id}
                     locale={locale}
+                    bounds={observationBounds}
+                    zoomScale={zoomScale}
+                    zoomOrigin={zoomOrigin}
                   />
                 )}
+              {immersive && zoomHintVisible && (
+                <span className="trail-visual__zoom-hint" role="status">
+                  {es ? "PELLIZCA PARA AMPLIAR" : "PINCH TO ZOOM"}
+                </span>
+              )}
               <span className="trail-visual__number">
                 {String(item.id).padStart(3, "0")}
               </span>
@@ -339,7 +521,7 @@ export function TrailPanel({
                         : "Enter observation mode"
                     }
                     title={es ? "Observar imagen" : "Observe image"}
-                    onClick={() => setImmersive(true)}
+                    onClick={enterObservationMode}
                   >
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <circle cx="10.5" cy="10.5" r="5.5" />
@@ -349,67 +531,80 @@ export function TrailPanel({
                 )}
                 {immersive && (
                   <button
+                    className="trail-toggle-guides"
                     type="button"
+                    disabled={viewSwitching}
+                    aria-pressed={!visualGuidesVisible}
                     aria-label={
-                      es
-                        ? "Salir del modo observación"
-                        : "Exit observation mode"
+                      visualGuidesVisible
+                        ? es
+                          ? "Ocultar guías y ampliar imagen"
+                          : "Hide guides and fill image"
+                        : es
+                          ? "Restaurar guías visuales"
+                          : "Restore visual guides"
                     }
-                    title={es ? "Salir de observación" : "Exit observation"}
-                    onClick={() => {
-                      releaseForcedLandscape();
-                      setImmersive(false);
-                      setGuideCollapsed(false);
-                    }}
+                    data-tooltip={
+                      visualGuidesVisible
+                        ? es
+                          ? "SOLO IMAGEN"
+                          : "IMAGE ONLY"
+                        : es
+                          ? "MOSTRAR GUÍAS"
+                          : "SHOW GUIDES"
+                    }
+                    onClick={toggleVisualGuides}
                   >
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="m7 7 10 10M17 7 7 17" />
-                    </svg>
+                    {visualGuidesVisible ? (
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3" />
+                        <path d="m5 5 14 14" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3" />
+                        <path d="M9 9h6v6H9z" />
+                      </svg>
+                    )}
                   </button>
                 )}
                 {immersive && (
                   <button
+                    className="trail-show-guide"
                     type="button"
-                    aria-label={
-                      guideCollapsed
-                        ? es
-                          ? "Expandir guía de observación"
-                          : "Expand observation guide"
-                        : es
-                          ? "Contraer guía de observación"
-                          : "Collapse observation guide"
-                    }
-                    title={
-                      guideCollapsed
-                        ? es
-                          ? "Expandir guía"
-                          : "Expand guide"
-                        : es
-                          ? "Contraer guía"
-                          : "Collapse guide"
-                    }
-                    aria-pressed={guideCollapsed}
-                    onClick={toggleGuide}
+                    aria-label={es ? "Mostrar guía" : "Show guide"}
+                    data-tooltip={es ? "MOSTRAR GUÍA" : "SHOW GUIDE"}
+                    onClick={showGuide}
                   >
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M4 5h16v14H4zM14 5v14" />
-                      <path
-                        d={guideCollapsed ? "m9 9 3 3-3 3" : "m11 9-3 3 3 3"}
-                      />
+                      <path d="m10 9-3 3 3 3" />
                     </svg>
+                    <span className="trail-show-guide__label">
+                      {es ? "GUÍA" : "GUIDE"}
+                    </span>
                   </button>
                 )}
               </div>
+              {rotateHintVisible && (
+                <div className="trail-rotate-hint" role="status">
+                  <span aria-hidden="true">↻</span>
+                  {es ? "GIRA TU DISPOSITIVO" : "ROTATE YOUR DEVICE"}
+                </div>
+              )}
             </div>
 
             <div className="trail-copy" aria-busy={loading}>
-              <div className="trail-copy__position">
-                {String(step + 1).padStart(2, "0")} /{" "}
-                {String(trail.steps.length).padStart(2, "0")} ·{" "}
-                {trail.steps[step]?.chapter}
-              </div>
-              <h1 id="trail-title">{item.title}</h1>
+              <header className="trail-copy__header">
+                <div className="trail-copy__position">
+                  {String(step + 1).padStart(2, "0")} /{" "}
+                  {String(trail.steps.length).padStart(2, "0")} ·{" "}
+                  {trail.steps[step]?.chapter}
+                </div>
+                <h1 id="trail-title">{item.title}</h1>
+              </header>
 
+              <div className="trail-copy__body">
               <div className="trail-observe">
                 <p>{trail.steps[step]?.prompt}</p>
                 {localizedContent?.observe && (
@@ -506,6 +701,7 @@ export function TrailPanel({
                   </div>
                 </div>
               )}
+              </div>
             </div>
 
             <nav

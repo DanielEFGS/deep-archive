@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "GSFC_20171208_Archive_e000492",
+  "slug": "hubble-views-two-galaxies-merging",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "NGC 6052 is two galaxies merging. Its chaotic shape records a process, not a stable galaxy type.",
+  "observe": [
+    "Locate “Disturbed merger core” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Disturbed merger core",
+        "description": "The crowded bright center and displaced knots do not resolve into one settled, symmetric disk.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-03",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "NGC 6052 is two galaxies merging. Its chaotic shape records a process, not a stable galaxy type.",
+  "colorMethod": "Hubble color separates luminous structures in the collision; the geometry is the key evidence here.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "GSFC_20171208_Archive_e000504",
+    "GSFC_20171208_Archive_e000154",
+    "GSFC_20171208_Archive_e000158"
+  ],
+  "sources": [
+    {
+      "label": "NASA — GSFC_20171208_Archive_e000492",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000492"
+    }
+  ]
+}

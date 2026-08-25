@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA17409",
+  "slug": "nebula-no-it-the-cat-eye-crater",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "El parecido visual engaña: es topografía de impacto en Mercurio, legible por su geometría circular y radial.",
+  "observe": [
+    "Ubica “Estructura radial de impacto” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Estructura radial de impacto",
+        "description": "Un centro circular y material que se extiende hacia afuera distinguen el cráter Ojo de Gato de una nube tipo nebulosa.",
+        "kind": "visible-feature",
+        "cells": [
+          "C-03",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "El parecido visual engaña: es topografía de impacto en Mercurio, legible por su geometría circular y radial.",
+  "colorMethod": "El color y contraste planetario realzados facilitan comparar materiales y eyecciones; no son una vista de color natural.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA23072",
+    "PIA21038",
+    "PIA13496"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA17409",
+      "url": "https://images.nasa.gov/details/PIA17409"
+    }
+  ]
+}

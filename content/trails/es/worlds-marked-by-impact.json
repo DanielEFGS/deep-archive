@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "slug": "worlds-marked-by-impact",
+  "locale": "es",
+  "status": "draft",
+  "title": "Mundos marcados por impactos",
+  "dek": "Seis superficies muestran cómo los impactos persisten, se erosionan y se vuelven difíciles de reconocer.",
+  "learningObjective": "Comparar señales de impacto en roca, hielo, distintas iluminaciones y superficies modificadas con el tiempo.",
+  "estimatedMinutes": 8,
+  "steps": [
+    {
+      "nasaId": "PIA17409",
+      "chapter": "Un cráter que parece nebulosa",
+      "prompt": "¿Qué rasgos radiales revelan un impacto y no una nube?"
+    },
+    {
+      "nasaId": "PIA23072",
+      "chapter": "Un cráter se vuelve paisaje",
+      "prompt": "¿Cómo reescribieron el relleno, la erosión y el viento el suelo del cráter?"
+    },
+    {
+      "nasaId": "PIA21038",
+      "chapter": "El hielo cambia las dunas",
+      "prompt": "¿Qué texturas claras y oscuras pertenecen al cambio estacional?"
+    },
+    {
+      "nasaId": "PIA13496",
+      "chapter": "Una cuenca mayor que el encuadre",
+      "prompt": "¿Qué permite leer un impacto cuando no vemos su círculo completo?"
+    },
+    {
+      "nasaId": "PIA13532",
+      "chapter": "Un borde fracturado en relieve",
+      "prompt": "¿Qué cresta extensa conserva la geometría del impacto?"
+    },
+    {
+      "nasaId": "PIA02561",
+      "chapter": "Una cicatriz de impacto en hielo",
+      "prompt": "¿Por qué una franja cartografiada en color facilita estudiar esta cicatriz?"
+    }
+  ]
+}

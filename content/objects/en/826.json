@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA02561",
+  "slug": "europa-impact-crater",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "The city-sized crater is difficult to read as a familiar bowl on an icy, reworked surface. The mapped swath provides context without pretending every colored patch is a separate feature.",
+  "observe": [
+    "Locate “Galileo false-color swath” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Galileo false-color swath",
+        "description": "The colored measurement strip isolates the area in which Europa's impact scar was studied.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-02",
+          "C-02",
+          "D-03",
+          "E-03"
+        ]
+      }
+    ]
+  },
+  "explanation": "The city-sized crater is difficult to read as a familiar bowl on an icy, reworked surface. The mapped swath provides context without pretending every colored patch is a separate feature.",
+  "colorMethod": "The colors are assigned to Galileo measurements to expose compositional or surface differences; they are not Europa's appearance to the eye.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA23072",
+    "PIA21038"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA02561",
+      "url": "https://images.nasa.gov/details/PIA02561"
+    }
+  ]
+}

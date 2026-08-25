@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA21038",
+  "slug": "frosty-alcoves-on-kaiser-crater-dunes",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "In Kaiser Crater, carbon-dioxide frost sublimates and can destabilize dune crests, helping carve the visible channels.",
+  "observe": [
+    "Locate “Frost-lined dune alcoves” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Frost-lined dune alcoves",
+        "description": "Bright seasonal frost borders darker dune surfaces and incised alcoves.",
+        "kind": "visible-feature",
+        "cells": [
+          "D-02",
+          "E-02",
+          "D-03",
+          "E-03",
+          "E-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "In Kaiser Crater, carbon-dioxide frost sublimates and can destabilize dune crests, helping carve the visible channels.",
+  "colorMethod": "The strong light-dark contrast maps seasonal frost against exposed sand; it should not be read as different rock types alone.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA23072",
+    "PIA13496"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA21038",
+      "url": "https://images.nasa.gov/details/PIA21038"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA13532",
+  "slug": "slipher-crater-fractured-moon-in-3-d",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "El relieve 3D oblicuo facilita seguir fracturas y cambios de elevación mejor que una vista cenital plana.",
+  "observe": [
+    "Ubica “Borde fracturado del cráter” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Borde fracturado del cráter",
+        "description": "Una cresta clara y extensa conserva parte del límite de impacto roto de Slipher.",
+        "kind": "visible-feature",
+        "cells": [
+          "F-01",
+          "E-02",
+          "D-03",
+          "C-04",
+          "B-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "El relieve 3D oblicuo facilita seguir fracturas y cambios de elevación mejor que una vista cenital plana.",
+  "colorMethod": "El brillo en escala de grises depende de pendiente e iluminación; describe más el relieve que el color superficial.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA17409",
+    "PIA23072",
+    "PIA21038"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA13532",
+      "url": "https://images.nasa.gov/details/PIA13532"
+    }
+  ]
+}

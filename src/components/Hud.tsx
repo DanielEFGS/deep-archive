@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { CatalogItem } from "../types/catalog";
 import { creatorLinks } from "../config/site";
 import { categoryLabel, localeNames, useI18n, type Locale } from "../i18n";
+import { useDialogFocus } from "../hooks/useDialogFocus";
 
 type Props = {
   hovered: CatalogItem | null;
@@ -20,6 +21,95 @@ type Props = {
   locale: Locale;
   onLocaleChange: (locale: Locale) => void;
 };
+
+type MobileDrawerProps = Pick<
+  Props,
+  | "categories"
+  | "activeCategory"
+  | "onCategoryChange"
+  | "onOpenInfo"
+  | "onOpenIndex"
+  | "onOpenTrail"
+  | "locale"
+  | "onLocaleChange"
+> & { onClose: () => void };
+
+function MobileDrawer({
+  categories,
+  activeCategory,
+  onCategoryChange,
+  onOpenInfo,
+  onOpenIndex,
+  onOpenTrail,
+  locale,
+  onLocaleChange,
+  onClose,
+}: MobileDrawerProps) {
+  const { text } = useI18n();
+  const panelRef = useRef<HTMLElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+  useDialogFocus(panelRef, onClose, closeRef);
+
+  useEffect(() => {
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, []);
+
+  const runAndClose = (action: () => void) => {
+    action();
+    onClose();
+  };
+
+  return (
+    <div className="mobile-drawer-backdrop" role="presentation" onMouseDown={onClose}>
+      <aside
+        ref={panelRef}
+        className="mobile-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mobile-drawer-title"
+        tabIndex={-1}
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <header>
+          <strong id="mobile-drawer-title">{locale === "es" ? "EXPLORAR" : "EXPLORE"}</strong>
+          <button ref={closeRef} type="button" onClick={onClose} aria-label={locale === "es" ? "Cerrar menú" : "Close menu"}>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+          </button>
+        </header>
+        <nav className="mobile-drawer__categories" aria-label={text.filterArchive}>
+          {["ALL", ...categories].map((category) => (
+            <button
+              key={category}
+              type="button"
+              className={activeCategory === category ? "is-active" : ""}
+              aria-pressed={activeCategory === category}
+              onClick={() => runAndClose(() => onCategoryChange(category))}
+            >
+              {categoryLabel(category, locale)}
+            </button>
+          ))}
+        </nav>
+        <nav className="mobile-drawer__destinations" aria-label={locale === "es" ? "Secciones" : "Sections"}>
+          <button type="button" onClick={() => runAndClose(onOpenTrail)}>{text.trail}</button>
+          <button type="button" onClick={() => runAndClose(onOpenIndex)}>{text.index}</button>
+          <button type="button" onClick={() => runAndClose(onOpenInfo)}>{text.about}</button>
+        </nav>
+        <div className="mobile-drawer__language" role="group" aria-label={text.language}>
+          <span>{text.language}</span>
+          {(Object.keys(localeNames) as Locale[]).map((value) => (
+            <button key={value} type="button" aria-pressed={locale === value} onClick={() => runAndClose(() => onLocaleChange(value))}>
+              {localeNames[value]}
+            </button>
+          ))}
+        </div>
+      </aside>
+    </div>
+  );
+}
 
 export function Hud({
   hovered,
@@ -40,6 +130,9 @@ export function Hud({
 }: Props) {
   const { text } = useI18n();
   const searchRef = useRef<HTMLInputElement | null>(null);
+  const mobileSearchRef = useRef<HTMLInputElement | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   useEffect(() => {
     const focusSearch = (event: KeyboardEvent) => {
       if (event.key === "/" && !(event.target instanceof HTMLInputElement)) {
@@ -50,9 +143,12 @@ export function Hud({
     window.addEventListener("keydown", focusSearch);
     return () => window.removeEventListener("keydown", focusSearch);
   }, []);
+  useEffect(() => {
+    if (mobileSearchOpen) mobileSearchRef.current?.focus();
+  }, [mobileSearchOpen]);
   return (
     <div className="hud">
-      <header className="hud__top">
+      <header className={`hud__top${mobileSearchOpen ? " is-mobile-search-open" : ""}`}>
         <div className="brand-lockup">
           <span className="brand-lockup__orb" aria-hidden="true" />
           <div>
@@ -135,7 +231,77 @@ export function Hud({
             </div>
           </div>
         </div>
+
+        <div className="mobile-header__actions">
+          <button
+            className="mobile-header__search-toggle"
+            type="button"
+            aria-label={mobileSearchOpen ? text.clearSearch : text.searchLabel}
+            aria-expanded={mobileSearchOpen}
+            onClick={() => {
+              if (mobileSearchOpen) onSearchChange("");
+              setMobileSearchOpen((open) => !open);
+              setMobileMenuOpen(false);
+            }}
+          >
+            {mobileSearchOpen ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+            ) : (
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="5.5" /><path d="m14.5 14.5 5 5" /></svg>
+            )}
+          </button>
+          <button
+            className="mobile-header__menu-toggle"
+            type="button"
+            aria-label={locale === "es" ? "Abrir menú" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            onClick={() => {
+              setMobileMenuOpen(true);
+              setMobileSearchOpen(false);
+            }}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+          </button>
+        </div>
+
+        {mobileSearchOpen && (
+          <label className="mobile-search">
+            <span>{text.search}</span>
+            <input
+              ref={mobileSearchRef}
+              value={searchQuery}
+              onChange={(event) => onSearchChange(event.target.value)}
+              placeholder={text.searchPlaceholder}
+              aria-label={text.searchLabel}
+            />
+          </label>
+        )}
+
+        {activeCategory !== "ALL" && (
+          <button
+            className="mobile-active-filter"
+            type="button"
+            onClick={() => onCategoryChange("ALL")}
+            aria-label={`${categoryLabel(activeCategory, locale)} · ${locale === "es" ? "quitar filtro" : "clear filter"}`}
+          >
+            {categoryLabel(activeCategory, locale)} <span aria-hidden="true">×</span>
+          </button>
+        )}
       </header>
+
+      {mobileMenuOpen && (
+        <MobileDrawer
+          categories={categories}
+          activeCategory={activeCategory}
+          onCategoryChange={onCategoryChange}
+          onOpenInfo={onOpenInfo}
+          onOpenIndex={onOpenIndex}
+          onOpenTrail={onOpenTrail}
+          locale={locale}
+          onLocaleChange={onLocaleChange}
+          onClose={() => setMobileMenuOpen(false)}
+        />
+      )}
 
       <section
         className={`hover-card ${hovered ? "hover-card--visible" : ""}`}

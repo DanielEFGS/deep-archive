@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA20057",
+  "slug": "nustar-view-of-galaxy-ngc-1068",
+  "locale": "es",
+  "status": "draft",
+  "introduction": "Los rayos X de alta energía atraviesan material que oculta el agujero negro supermasivo activo de NGC 1068.",
+  "observe": [
+    "Ubica “Núcleo de alta energía” antes de leer la explicación.",
+    "Compara el rasgo señalado con el resto del encuadre sin asumir que el color es literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Núcleo de alta energía",
+        "description": "La señal magenta compacta marca rayos X de NuSTAR en el centro de la galaxia visible.",
+        "kind": "processed-signal",
+        "cells": [
+          "C-03",
+          "D-03",
+          "C-04",
+          "D-04"
+        ]
+      }
+    ]
+  },
+  "explanation": "Los rayos X de alta energía atraviesan material que oculta el agujero negro supermasivo activo de NGC 1068.",
+  "colorMethod": "El magenta se asigna a rayos X de NuSTAR sobre datos visibles de Hubble y Sloan; es una capa de energía, no luz rosada visible.",
+  "whyItMatters": "Esta lectura separa lo que la imagen muestra directamente de lo que los instrumentos, el procesamiento y el contexto permiten inferir.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "GSFC_20171208_Archive_e001370",
+    "PIA21088"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA20057",
+      "url": "https://images.nasa.gov/details/PIA20057"
+    }
+  ]
+}

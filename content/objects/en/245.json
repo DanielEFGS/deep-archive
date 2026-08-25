@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "nasaId": "PIA10204",
+  "slug": "anomalous-arms",
+  "locale": "en",
+  "status": "draft",
+  "introduction": "M106's unusual arms become legible only by comparing radio, X-ray, infrared and optical data.",
+  "observe": [
+    "Locate “Anomalous multi-band arms” before reading the explanation.",
+    "Compare the marked feature with the rest of the frame without assuming that color is literal."
+  ],
+  "observationMap": {
+    "mode": "guided",
+    "columns": 6,
+    "rows": 6,
+    "features": [
+      {
+        "id": "primary-feature",
+        "label": "Anomalous multi-band arms",
+        "description": "Purple, blue and red structures extend differently from the yellow optical galaxy.",
+        "kind": "processed-signal",
+        "cells": [
+          "B-02",
+          "C-03",
+          "D-03",
+          "E-04",
+          "C-05"
+        ]
+      }
+    ]
+  },
+  "explanation": "M106's unusual arms become legible only by comparing radio, X-ray, infrared and optical data.",
+  "colorMethod": "Yellow is optical, purple radio, blue X-ray and red infrared. Each color is an instrument-specific data channel.",
+  "whyItMatters": "This reading separates what the image shows directly from what instruments, processing and context allow us to infer.",
+  "relatedNasaIds": [
+    "PIA09579",
+    "PIA20057",
+    "GSFC_20171208_Archive_e001370"
+  ],
+  "sources": [
+    {
+      "label": "NASA — PIA10204",
+      "url": "https://images.nasa.gov/details/PIA10204"
+    }
+  ]
+}
