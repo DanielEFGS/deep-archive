@@ -122,21 +122,9 @@ DEEP / 1000 is an independent educational and non-commercial visual study. Produ
 
 The project does not use NASA branding as its own identity and does not imply affiliation, sponsorship or endorsement.
 
-## Documentation
+## Project references
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
-- [`docs/PERFORMANCE.md`](docs/PERFORMANCE.md)
-- [`docs/DATA_PIPELINE.md`](docs/DATA_PIPELINE.md)
-- [`docs/MEDIA_AND_CREDITS.md`](docs/MEDIA_AND_CREDITS.md)
-- [`docs/ACCESSIBILITY.md`](docs/ACCESSIBILITY.md)
-- [`docs/SECURITY.md`](docs/SECURITY.md)
-- [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
-- [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md)
-- [`docs/PRODUCT_ROADMAP.md`](docs/PRODUCT_ROADMAP.md)
-- [`docs/PRODUCT_DEFINITION.md`](docs/PRODUCT_DEFINITION.md)
 - [`PRODUCT.md`](PRODUCT.md)
 - [`DESIGN.md`](DESIGN.md)
-- [`docs/RELEASE_V1_CHECKLIST.md`](docs/RELEASE_V1_CHECKLIST.md)
-- [`docs/LOCAL_DEVELOPMENT.md`](docs/LOCAL_DEVELOPMENT.md)
 - [`AGENTS.md`](AGENTS.md) — implementation rules/context for coding agents
 - [`NEXT_PHASE_PROMPT.md`](NEXT_PHASE_PROMPT.md) — archived Phase 3 implementation brief

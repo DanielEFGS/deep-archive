@@ -1,10 +1,10 @@
 # Archived Codex prompt — Phase 3: real NASA catalog + visual polish
 
-> Historical document: this phase has been completed and the repository has since evolved into **deep-archive / DEEP / 1000**. Use `docs/IMPLEMENTATION_STATUS.md` and `docs/PRODUCT_ROADMAP.md` for current planning.
+> Historical document: this phase has been completed and the repository has since evolved into **deep-archive / DEEP / 1000**. Use the current implementation and changelog for project status.
 
 Continue development of **DEEP / 500**, the historical 500-record phase of the React + TypeScript + Vite + Three.js astronomical archive.
 
-Before changing code, read `AGENTS.md`, `README.md`, and every document under `docs/`. Inspect the current implementation instead of rebuilding it from scratch.
+Before changing code, read `AGENTS.md`, `README.md`, `PRODUCT.md` and `DESIGN.md`. Inspect the current implementation instead of rebuilding it from scratch.
 
 ## Primary goal
 
@@ -89,7 +89,7 @@ Do not add a heavy monitoring library for this.
 - Test reduced-motion behavior.
 - Test WebGL failure fallback.
 - Test keyboard navigation and filtering.
-- Update `README.md`, `CHANGELOG.md`, `docs/IMPLEMENTATION_STATUS.md`, `docs/PERFORMANCE.md`, and `docs/DATA_PIPELINE.md` to match the final implementation.
+- Update `README.md`, `CHANGELOG.md`, `PRODUCT.md` and `DESIGN.md` when their durable project context changes.
 - If a design/architecture decision changes, document why.
 
 ## Important constraints

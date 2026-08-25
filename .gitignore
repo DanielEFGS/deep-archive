@@ -8,6 +8,7 @@ dist/
 public/editorial/
 reports/lighthouse-*.report.*
 reports/*.png
+docs/*.md
 .env
 .env.*
 !.env.example

@@ -8,15 +8,7 @@ The core engineering constraint is: **represent 1,000+ visual records without a 
 
 ## Read before changing architecture
 
-Review these files first:
-
-1. `README.md`
-2. `docs/ARCHITECTURE.md`
-3. `docs/PERFORMANCE.md`
-4. `docs/DATA_PIPELINE.md`
-5. `docs/MEDIA_AND_CREDITS.md`
-6. `docs/ACCESSIBILITY.md`
-7. `docs/IMPLEMENTATION_STATUS.md`
+Review `README.md`, `PRODUCT.md` and `DESIGN.md`, then inspect the current implementation before changing architecture.
 
 ## Non-negotiable architecture rules
 
@@ -85,4 +77,4 @@ At minimum:
 
 ## Current phase
 
-The repository contains the DEEP / 1000 production catalog, a retained 500-record synthetic development dataset, English/Spanish UI and editorial content, the first guided Trail, security controls and Netlify deployment configuration. `docs/IMPLEMENTATION_STATUS.md` is the source of truth for delivered and pending work. `NEXT_PHASE_PROMPT.md` is retained only as historical Phase 3 context.
+The repository contains the DEEP / 1000 production catalog, a retained 500-record synthetic development dataset, English/Spanish UI and editorial content, guided Trails, security controls and Netlify deployment configuration. The current implementation and changelog are the source of truth for delivered work.

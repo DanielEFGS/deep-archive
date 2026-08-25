@@ -38,8 +38,7 @@ The permanent product name is DEEP and the current edition is DEEP / 1000. Publi
 ## Evidence on Hand
 
 - A 1,000-record NASA-derived catalog with individual credits and sources under `public/datasets/nasa/`.
-- Product strategy and review policy in `docs/PRODUCT_DEFINITION.md`.
-- Architecture and performance constraints in `docs/ARCHITECTURE.md` and `docs/PERFORMANCE.md`.
+- Product strategy and operating constraints in this document, `README.md` and `AGENTS.md`.
 - No qualified astronomy reviewer or comprehension research is currently available; neither may be fabricated.
 
 ## Product Principles
