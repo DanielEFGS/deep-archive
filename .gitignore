@@ -6,6 +6,8 @@ dist/
 *.tsbuildinfo
 .impeccable/
 public/editorial/
+reports/lighthouse-*.report.*
+reports/*.png
 .env
 .env.*
 !.env.example
