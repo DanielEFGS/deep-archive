@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://deeparchive-dg.netlify.app/sitemap.xml
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://deep.daniel-gs.dev/sitemap.xml

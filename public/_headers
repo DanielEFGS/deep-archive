@@ -1,0 +1,39 @@
+/datasets/nasa/atlas/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/datasets/demo/atlas/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/datasets/nasa/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/datasets/nasa/details/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/datasets/demo/details/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/datasets/nasa/catalog.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/datasets/demo/catalog.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/editorial/*
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/og-image.png
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://images-assets.nasa.gov https://*.nasa.gov; font-src 'self'; connect-src 'self'; media-src 'self' https://images-assets.nasa.gov https://*.nasa.gov; manifest-src 'self'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 0
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains

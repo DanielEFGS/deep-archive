@@ -4,6 +4,7 @@
 
 ### Product and identity
 
+- migrated production deployment configuration from Netlify to Cloudflare Workers Static Assets at `deep.daniel-gs.dev`, preserving SPA routing, cache policy and security headers;
 - simplified the public product title and social metadata to **DEEP**, leaving record counts as collection information rather than part of the name;
 - renamed the repository/package from `deep-500` to `deep-archive`, keeping **DEEP / 1000** as the current collection edition rather than the permanent product name;
 - expanded the production NASA catalog from 500 to 1,000 records, two virtualized 500-record WebP atlas sectors and twenty on-demand metadata shards;

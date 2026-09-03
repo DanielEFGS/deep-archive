@@ -25,7 +25,7 @@ Visitors explore a 1,000-record WebGL mosaic, focus one object, load its high-re
 ## Capabilities and Constraints
 
 - English and Spanish are implemented as independently reviewed editorial layers; Japanese remains planned.
-- The site remains statically deployable to Netlify, account-free and privacy-conscious.
+- The site remains statically deployable through Cloudflare Workers Static Assets, account-free and privacy-conscious.
 - The gallery remains one WebGL canvas with one active 500-record atlas sector; additional sectors, heavy media and editorial content load on demand.
 - Source, credit and rights-review state are preserved per media asset.
 - Content is labelled source-checked under DG editorial approval, not scientifically reviewed.

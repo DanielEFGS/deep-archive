@@ -11,6 +11,8 @@
     "test": "vitest run",
     "check": "npm run lint && npm run test && npm run build",
     "preview": "vite preview",
+    "cloudflare:dry-run": "npm run check && wrangler deploy --dry-run",
+    "cloudflare:deploy": "npm run check && wrangler deploy",
     "catalog:demo": "node scripts/build-demo-catalog.mjs",
     "catalog:nasa": "node scripts/build-nasa-catalog.mjs",
     "catalog:sectors": "node scripts/sectorize-atlas.mjs",
@@ -21,7 +23,8 @@
     "audit:categories": "node scripts/audit-categories.mjs",
     "audit:categories:fix": "node scripts/audit-categories.mjs --fix",
     "editorial:build": "node scripts/build-editorial.mjs",
-    "prebuild": "npm run audit:categories && npm run check:catalog:nasa && npm run audit:media && npm run check:editorial && npm run editorial:build"
+    "prebuild": "npm run audit:categories && npm run check:catalog:nasa && npm run audit:media && npm run check:editorial && npm run editorial:build",
+    "postbuild": "node scripts/build-seo-pages.mjs"
   },
   "dependencies": {
     "react": "19.2.8",
@@ -37,7 +40,8 @@
     "sharp": "0.35.3",
     "typescript": "7.0.2",
     "vite": "8.2.2",
-    "vitest": "^4.1.11"
+    "vitest": "^4.1.11",
+    "wrangler": "^4.128.0"
   },
   "engines": {
     "node": ">=22.12.0"

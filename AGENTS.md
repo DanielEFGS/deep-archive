@@ -12,7 +12,7 @@ Review `README.md`, `PRODUCT.md` and `DESIGN.md`, then inspect the current imple
 
 ## Non-negotiable architecture rules
 
-- Keep the application statically deployable to Netlify.
+- Keep the application statically deployable through Cloudflare Workers Static Assets.
 - Do not introduce SSR, a backend, a database, or server functions unless a concrete requirement proves they are necessary.
 - React owns UI/application state. Pointer animation must not use React state per frame.
 - Keep the gallery in WebGL/Three.js rather than converting it to hundreds or thousands of DOM images.
@@ -77,4 +77,4 @@ At minimum:
 
 ## Current phase
 
-The repository contains the DEEP / 1000 production catalog, a retained 500-record synthetic development dataset, English/Spanish UI and editorial content, guided Trails, security controls and Netlify deployment configuration. The current implementation and changelog are the source of truth for delivered work.
+The repository contains the DEEP / 1000 production catalog, a retained 500-record synthetic development dataset, English/Spanish UI and editorial content, guided Trails, security controls and Cloudflare Workers Static Assets deployment configuration. The current implementation and changelog are the source of truth for delivered work.

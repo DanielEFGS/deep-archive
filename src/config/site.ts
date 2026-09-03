@@ -1,6 +1,14 @@
 import { safeExternalUrl } from "../utils/security";
 
+export const creatorPortfolioUrl =
+  safeExternalUrl(import.meta.env.VITE_PORTFOLIO_URL || "https://daniel-gs.dev/") ??
+  "https://daniel-gs.dev/";
+
 export const creatorLinks = [
+  {
+    label: "PORTFOLIO",
+    href: creatorPortfolioUrl,
+  },
   {
     label: "GITHUB",
     href: import.meta.env.VITE_GITHUB_URL || "https://github.com/DanielEFGS",

@@ -5,6 +5,7 @@ dist/
 *.log
 *.tsbuildinfo
 .impeccable/
+.seo-cache/
 public/editorial/
 reports/lighthouse-*.report.*
 reports/*.png

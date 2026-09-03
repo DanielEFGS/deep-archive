@@ -6,9 +6,11 @@ import type {
 } from "../types/catalog";
 import type { ArchiveRenderer } from "../webgl/ArchiveRenderer";
 import { useI18n } from "../i18n";
+import type { Theme } from "../hooks/useTheme";
 
 type Props = {
   atlas: CatalogPayload["atlas"];
+  atlasStartIndex?: number;
   itemCount: number;
   visibleIndices: Set<number> | null;
   onHoverIndex: (index: number | null) => void;
@@ -18,12 +20,14 @@ type Props = {
   onError: () => void;
   onDiagnostics: (diagnostics: RenderDiagnostics) => void;
   diagnosticsEnabled: boolean;
+  theme: Theme;
   onSectorChange?: (direction: -1 | 1) => void;
   onTouchExploringChange?: (active: boolean) => void;
 };
 
 export function SpaceArchiveCanvas({
   atlas,
+  atlasStartIndex = 0,
   itemCount,
   visibleIndices,
   onHoverIndex,
@@ -33,6 +37,7 @@ export function SpaceArchiveCanvas({
   onError,
   onDiagnostics,
   diagnosticsEnabled,
+  theme,
   onSectorChange,
   onTouchExploringChange,
 }: Props) {
@@ -41,6 +46,7 @@ export function SpaceArchiveCanvas({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rendererRef = useRef<ArchiveRenderer | null>(null);
   const visibleIndicesRef = useRef(visibleIndices);
+  const themeRef = useRef(theme);
   const hoverRef = useRef<number | null>(null);
   const keyboardIndexRef = useRef<number | null>(null);
   const callbacksRef = useRef({
@@ -54,6 +60,7 @@ export function SpaceArchiveCanvas({
   });
   const [failed, setFailed] = useState(false);
   visibleIndicesRef.current = visibleIndices;
+  themeRef.current = theme;
 
   callbacksRef.current = {
     onHoverIndex,
@@ -85,6 +92,7 @@ export function SpaceArchiveCanvas({
           atlasRows: atlas.rows,
           atlasWidth: atlas.columns * atlas.tileWidth,
           atlasHeight: atlas.rows * atlas.tileHeight,
+          atlasStartIndex,
           itemCount,
           onReady: () => callbacksRef.current.onReady(),
           onQualityChange: (quality) =>
@@ -94,6 +102,7 @@ export function SpaceArchiveCanvas({
             callbacksRef.current.onError();
           },
         });
+        renderer.setTheme(themeRef.current);
         renderer.setVisibleIndices(visibleIndicesRef.current);
       } catch (error) {
         if (disposed) return;
@@ -312,12 +321,17 @@ export function SpaceArchiveCanvas({
     atlas.rows,
     atlas.tileWidth,
     atlas.tileHeight,
+    atlasStartIndex,
     itemCount,
   ]);
 
   useEffect(() => {
     rendererRef.current?.setVisibleIndices(visibleIndices);
   }, [visibleIndices]);
+
+  useEffect(() => {
+    rendererRef.current?.setTheme(theme);
+  }, [theme]);
 
   useEffect(() => {
     if (!diagnosticsEnabled) return;
@@ -343,7 +357,11 @@ export function SpaceArchiveCanvas({
       {failed && (
         <div
           className="archive-fallback"
-          style={{ backgroundImage: `url(${atlas.url})` }}
+          style={{
+            backgroundImage: `url(${atlas.url})`,
+            backgroundSize: `100% ${(atlas.rows / Math.ceil(itemCount / atlas.columns)) * 100}%`,
+            backgroundPosition: `center ${atlasStartIndex === 0 ? "top" : "bottom"}`,
+          }}
           role="img"
           aria-label={
             es

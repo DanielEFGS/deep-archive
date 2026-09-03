@@ -1,5 +1,10 @@
 import type { AtlasConfig, AtlasSector, CatalogPayload } from "../types/catalog";
 
+export type ArchivePage = AtlasSector & {
+  atlasOffset: number;
+  sectorIndex: number;
+};
+
 export function catalogSectors(catalog: CatalogPayload): AtlasSector[] {
   if (catalog.atlases?.length) return catalog.atlases;
   return [
@@ -9,6 +14,26 @@ export function catalogSectors(catalog: CatalogPayload): AtlasSector[] {
       itemCount: catalog.items.length,
     },
   ];
+}
+
+export function catalogPages(
+  catalog: CatalogPayload,
+  pageSize?: number,
+): ArchivePage[] {
+  return catalogSectors(catalog).flatMap((sector, sectorIndex) => {
+    const size = pageSize && pageSize > 0 ? pageSize : sector.itemCount;
+    const pageCount = Math.ceil(sector.itemCount / size);
+    return Array.from({ length: pageCount }, (_, pageIndex) => {
+      const atlasOffset = pageIndex * size;
+      return {
+        ...sector,
+        startIndex: sector.startIndex + atlasOffset,
+        itemCount: Math.min(size, sector.itemCount - atlasOffset),
+        atlasOffset,
+        sectorIndex,
+      };
+    });
+  });
 }
 
 export function atlasForIndex(

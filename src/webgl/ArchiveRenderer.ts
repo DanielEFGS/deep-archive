@@ -8,6 +8,7 @@ type Options = {
   atlasRows: number;
   atlasWidth: number;
   atlasHeight: number;
+  atlasStartIndex?: number;
   itemCount: number;
   onReady: () => void;
   onError?: (error: unknown) => void;
@@ -169,6 +170,7 @@ export class ArchiveRenderer {
   private readonly canvas: HTMLCanvasElement;
   private readonly atlasColumns: number;
   private readonly atlasRows: number;
+  private readonly atlasStartIndex: number;
   private readonly itemCount: number;
   private readonly renderer: THREE.WebGLRenderer;
   private readonly scene = new THREE.Scene();
@@ -193,6 +195,7 @@ export class ArchiveRenderer {
   private pointerActive = false;
   private disposed = false;
   private reducedMotion = false;
+  private theme: "dark" | "light" = "dark";
   private rippleStartedAt: number | null = null;
   private revealStartedAt: number | null = null;
   private quality: RenderQuality = { label: "HIGH", pixelRatio: 1 };
@@ -211,6 +214,7 @@ export class ArchiveRenderer {
     this.canvas = options.canvas;
     this.atlasColumns = options.atlasColumns;
     this.atlasRows = options.atlasRows;
+    this.atlasStartIndex = options.atlasStartIndex ?? 0;
     this.itemCount = options.itemCount;
     this.onQualityChange = options.onQualityChange;
     this.reducedMotion = window.matchMedia(
@@ -256,6 +260,11 @@ export class ArchiveRenderer {
 
     this.resizeObserver = new ResizeObserver(() => this.resize());
     this.resizeObserver.observe(this.canvas);
+    const shell = this.canvas.parentElement;
+    const hudTop = shell?.querySelector<HTMLElement>(".hud__top");
+    const siteFooter = shell?.querySelector<HTMLElement>(".site-footer");
+    if (hudTop) this.resizeObserver.observe(hudTop);
+    if (siteFooter) this.resizeObserver.observe(siteFooter);
     this.resize();
 
     new THREE.TextureLoader().load(
@@ -393,6 +402,11 @@ export class ArchiveRenderer {
     this.renderOnce();
   }
 
+  setTheme(theme: "dark" | "light") {
+    this.theme = theme;
+    this.renderOnce();
+  }
+
   triggerRipple(clientX: number, clientY: number) {
     if (this.reducedMotion) return;
     const point = this.clientToNdc(clientX, clientY);
@@ -525,7 +539,11 @@ export class ArchiveRenderer {
     );
   }
 
-  private chooseGrid(width: number) {
+  private chooseGrid(width: number, height: number) {
+    const mobileLandscape =
+      width > height &&
+      (width <= 920 || window.matchMedia("(hover: none) and (pointer: coarse)").matches);
+    if (mobileLandscape) return this.itemCount <= 250 ? 26 : 28;
     if (width < 640) return 16;
     if (width < 1024) return this.itemCount > 500 ? 24 : 20;
     return this.itemCount > 500 ? 32 : 25;
@@ -576,10 +594,31 @@ export class ArchiveRenderer {
     this.material.uniforms.uRadius.value =
       cssRadius * this.renderer.getPixelRatio();
 
-    const nextColumns = this.chooseGrid(width);
+    const nextColumns = this.chooseGrid(width, height);
     const nextRows = Math.ceil(this.itemCount / nextColumns);
-    const nextFieldTop = width < 700 ? 132 : width < 1050 ? 112 : 92;
-    const nextFieldBottom = width < 700 ? 58 : 52;
+    const shell = this.canvas.parentElement;
+    const measuredTop = shell
+      ?.querySelector<HTMLElement>(".hud__top")
+      ?.getBoundingClientRect().height;
+    const measuredBottom = shell
+      ?.querySelector<HTMLElement>(".site-footer")
+      ?.getBoundingClientRect().height;
+    const nextFieldTop = Math.ceil(
+      measuredTop && measuredTop > 0
+        ? measuredTop
+        : width < 700
+          ? 132
+          : width < 1050
+            ? 112
+            : 92,
+    );
+    const nextFieldBottom = Math.ceil(
+      measuredBottom && measuredBottom > 0
+        ? measuredBottom
+        : width < 700
+          ? 58
+          : 52,
+    );
     if (
       nextColumns !== this.displayColumns ||
       nextRows !== this.displayRows ||
@@ -663,8 +702,9 @@ export class ArchiveRenderer {
       const centerX = (left + right) * 0.5;
       const centerY = (top + bottom) * 0.5;
 
-      const atlasColumn = index % this.atlasColumns;
-      const atlasRow = Math.floor(index / this.atlasColumns);
+      const atlasIndex = this.atlasStartIndex + index;
+      const atlasColumn = atlasIndex % this.atlasColumns;
+      const atlasRow = Math.floor(atlasIndex / this.atlasColumns);
       const u0 = atlasColumn / this.atlasColumns;
       const u1 = (atlasColumn + 1) / this.atlasColumns;
       const v1 = 1 - atlasRow / this.atlasRows;
@@ -873,7 +913,7 @@ export class ArchiveRenderer {
       if (!revealActive) this.revealStartedAt = null;
     }
 
-    this.renderer.render(this.scene, this.camera);
+    this.renderScene();
     this.diagnosticFrames++;
 
     const remaining = this.currentMouse.distanceToSquared(this.targetMouse);
@@ -891,7 +931,25 @@ export class ArchiveRenderer {
 
   private renderOnce() {
     if (this.disposed) return;
-    this.renderer.render(this.scene, this.camera);
+    this.renderScene();
     this.diagnosticFrames++;
+  }
+
+  private renderScene() {
+    const width = Math.max(1, this.canvas.clientWidth);
+    const height = Math.max(1, this.canvas.clientHeight);
+    const fieldHeight = Math.max(1, height - this.fieldTop - this.fieldBottom);
+    const pageColor = this.theme === "light" ? 0xeeede8 : 0x06080d;
+
+    this.renderer.setScissorTest(false);
+    this.renderer.setClearColor(pageColor, 1);
+    this.renderer.clear();
+    this.renderer.setScissor(0, this.fieldBottom, width, fieldHeight);
+    this.renderer.setScissorTest(true);
+    this.renderer.setClearColor(0x06080d, 1);
+    this.renderer.clear();
+    this.renderer.render(this.scene, this.camera);
+    this.renderer.setScissorTest(false);
+    this.renderer.setClearColor(pageColor, 1);
   }
 }

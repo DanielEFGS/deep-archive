@@ -1,0 +1,21 @@
+# DEEP Archive
+
+> DEEP / 1000 is an independent, educational and non-commercial interactive archive of 1,000 astronomical image records. It uses one WebGL canvas and atlas-based delivery to avoid one request or DOM node per thumbnail.
+
+## Primary pages
+
+- [DEEP interactive archive](https://deep.daniel-gs.dev/): Explore the complete visual field.
+- [Source-checked editorial objects](https://deep.daniel-gs.dev/objects/): English observation guides with source and credit context.
+- [Guided Trails](https://deep.daniel-gs.dev/trails/): English educational paths through selected records.
+- [Objetos editoriales](https://deep.daniel-gs.dev/es/objetos/): Spanish observation guides.
+- [Recorridos guiados](https://deep.daniel-gs.dev/es/recorridos/): Spanish educational paths.
+
+## Project and authorship
+
+- [Daniel García Silva](https://daniel-gs.dev/): Creator portfolio.
+- [Source repository](https://github.com/DanielEFGS/deep-archive): Implementation and project documentation.
+- [NASA image and media usage guidelines](https://www.nasa.gov/nasa-brand-center/images-and-media/): Source-media usage context.
+
+## Editorial policy
+
+DEEP preserves the credit and original source supplied for each production asset. Only source-checked or reviewed editorial material is exposed as an indexable guide. Draft editorial files are excluded. DEEP is not affiliated with, sponsored by or endorsed by NASA. NASA-hosted third-party material can have separate rights and usage terms.

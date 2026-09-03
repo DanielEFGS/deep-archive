@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { CatalogPayload } from "../types/catalog";
-import { atlasForIndex, atlasPosition, catalogSectors } from "./atlas";
+import { atlasForIndex, atlasPosition, catalogPages, catalogSectors } from "./atlas";
 
 const catalog: CatalogPayload = {
   generatedAt: "2026-08-24",
@@ -29,5 +29,21 @@ describe("atlas utilities", () => {
 
   it("maps atlas cells to percentage positions", () => {
     expect(atlasPosition(3, 2, 2)).toBe("100% 100%");
+  });
+
+  it("splits physical atlases into mobile pages without changing atlas URLs", () => {
+    const pages = catalogPages(catalog, 250);
+    expect(pages).toHaveLength(4);
+    expect(pages.map(({ url, startIndex, itemCount, atlasOffset }) => ({
+      url,
+      startIndex,
+      itemCount,
+      atlasOffset,
+    }))).toEqual([
+      { url: "/one.webp", startIndex: 0, itemCount: 250, atlasOffset: 0 },
+      { url: "/one.webp", startIndex: 250, itemCount: 250, atlasOffset: 250 },
+      { url: "/two.webp", startIndex: 500, itemCount: 250, atlasOffset: 0 },
+      { url: "/two.webp", startIndex: 750, itemCount: 250, atlasOffset: 250 },
+    ]);
   });
 });

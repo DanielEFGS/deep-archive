@@ -8,7 +8,7 @@ A single-screen astronomical archive built as a frontend performance study. **DE
 - Vite 8
 - Three.js + custom GLSL shaders
 - Sharp for offline thumbnail/atlas generation
-- Static deployment on Netlify
+- Cloudflare Workers Static Assets deployment
 
 Node.js 22.12+ is recommended for the pinned Vite 8 toolchain.
 
@@ -49,6 +49,17 @@ Production:
 npm run build
 npm run preview
 ```
+
+Cloudflare deployment:
+
+```bash
+npm run cloudflare:dry-run
+npm run cloudflare:deploy
+```
+
+The production Worker is `deep`, serves the Vite SPA from `dist/` and owns
+`https://deep.daniel-gs.dev`. Cache and security response headers live in
+`public/_headers` and are copied into the deployment output by Vite.
 
 During local development, press `D` to inspect renderer diagnostics. Detail views support `←` / `→` navigation without preloading full-resolution media.
 
@@ -120,6 +131,8 @@ By default, the detail view resolves a NASA `~medium`, `~large` or original asse
 
 - Desktop keeps the full archive navigation and two-column Detail layout.
 - Touch and compact viewports use a reduced DEEP header with on-demand search and an accessible navigation drawer.
+- Mobile archive navigation presents each 500-record atlas as two logical 250-record pages (four pages for DEEP / 1000) without adding per-tile requests; mobile landscape uses a wider mesh to preserve thumbnail proportions.
+- Light and dark interface themes follow the operating-system preference on first visit and persist an explicit visitor choice. Light mode uses warm daylight chrome, canvas clear bands, modal surrounds and navigation while astronomical imagery remains unmodified.
 - Long NASA descriptions open at five lines on desktop and four on mobile, with an explicit expand/collapse control; technical metadata is collapsible on mobile while credit and source remain outside it.
 - Related objects become a native horizontal, scroll-snapping rail on mobile.
 - Trail Focus Mode removes nonessential UI and uses the available viewport. On portrait touch devices it requests fullscreen and landscape orientation after the user's gesture; unsupported or rejected orientation locks fall back to a non-blocking rotate hint.

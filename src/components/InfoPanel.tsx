@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import type { CatalogPayload, RenderQuality } from "../types/catalog";
 import { useDialogFocus } from "../hooks/useDialogFocus";
-import { creatorLinks } from "../config/site";
+import { creatorLinks, creatorPortfolioUrl } from "../config/site";
 import { qualityLabel, useI18n } from "../i18n";
 
 type Props = {
@@ -126,12 +126,32 @@ export function InfoPanel({ catalog, quality, onClose }: Props) {
             : "DEEP welcomes concise scientific or educational feedback that can improve its guides and source interpretation."}
         </p>
 
+        <nav
+          className="info-panel__creator-links"
+          aria-label={es ? "Guías editoriales" : "Editorial guides"}
+        >
+          <a href={es ? "/es/objetos/" : "/objects/"}>
+            {es ? "OBJETOS EDITORIALES" : "EDITORIAL OBJECTS"} →
+          </a>
+          <a href={es ? "/es/recorridos/" : "/trails/"}>
+            {es ? "RECORRIDOS GUIADOS" : "GUIDED TRAILS"} →
+          </a>
+        </nav>
+
         {creatorLinks.length > 0 && (
           <nav
             className="info-panel__creator-links"
             aria-label={es ? "Enlaces del creador" : "Creator links"}
           >
-            <strong>DG</strong>
+            <a
+              className="info-panel__creator-mark"
+              href={creatorPortfolioUrl}
+              target="_blank"
+              rel="me noreferrer"
+              aria-label={es ? "Portafolio de DG" : "DG portfolio"}
+            >
+              <strong>DG</strong>
+            </a>
             {creatorLinks.map((link) => (
               <a
                 key={link.label}

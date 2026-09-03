@@ -10,6 +10,12 @@ colors:
   ink-muted: "rgba(245,246,247,.52)"
   instrument-line: "rgba(245,246,247,.17)"
   control-wash: "rgba(255,255,255,.04)"
+  daylight-field: "#eeede8"
+  daylight-surface: "rgba(244,243,238,.98)"
+  daylight-ink: "#11161c"
+  daylight-ink-secondary: "rgba(17,22,28,.74)"
+  daylight-ink-muted: "rgba(17,22,28,.56)"
+  daylight-line: "rgba(17,22,28,.20)"
 typography:
   display:
     fontFamily: '"Helvetica Neue", "Nimbus Sans L", Arial, sans-serif'
@@ -127,6 +133,8 @@ The palette is a low-chroma optical housing: black-blue fields, cool white ink, 
 
 **The Legibility Ladder Rule.** Primary, secondary, and muted ink must retain their hierarchy; do not solve emphasis by adding arbitrary hues.
 
+**The Daylight Observatory Rule.** The optional light theme is a complete warm-neutral environment: page, HUD, canvas clear bands, modal surrounds, navigation, reading panels, and actionable controls all use daylight surfaces and dark ink. Astronomical pixels retain their source appearance without recoloring, while opaque controls preserve legibility over the media. Theme boundaries are hard, deliberate planes rather than blurred light-to-dark fades. The visitor's explicit choice is persisted; otherwise the interface follows the operating-system preference.
+
 ## Typography
 
 **Display Font:** Helvetica Neue, with Nimbus Sans L and Arial fallbacks  
@@ -153,7 +161,7 @@ The palette is a low-chroma optical housing: black-blue fields, cool white ink, 
 
 The archive is a full-viewport field with a pointer-transparent HUD layered over it. Top and bottom safe bands reserve space for controls and authorship so the WebGL tiles never sit under interactive chrome. The HUD uses a three-part desktop grid, while category filters remain horizontally scrollable and persistent.
 
-Panels are bounded exhibits rather than routes. Desktop detail and Trail panels split into an image-dominant stage and a narrower reading column; the active Trail uses a 1.42fr / .72fr ratio and reserves a 44px progress rail. A fixed three-part navigation bar floats below the panel, keeping previous, link, and next/finish actions stable through the sequence.
+Panels are bounded exhibits rather than routes. Desktop detail and Trail panels split into an image-dominant stage and a narrower reading column; the active Trail uses a 1.42fr / .72fr ratio and reserves a 44px progress rail. A fixed three-part navigation bar floats below the panel on desktop and docks to the viewport edge on mobile, keeping previous, link, and next/finish actions stable through the sequence without obscuring reading content.
 
 At 820px and below, image and copy stack vertically without changing content order or removing navigation. At 700px the HUD becomes a real 132px top safe band and 58px bottom safe band. At 560px, copy and controls compress, credits may leave the image overlay, the Trail marker reduces to its orbital glyph, and touch targets become at least 44px; observation, source access, and sequence progress remain available.
 
@@ -163,7 +171,7 @@ At 820px and below, image and copy stack vertically without changing content ord
 
 ## Elevation & Depth
 
-Depth is structural and sparse. The canvas is the deepest plane; modal backdrops dim and blur it, panels sit on near-opaque black-blue surfaces, and only major floating containers receive broad black shadows. Fine borders and tonal separation do more work than highlights. Image stages use blurred versions of their own media beneath the resolved image, so depth comes from the observed artifact rather than decorative glow.
+Depth is structural and sparse. The canvas is the deepest plane; dark-mode modal backdrops dim it while light mode replaces the surround with an opaque daylight plane instead of blur. Panels follow the active theme, and only major floating containers receive broad shadows. Fine borders and tonal separation do more work than highlights. Image stages use blurred versions of their own media beneath the resolved image, so depth comes from the observed artifact rather than decorative glow.
 
 ### Shadow Vocabulary
 

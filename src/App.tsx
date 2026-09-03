@@ -20,7 +20,7 @@ import type {
   EditorialTrail,
   EditorialTrailSummary,
 } from "./types/editorial";
-import { atlasForIndex, catalogSectors } from "./utils/atlas";
+import { atlasForIndex, catalogPages, catalogSectors } from "./utils/atlas";
 import { I18nContext, resolveInitialLocale, ui, type Locale } from "./i18n";
 import { DATASET, editorialObjectUrl, trailUrl } from "./config/archive";
 import { fetchJson } from "./services/http";
@@ -35,6 +35,7 @@ import {
   hasSeenFieldGuide,
   rememberFieldGuide,
 } from "./features/onboarding/storage";
+import { useTheme, type Theme } from "./hooks/useTheme";
 import {
   DetailPanel,
   IndexPanel,
@@ -56,8 +57,9 @@ function ModuleLoadingOverlay({ locale }: { locale: Locale }) {
   );
 }
 
-export default function App() {
+export default function App({ initialTheme }: { initialTheme: Theme }) {
   const [locale, setLocale] = useState<Locale>(resolveInitialLocale);
+  const { theme, toggleTheme } = useTheme(initialTheme);
   const {
     catalog,
     itemsRef,
@@ -72,6 +74,7 @@ export default function App() {
   const trailMenuRequestRef = useRef(0);
   const trailRestoreAttemptedRef = useRef(false);
   const trailLocaleRef = useRef(locale);
+  const pageRestoreAttemptedRef = useRef(false);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [touchExploring, setTouchExploring] = useState(false);
   const [activeCategory, setActiveCategory] = useState("ALL");
@@ -83,6 +86,10 @@ export default function App() {
   );
   const [rendererReady, setRendererReady] = useState(false);
   const [sectorTransition, setSectorTransition] = useState(false);
+  const [mobileArchive, setMobileArchive] = useState(() =>
+    window.matchMedia("(max-width: 700px), (hover: none) and (pointer: coarse)").matches,
+  );
+  const [atlasPageOffset, setAtlasPageOffset] = useState(0);
   const [quality, setQuality] = useState<RenderQuality>({
     label: "HIGH",
     pixelRatio: 1,
@@ -133,6 +140,15 @@ export default function App() {
     };
     window.addEventListener("keydown", toggle);
     return () => window.removeEventListener("keydown", toggle);
+  }, []);
+
+  useEffect(() => {
+    const query = window.matchMedia(
+      "(max-width: 700px), (hover: none) and (pointer: coarse)",
+    );
+    const update = () => setMobileArchive(query.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
   }, []);
 
   const enterTrailStep = useCallback(
@@ -274,73 +290,109 @@ export default function App() {
   );
 
   const sectors = useMemo(() => catalogSectors(catalog), [catalog]);
-  const activeAtlas = sectors[activeSector] ?? sectors[0];
-  const sectorStart = activeAtlas?.startIndex ?? 0;
-  const sectorItems = useMemo(
+  const pages = useMemo(
+    () => catalogPages(catalog, mobileArchive ? 250 : undefined),
+    [catalog, mobileArchive],
+  );
+  const exactPageIndex = pages.findIndex(
+    (page) =>
+      page.sectorIndex === activeSector && page.atlasOffset === atlasPageOffset,
+  );
+  const activePageIndex =
+    exactPageIndex >= 0
+      ? exactPageIndex
+      : Math.max(0, pages.findIndex((page) => page.sectorIndex === activeSector));
+  const activePage = pages[activePageIndex] ?? pages[0];
+  const activeAtlas = sectors[activePage?.sectorIndex ?? activeSector] ?? sectors[0];
+  const pageStart = activePage?.startIndex ?? activeAtlas?.startIndex ?? 0;
+  const pageItems = useMemo(
     () =>
       catalog.items.slice(
-        sectorStart,
-        sectorStart + (activeAtlas?.itemCount ?? catalog.items.length),
+        pageStart,
+        pageStart + (activePage?.itemCount ?? catalog.items.length),
       ),
-    [activeAtlas?.itemCount, catalog.items, sectorStart],
+    [activePage?.itemCount, catalog.items, pageStart],
   );
-  const sectorVisibleIndices = useMemo(
-    () => localMatchingIndices(visibleIndices, sectorStart, sectorItems.length),
-    [sectorItems.length, sectorStart, visibleIndices],
+  const pageVisibleIndices = useMemo(
+    () => localMatchingIndices(visibleIndices, pageStart, pageItems.length),
+    [pageItems.length, pageStart, visibleIndices],
   );
 
-  const changeSector = useCallback(
+  const changePage = useCallback(
     (direction: -1 | 1) => {
       const next = Math.min(
-        sectors.length - 1,
-        Math.max(0, activeSector + direction),
+        pages.length - 1,
+        Math.max(0, activePageIndex + direction),
       );
-      if (next === activeSector) return;
+      if (next === activePageIndex) return;
+      const page = pages[next];
+      if (!page) return;
       setSectorTransition(true);
-      setActiveSector(next);
+      setActiveSector(page.sectorIndex);
+      setAtlasPageOffset(page.atlasOffset);
       setHoveredId(null);
     },
-    [activeSector, sectors.length],
+    [activePageIndex, pages, setActiveSector],
   );
+
+  useEffect(() => {
+    setAtlasPageOffset(0);
+  }, [mobileArchive]);
+
+  useEffect(() => {
+    if (!catalogReady || pageRestoreAttemptedRef.current || !pages.length) return;
+    pageRestoreAttemptedRef.current = true;
+    const requested = Number(
+      new URL(window.location.href).searchParams.get("sector"),
+    );
+    if (!Number.isInteger(requested) || requested <= 0) return;
+    const page = pages[Math.min(requested - 1, pages.length - 1)];
+    if (!page) return;
+    setActiveSector(page.sectorIndex);
+    setAtlasPageOffset(page.atlasOffset);
+  }, [catalogReady, pages, setActiveSector]);
 
   useEffect(() => {
     if (!catalogReady) return;
     const url = new URL(window.location.href);
-    if (activeSector === 0) url.searchParams.delete("sector");
-    else url.searchParams.set("sector", String(activeSector + 1));
+    if (activePageIndex === 0) url.searchParams.delete("sector");
+    else url.searchParams.set("sector", String(activePageIndex + 1));
     window.history.replaceState(null, "", url);
-  }, [activeSector, catalogReady]);
+  }, [activePageIndex, catalogReady]);
 
   useEffect(() => {
     if (visibleIndices == null || visibleIndices.size === 0) return;
-    const sectorHasMatch = [...visibleIndices].some(
+    const pageHasMatch = [...visibleIndices].some(
       (index) =>
-        index >= sectorStart && index < sectorStart + sectorItems.length,
+        index >= pageStart && index < pageStart + pageItems.length,
     );
-    if (sectorHasMatch) return;
+    if (pageHasMatch) return;
     const firstMatch = Math.min(...visibleIndices);
-    const matchSector = sectors.findIndex(
-      (sector) =>
-        firstMatch >= sector.startIndex &&
-        firstMatch < sector.startIndex + sector.itemCount,
+    const matchPage = pages.find(
+      (page) =>
+        firstMatch >= page.startIndex &&
+        firstMatch < page.startIndex + page.itemCount,
     );
-    if (matchSector >= 0) setActiveSector(matchSector);
-  }, [activeCategory, searchQuery, sectorItems.length, sectorStart, sectors, visibleIndices]);
+    if (matchPage) {
+      setActiveSector(matchPage.sectorIndex);
+      setAtlasPageOffset(matchPage.atlasOffset);
+    }
+  }, [activeCategory, pageItems.length, pageStart, pages, searchQuery, setActiveSector, visibleIndices]);
 
   const handleSectorHoverIndex = useCallback(
     (localIndex: number | null) => {
       const item =
         localIndex == null
           ? undefined
-          : itemsRef.current[sectorStart + localIndex];
+          : itemsRef.current[pageStart + localIndex];
       setHoveredId(item?.id ?? null);
     },
-    [sectorStart],
+    [pageStart],
   );
 
   const handleSectorSelectIndex = useCallback(
-    (localIndex: number) => handleSelectIndex(sectorStart + localIndex),
-    [handleSelectIndex, sectorStart],
+    (localIndex: number) => handleSelectIndex(pageStart + localIndex),
+    [handleSelectIndex, pageStart],
   );
 
   useEffect(() => {
@@ -399,6 +451,15 @@ export default function App() {
   const selectedGlobalIndex = selected
     ? catalog.items.findIndex((item) => item.id === selected.id)
     : -1;
+  useEffect(() => {
+    if (!mobileArchive || selectedGlobalIndex < 0) return;
+    const selectedPage = pages.find(
+      (page) =>
+        selectedGlobalIndex >= page.startIndex &&
+        selectedGlobalIndex < page.startIndex + page.itemCount,
+    );
+    if (selectedPage) setAtlasPageOffset(selectedPage.atlasOffset);
+  }, [mobileArchive, pages, selectedGlobalIndex]);
   const selectedAtlas = atlasForIndex(
     catalog,
     Math.max(0, selectedGlobalIndex),
@@ -432,10 +493,11 @@ export default function App() {
       <main className={`app-shell ${ready ? "is-ready" : ""}`}>
         {catalogReady && (
           <SpaceArchiveCanvas
-            key={activeAtlas.url}
+            key={`${activeAtlas.url}:${activePage?.atlasOffset ?? 0}`}
             atlas={activeAtlas}
-            itemCount={sectorItems.length}
-            visibleIndices={sectorVisibleIndices}
+            atlasStartIndex={activePage?.atlasOffset ?? 0}
+            itemCount={pageItems.length}
+            visibleIndices={pageVisibleIndices}
             onHoverIndex={handleSectorHoverIndex}
             onSelectIndex={handleSectorSelectIndex}
             onReady={() => {
@@ -450,7 +512,8 @@ export default function App() {
             }}
             onDiagnostics={setDiagnostics}
             diagnosticsEnabled={import.meta.env.DEV && diagnosticsOpen}
-            onSectorChange={sectors.length > 1 ? changeSector : undefined}
+            theme={theme}
+            onSectorChange={pages.length > 1 ? changePage : undefined}
             onTouchExploringChange={setTouchExploring}
           />
         )}
@@ -467,7 +530,7 @@ export default function App() {
         )}
 
         {ready &&
-          sectors.length > 1 &&
+          pages.length > 1 &&
           !selected &&
           !infoOpen &&
           !indexOpen &&
@@ -480,26 +543,26 @@ export default function App() {
             >
               <button
                 type="button"
-                onClick={() => changeSector(-1)}
-                disabled={activeSector === 0}
+                onClick={() => changePage(-1)}
+                disabled={activePageIndex === 0}
                 aria-label={ui[locale].previousSector}
               >
                 <span className="sector-nav__arrow sector-nav__arrow--up" aria-hidden="true" />
               </button>
               <span aria-live="polite">
-                <b>{String(sectorStart + 1).padStart(4, "0")}</b>
+                <b>{String(pageStart + 1).padStart(4, "0")}</b>
                 <i>—</i>
                 <b>
-                  {String(sectorStart + sectorItems.length).padStart(4, "0")}
+                  {String(pageStart + pageItems.length).padStart(4, "0")}
                 </b>
                 <small>
-                  {activeSector + 1} / {sectors.length}
+                  {activePageIndex + 1} / {pages.length}
                 </small>
               </span>
               <button
                 type="button"
-                onClick={() => changeSector(1)}
-                disabled={activeSector === sectors.length - 1}
+                onClick={() => changePage(1)}
+                disabled={activePageIndex === pages.length - 1}
                 aria-label={ui[locale].nextSector}
               >
                 <span className="sector-nav__arrow sector-nav__arrow--down" aria-hidden="true" />
@@ -526,6 +589,8 @@ export default function App() {
           }}
           locale={locale}
           onLocaleChange={changeLocale}
+          theme={theme}
+          onThemeToggle={toggleTheme}
         />
         <FieldCursor
           active={
@@ -543,7 +608,7 @@ export default function App() {
           atlasIndex={
             hovered
               ? catalog.items.findIndex((item) => item.id === hovered.id) -
-                sectorStart
+                activeAtlas.startIndex
               : null
           }
           active={

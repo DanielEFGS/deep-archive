@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import type { CatalogItem } from "../types/catalog";
-import { creatorLinks } from "../config/site";
+import { creatorLinks, creatorPortfolioUrl } from "../config/site";
 import { categoryLabel, localeNames, useI18n, type Locale } from "../i18n";
 import { useDialogFocus } from "../hooks/useDialogFocus";
+import type { Theme } from "../hooks/useTheme";
 
 type Props = {
   hovered: CatalogItem | null;
@@ -20,6 +21,8 @@ type Props = {
   onDismissOnboarding: () => void;
   locale: Locale;
   onLocaleChange: (locale: Locale) => void;
+  theme: Theme;
+  onThemeToggle: () => void;
 };
 
 type MobileDrawerProps = Pick<
@@ -32,6 +35,8 @@ type MobileDrawerProps = Pick<
   | "onOpenTrail"
   | "locale"
   | "onLocaleChange"
+  | "theme"
+  | "onThemeToggle"
 > & { onClose: () => void };
 
 function MobileDrawer({
@@ -43,6 +48,8 @@ function MobileDrawer({
   onOpenTrail,
   locale,
   onLocaleChange,
+  theme,
+  onThemeToggle,
   onClose,
 }: MobileDrawerProps) {
   const { text } = useI18n();
@@ -106,6 +113,20 @@ function MobileDrawer({
             </button>
           ))}
         </div>
+        <div className="mobile-drawer__theme">
+          <span>{text.theme}</span>
+          <button
+            type="button"
+            onClick={onThemeToggle}
+            aria-label={
+              theme === "dark"
+                ? text.switchToLightTheme
+                : text.switchToDarkTheme
+            }
+          >
+            {theme === "dark" ? text.darkTheme : text.lightTheme}
+          </button>
+        </div>
       </aside>
     </div>
   );
@@ -127,6 +148,8 @@ export function Hud({
   onDismissOnboarding,
   locale,
   onLocaleChange,
+  theme,
+  onThemeToggle,
 }: Props) {
   const { text } = useI18n();
   const searchRef = useRef<HTMLInputElement | null>(null);
@@ -212,6 +235,32 @@ export function Hud({
             </button>
             <button type="button" onClick={onOpenInfo}>
               {text.about}
+            </button>
+            <button
+              className="theme-toggle"
+              type="button"
+              onClick={onThemeToggle}
+              aria-label={
+                theme === "dark"
+                  ? text.switchToLightTheme
+                  : text.switchToDarkTheme
+              }
+              title={
+                theme === "dark"
+                  ? text.switchToLightTheme
+                  : text.switchToDarkTheme
+              }
+            >
+              {theme === "light" ? (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="3.5" />
+                  <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19.2 15.1A8 8 0 0 1 8.9 4.8 7.3 7.3 0 1 0 19.2 15.1Z" />
+                </svg>
+              )}
             </button>
             <div
               className="locale-switcher"
@@ -299,6 +348,8 @@ export function Hud({
           onOpenTrail={onOpenTrail}
           locale={locale}
           onLocaleChange={onLocaleChange}
+          theme={theme}
+          onThemeToggle={onThemeToggle}
           onClose={() => setMobileMenuOpen(false)}
         />
       )}
@@ -327,10 +378,16 @@ export function Hud({
       )}
 
       <footer className="site-footer">
-        <div className="creator-signature">
+        <a
+          className="creator-signature"
+          href={creatorPortfolioUrl}
+          target="_blank"
+          rel="me noreferrer"
+          aria-label={locale === "es" ? "Portafolio de DG" : "DG portfolio"}
+        >
           <strong>DG</strong>
           <span>{text.design}</span>
-        </div>
+        </a>
         <nav className="creator-links" aria-label={text.creatorLinks}>
           {creatorLinks.map((link) => (
             <a
